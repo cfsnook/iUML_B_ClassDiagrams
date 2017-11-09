@@ -2,21 +2,19 @@
 <feature
       id="ac.soton.eventb.classdiagrams.feature"
       label="%featureName"
-      version="1.2.0"
-      provider-name="%providerName"
-      plugin="ac.soton.iumlb.branding">
+      version="1.2.1.qualifier"
+      provider-name="%featureVendor"
+      plugin="ac.soton.iumlb.branding"
+      license-feature="org.rodinp.license"
+      license-feature-version="1.0.0.release">
 
-   <description url="http://www.example.com/description">
-      %description
+   <description>
+      %featureDescription
    </description>
 
    <copyright>
-      %copyright
+      %featureCopyright
    </copyright>
-
-   <license url="%licenseURL">
-      %license
-   </license>
 
    <url>
       <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
