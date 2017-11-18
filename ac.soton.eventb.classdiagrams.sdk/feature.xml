@@ -2,20 +2,18 @@
 <feature
       id="ac.soton.eventb.classdiagrams.sdk"
       label="%featureName"
-      version="1.2.0"
-      provider-name="%featureVendor">
+      version="1.2.1.qualifier"
+      provider-name="%featureVendor"
+      license-feature="org.rodinp.license"
+      license-feature-version="1.0.0.release">
 
    <description>
-      %description
+      %featureDescription
    </description>
 
    <copyright>
-      %copyright
+      %featureCopyright
    </copyright>
-
-   <license url="%licenseURL">
-      %license
-   </license>
 
    <url>
       <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
@@ -25,53 +23,8 @@
          id="ac.soton.eventb.classdiagrams.feature"
          version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.eventb.classdiagrams.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.classdiagrams.diagram.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.classdiagrams.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.classdiagrams.editor.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.classdiagrams.generator.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.classdiagrams.navigator.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.classdiagrams.persistance.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.eventb.classdiagrams.source.feature"
+         version="0.0.0"/>
 
 </feature>
