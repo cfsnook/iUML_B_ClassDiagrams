@@ -3,19 +3,19 @@ package ac.soton.eventb.classdiagrams.generator.rules;
 import java.util.Collections;
 import java.util.List;
 
-import org.eventb.emf.core.EventBElement;
+import org.eclipse.emf.ecore.EObject;
 
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassMethod;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.MethodKind;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
-import ac.soton.eventb.emf.diagrams.generator.IRule;
+import ac.soton.emf.translator.configuration.IRule;
 
 public class ClassMethodRule extends AbstractClassMethodRule  implements IRule {
 
 	@Override
-	public boolean enabled(EventBElement sourceElement) throws Exception{
+	public boolean enabled(EObject sourceElement) throws Exception{
 		assert(sourceElement instanceof ClassMethod);
 		return super.enabled(sourceElement) &&
 				((ClassMethod)sourceElement).getKind()==MethodKind.NORMAL;

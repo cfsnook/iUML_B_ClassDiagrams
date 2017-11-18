@@ -3,25 +3,25 @@ package ac.soton.eventb.classdiagrams.generator.rules;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.Witness;
 
+import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
+import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
+import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassMethod;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.TypedParameter;
-import ac.soton.eventb.emf.diagrams.generator.AbstractRule;
-import ac.soton.eventb.emf.diagrams.generator.GenerationDescriptor;
-import ac.soton.eventb.emf.diagrams.generator.IRule;
-import ac.soton.eventb.emf.diagrams.generator.utils.Make;
 
-public abstract class AbstractClassMethodRule extends AbstractRule  implements IRule {
+public abstract class AbstractClassMethodRule extends AbstractEventBGeneratorRule  implements IRule {
 	
 	protected static final EReference elaborates = CoreextensionPackage.Literals.EVENT_BDATA_ELABORATION__ELABORATES;
 	
@@ -33,15 +33,15 @@ public abstract class AbstractClassMethodRule extends AbstractRule  implements I
 	protected abstract List<Object> getInstanceActions(ClassMethod method);
 	
 	@Override
-	public boolean enabled(EventBElement sourceElement) throws Exception{
+	public boolean enabled(EObject sourceElement) throws Exception{
 		assert(sourceElement instanceof ClassMethod);
 		if (!(((ClassMethod)sourceElement).eContainer() instanceof Class)) return false;
 		return ((Class)((ClassMethod)sourceElement).eContainer()).getElaborates() != null;
 	}
 	
 	@Override
-	public List<GenerationDescriptor> fire(EventBElement sourceElement, List<GenerationDescriptor> generatedElements) throws Exception {
-		List<GenerationDescriptor> ret = new ArrayList<GenerationDescriptor>();
+	public List<TranslationDescriptor> fire(EObject sourceElement, List<TranslationDescriptor> generatedElements) throws Exception {
+		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
 		ClassMethod method = (ClassMethod)sourceElement;	
 		selfName = ((Class)method.eContainer()).getSelfName();
 		instancesName = ((Class) method.getContaining(ClassdiagramsPackage.Literals.CLASS)).getElaborates().getName();

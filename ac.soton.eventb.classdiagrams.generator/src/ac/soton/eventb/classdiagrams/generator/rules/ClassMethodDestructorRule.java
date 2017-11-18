@@ -3,9 +3,11 @@ package ac.soton.eventb.classdiagrams.generator.rules;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eventb.emf.core.EventBElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eventb.emf.core.machine.Variable;
 
+import ac.soton.emf.translator.configuration.IRule;
+import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.classdiagrams.Association;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassAttribute;
@@ -13,17 +15,15 @@ import ac.soton.eventb.classdiagrams.ClassMethod;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.MethodKind;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
-import ac.soton.eventb.emf.diagrams.generator.IRule;
-import ac.soton.eventb.emf.diagrams.generator.utils.Make;
 
 public class ClassMethodDestructorRule  extends AbstractClassMethodRule  implements IRule {
 
 	@Override
-	public boolean enabled(EventBElement sourceElement) throws Exception{
+	public boolean enabled(EObject sourceElement) throws Exception{
 		assert(sourceElement instanceof ClassMethod);
 		return super.enabled(sourceElement) &&
 				((ClassMethod)sourceElement).getKind()==MethodKind.DESTRUCTOR &&
-				((Class)sourceElement.getContaining(ClassdiagramsPackage.Literals.CLASS)).getElaborates() instanceof Variable;
+				((Class)((ClassMethod)sourceElement).getContaining(ClassdiagramsPackage.Literals.CLASS)).getElaborates() instanceof Variable;
 	}
 
 	@Override

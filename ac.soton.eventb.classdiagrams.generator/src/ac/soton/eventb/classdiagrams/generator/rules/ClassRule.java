@@ -3,6 +3,7 @@ package ac.soton.eventb.classdiagrams.generator.rules;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
@@ -15,29 +16,29 @@ import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Variable;
 
+import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
+import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
+import ac.soton.emf.translator.eventb.utils.Find;
+import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
-import ac.soton.eventb.emf.diagrams.generator.AbstractRule;
-import ac.soton.eventb.emf.diagrams.generator.GenerationDescriptor;
-import ac.soton.eventb.emf.diagrams.generator.IRule;
-import ac.soton.eventb.emf.diagrams.generator.utils.Find;
-import ac.soton.eventb.emf.diagrams.generator.utils.Make;
 
-public class ClassRule  extends AbstractRule  implements IRule {
+public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	
 	protected static final EReference elaborates = CoreextensionPackage.Literals.EVENT_BDATA_ELABORATION__ELABORATES;
 	
 	@Override
-	public boolean enabled(EventBElement sourceElement) throws Exception{
+	public boolean enabled(EObject sourceElement) throws Exception{
 		assert(sourceElement instanceof Class);
 		return ((Class)sourceElement).getElaborates() != null;
 	}
 		
 	@Override
-	public List<GenerationDescriptor> fire(EventBElement sourceElement, List<GenerationDescriptor> generatedElements) throws Exception {
-		List<GenerationDescriptor> ret = new ArrayList<GenerationDescriptor>();
+	public List<TranslationDescriptor> fire(EObject sourceElement, List<TranslationDescriptor> generatedElements) throws Exception {
+		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
 	
 		// generate supertype invariants/axioms
 		Class element = (Class)sourceElement;
