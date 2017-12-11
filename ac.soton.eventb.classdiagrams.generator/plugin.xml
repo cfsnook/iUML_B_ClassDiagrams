@@ -1,62 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-<!--###
-   <extension
-         id="ac.soton.eventb.emf.diagrams.generator"
-         point="ac.soton.eventb.emf.diagrams.generator.rule">
-      <generator
-            generatorID="ac.soton.eventb.classdiagrams.generator"
-            name="Classdiagram Generator"
-            root_source_class="Classdiagram"
-            sourcePackage="http://soton.ac.uk/models/eventb/classdiagrams/2015">
-         <rule
-               name="ClassRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassRule"
-               source_class="Class">
-         </rule>
-         <rule
-               name="ClassAttributeRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassAttributeRule"
-               source_class="ClassAttribute">
-         </rule>
-         <rule
-               name="AssociationRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.AssociationRule"
-               source_class="Association">
-         </rule>
-         <rule
-               name="ClassConstraintRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassConstraintRule"
-               source_class="ClassConstraint">
-         </rule>
-         <rule
-               name="ClassMethodRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassMethodRule"
-               source_class="ClassMethod">
-         </rule>
-         <rule
-               name="AssociationFixedInitialisationRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.FixedIntialisationRule"
-               source_class="Association">
-         </rule>
-         <rule
-               name="ClassAttributeFixedInitialisationRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.FixedIntialisationRule"
-               source_class="ClassAttribute">
-         </rule>
-         <rule
-               name="ClassMethodConstructorRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassMethodConstructorRule"
-               source_class="ClassMethod">
-         </rule>
-         <rule
-               name="ClassMethodDestructorRule"
-               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassMethodDestructorRule"
-               source_class="ClassMethod">
-         </rule>
-      </generator>
-   </extension>
+   
+   <!-- declare the validator to be used by the diagrams generator plugin for this diagram -->
    <extension
          point="ac.soton.eventb.emf.diagrams.validator">
       <validator
@@ -65,45 +11,18 @@
             validatorClass="ac.soton.eventb.classdiagrams.generator.validator.Validator">
       </validator>
    </extension>
--->
 
-
+	<!-- declare the handler to be used for this diagram type -->
    <extension
-         point="org.eclipse.ui.commands">
-      <command
-            categoryId="ac.soton.eventb.emf.diagrams.iUMLB"
-            description="Generate Event-B for class diagram"
-            id="ac.soton.eventb.classdiagram.generator.command.id"
-            name="Class Diagram Generator">
-      </command>
-   </extension>
-   
-<extension
-      name="EventB Diagrams"
-      point="org.eclipse.ui.menus">
-  <menuContribution
-        allPopups="true"
-        locationURI="toolbar:ac.soton.eventb.emf.diagrams.toolbar?after=transformations">
-     <command
-           commandId="ac.soton.eventb.classdiagram.generator.command.id"
-           icon="icons/GenerateOne.png"
-           label="iUML-B Class Diagram generation"
-           style="push">
-     </command>
-  </menuContribution>
-
-</extension>
-
-   <extension
-         point="org.eclipse.ui.handlers">
+         point="org.eclipse.ui.handlers"> 
       <handler
-            class="ac.soton.emf.translator.eventb.handler.EventBTranslateHandler"
-            commandId="ac.soton.eventb.classdiagram.generator.command.id">
+            class="ac.soton.eventb.emf.diagrams.generator.handlers.IUMLBTranslateHandler"
+            commandId="ac.soton.eventb.emf.diagrams.generator.translateToEventB">
          <enabledWhen>
             <with
                   variable="activeEditor">
                <instanceof
-                     value="org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor">
+                     value="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditor">
                </instanceof>
             </with>
          </enabledWhen>
@@ -111,18 +30,19 @@
             <with
                   variable="activeEditor">
                <instanceof
-                     value="org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor">
+                     value="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditor">
                </instanceof>
             </with>
          </activeWhen>
       </handler>
    </extension>
    
+   <!-- declare the translator and its rule set -->
    <extension
          point="ac.soton.emf.translators">
       <translator
-            adapter_class="ac.soton.emf.translator.eventb.adapter.EventBImportAdapter"
-            command_id="ac.soton.eventb.classdiagram.generator.command.id"
+            adapter_class="ac.soton.emf.translator.eventb.adapter.EventBTranslatorAdapter"
+            command_id="ac.soton.eventb.emf.diagrams.generator.translateToEventB"
             name="Class Diagram Generator"
             root_source_class="Classdiagram"
             self_modifiying="true"
