@@ -45,7 +45,6 @@
             command_id="ac.soton.eventb.emf.diagrams.generator.translateToEventB"
             name="Class Diagram Generator"
             root_source_class="Classdiagram"
-            self_modifiying="true"
             source_package="http://soton.ac.uk/models/eventb/classdiagrams/2015"
             translator_id="ac.soton.eventb.classdiagram.generator">
       </translator>
