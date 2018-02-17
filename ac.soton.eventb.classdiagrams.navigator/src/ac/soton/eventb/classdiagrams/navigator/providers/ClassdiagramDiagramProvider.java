@@ -3,7 +3,7 @@ package ac.soton.eventb.classdiagrams.navigator.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.EventBNamed;
 
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
@@ -34,10 +34,10 @@ public class ClassdiagramDiagramProvider implements IDiagramProvider {
 				rootClassdiagram = (Classdiagram) rootClassdiagram.eContainer().eContainer();
 			filename = rootClassdiagram.getName() + "."+fileExtension;
 			
-			// prefix with machine name
+			// prefix with root component name
 			EObject root = EcoreUtil.getRootContainer(element);
-			if (root != null && root instanceof Machine)
-				filename = ((Machine) root).getName() + "." + filename;
+			if (root != null && root instanceof EventBNamed)
+				filename = ((EventBNamed) root).getName() + "." + filename;
 			
 			return filename;
 		}
