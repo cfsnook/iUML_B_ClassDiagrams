@@ -39,6 +39,8 @@ public class ClassdiagramsTests extends TestSuite {
 		suite.addTestSuite(AssociationTest.class);
 		suite.addTestSuite(ClassAttributeTest.class);
 		suite.addTestSuite(ClassTest.class);
+		suite.addTestSuite(ClassMethodTest.class);
+		suite.addTestSuite(ClassConstraintTest.class);
 		return suite;
 	}
 

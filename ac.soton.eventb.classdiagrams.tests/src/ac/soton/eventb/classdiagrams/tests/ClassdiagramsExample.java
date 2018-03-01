@@ -63,7 +63,7 @@ public class ClassdiagramsExample {
 		if (args.length == 0) {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
-				Resource resource = resourceSet.createResource(URI.createURI("http:///My.classdiagrams"));
+				Resource resource = resourceSet.createResource(URI.createURI("http:///My.cls"));
 				Classdiagram root = ClassdiagramsFactory.eINSTANCE.createClassdiagram();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
