@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - University of Southampton.
+ * Copyright (c) 2012-2018 - University of Southampton.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
  * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -36,6 +36,7 @@ import ac.soton.eventb.classdiagrams.MethodKind;
 import ac.soton.eventb.classdiagrams.util.ClassdiagramsValidator;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.diagrams.DiagramsPackage;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -154,8 +155,7 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		isInited = true;
 
 		// Initialize simple dependencies
-		DiagramsPackage.eINSTANCE.eClass();
-		CoreextensionPackage.eINSTANCE.eClass();
+		StatemachinesPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theClassdiagramsPackage.createPackageContents();
@@ -507,6 +507,7 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
 		DiagramsPackage theDiagramsPackage = (DiagramsPackage)EPackage.Registry.INSTANCE.getEPackage(DiagramsPackage.eNS_URI);
 		CoreextensionPackage theCoreextensionPackage = (CoreextensionPackage)EPackage.Registry.INSTANCE.getEPackage(CoreextensionPackage.eNS_URI);
+		StatemachinesPackage theStatemachinesPackage = (StatemachinesPackage)EPackage.Registry.INSTANCE.getEPackage(StatemachinesPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
@@ -522,7 +523,8 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		classAttributeEClass.getESuperTypes().add(theCoreextensionPackage.getEventBNamedCommentedRelationDataElaborationElement());
 		classAttributeEClass.getESuperTypes().add(this.getEventBInitialisable());
 		classEClass.getESuperTypes().add(theCoreextensionPackage.getEventBNamedCommentedDataElaborationElement());
-		classEClass.getESuperTypes().add(theDiagramsPackage.getDiagramOwner());
+		classEClass.getESuperTypes().add(this.getClassdiagramOwner());
+		classEClass.getESuperTypes().add(theStatemachinesPackage.getStatemachineOwner());
 		classMethodEClass.getESuperTypes().add(theCoreextensionPackage.getEventBCommentedLabeledEventGroupElement());
 		classConstraintEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedDerivedPredicateElement());
 

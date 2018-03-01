@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - University of Southampton.
+ * Copyright (c) 2012-2018 - University of Southampton.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
  * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -701,13 +701,22 @@ public interface ClassdiagramsPackage extends EPackage {
 	int CLASS__DATA_KIND = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT__DATA_KIND;
 
 	/**
-	 * The feature id for the '<em><b>Diagrams</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Classdiagrams</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__DIAGRAMS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 0;
+	int CLASS__CLASSDIAGRAMS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Statemachines</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__STATEMACHINES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Supertypes</b></em>' reference list.
@@ -716,7 +725,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__SUPERTYPES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 1;
+	int CLASS__SUPERTYPES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Class Attributes</b></em>' containment reference list.
@@ -725,7 +734,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__CLASS_ATTRIBUTES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 2;
+	int CLASS__CLASS_ATTRIBUTES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
@@ -734,7 +743,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__INCOMING = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 3;
+	int CLASS__INCOMING = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
@@ -743,7 +752,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__OUTGOING = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 4;
+	int CLASS__OUTGOING = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Refines</b></em>' reference.
@@ -752,7 +761,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__REFINES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 5;
+	int CLASS__REFINES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -761,7 +770,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__CONSTRAINTS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 6;
+	int CLASS__CONSTRAINTS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
@@ -770,7 +779,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__METHODS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 7;
+	int CLASS__METHODS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Self Name</b></em>' attribute.
@@ -779,7 +788,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__SELF_NAME = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 8;
+	int CLASS__SELF_NAME = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Class</em>' class.
@@ -788,7 +797,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FEATURE_COUNT = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 9;
+	int CLASS_FEATURE_COUNT = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 10;
 
 
 	/**

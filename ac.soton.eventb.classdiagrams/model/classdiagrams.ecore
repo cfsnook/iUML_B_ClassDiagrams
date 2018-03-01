@@ -27,7 +27,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="../../ac.soton.eventb.emf.core.extension/model/eventbcoreextension.ecore#//EventBNamedCommentedDataElaborationElement ../../ac.soton.eventb.emf.diagrams/model/diagrams.ecore#//DiagramOwner">
+  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="../../ac.soton.eventb.emf.core.extension/model/eventbcoreextension.ecore#//EventBNamedCommentedDataElaborationElement #//ClassdiagramOwner ../../ac.soton.eventb.statemachines/model/statemachines.ecore#//StatemachineOwner">
     <eStructuralFeatures xsi:type="ecore:EReference" name="supertypes" upperBound="-1"
         eType="#//Class"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classAttributes" upperBound="-1"

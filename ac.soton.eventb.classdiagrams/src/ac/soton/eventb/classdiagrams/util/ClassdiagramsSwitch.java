@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - University of Southampton.
+ * Copyright (c) 2012-2018 - University of Southampton.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
  * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -42,7 +42,7 @@ import ac.soton.eventb.emf.core.extension.coreextension.EventBNamedCommentedData
 import ac.soton.eventb.emf.core.extension.coreextension.EventBNamedCommentedRelationDataElaborationElement;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBRelationKind;
 import ac.soton.eventb.emf.diagrams.Diagram;
-import ac.soton.eventb.emf.diagrams.DiagramOwner;
+import ac.soton.eventb.statemachines.StatemachineOwner;
 
 /**
  * <!-- begin-user-doc -->
@@ -176,7 +176,8 @@ public class ClassdiagramsSwitch<T> {
 				ac.soton.eventb.classdiagrams.Class class_ = (ac.soton.eventb.classdiagrams.Class)theEObject;
 				T result = caseClass(class_);
 				if (result == null) result = caseEventBNamedCommentedDataElaborationElement(class_);
-				if (result == null) result = caseDiagramOwner(class_);
+				if (result == null) result = caseClassdiagramOwner(class_);
+				if (result == null) result = caseStatemachineOwner(class_);
 				if (result == null) result = caseEventBNamedCommentedElement(class_);
 				if (result == null) result = caseEventBDataElaboration(class_);
 				if (result == null) result = caseEventBCommentedElement(class_);
@@ -528,17 +529,17 @@ public class ClassdiagramsSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Diagram Owner</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Statemachine Owner</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Diagram Owner</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Statemachine Owner</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDiagramOwner(DiagramOwner object) {
+	public T caseStatemachineOwner(StatemachineOwner object) {
 		return null;
 	}
 

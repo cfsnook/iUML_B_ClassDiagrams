@@ -35,6 +35,8 @@ import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.statemachines.StatemachinesFactory;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * This is the item provider adapter for a {@link ac.soton.eventb.classdiagrams.Classdiagram} object.
@@ -216,6 +218,16 @@ public class ClassdiagramItemProvider
 				(createChildParameter
 					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
 				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			
+		if (object instanceof EObject && 
+			StatemachinesPackage.Literals.STATEMACHINE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			StatemachinesPackage.Literals.STATEMACHINE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	StatemachinesFactory.eINSTANCE.createStatemachine()));
 		
 			newChildDescriptors.add
 				(createChildParameter

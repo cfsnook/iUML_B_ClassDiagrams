@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - University of Southampton.
+ * Copyright (c) 2012-2018 - University of Southampton.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
  * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -42,7 +42,7 @@ import ac.soton.eventb.emf.core.extension.coreextension.EventBNamedCommentedData
 import ac.soton.eventb.emf.core.extension.coreextension.EventBNamedCommentedRelationDataElaborationElement;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBRelationKind;
 import ac.soton.eventb.emf.diagrams.Diagram;
-import ac.soton.eventb.emf.diagrams.DiagramOwner;
+import ac.soton.eventb.statemachines.StatemachineOwner;
 
 /**
  * <!-- begin-user-doc -->
@@ -181,8 +181,8 @@ public class ClassdiagramsAdapterFactory extends AdapterFactoryImpl {
 				return createEventBNamedCommentedRelationDataElaborationElementAdapter();
 			}
 			@Override
-			public Adapter caseDiagramOwner(DiagramOwner object) {
-				return createDiagramOwnerAdapter();
+			public Adapter caseStatemachineOwner(StatemachineOwner object) {
+				return createStatemachineOwnerAdapter();
 			}
 			@Override
 			public Adapter caseEventBLabeled(EventBLabeled object) {
@@ -517,16 +517,16 @@ public class ClassdiagramsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ac.soton.eventb.emf.diagrams.DiagramOwner <em>Diagram Owner</em>}'.
+	 * Creates a new adapter for an object of class '{@link ac.soton.eventb.statemachines.StatemachineOwner <em>Statemachine Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ac.soton.eventb.emf.diagrams.DiagramOwner
+	 * @see ac.soton.eventb.statemachines.StatemachineOwner
 	 * @generated
 	 */
-	public Adapter createDiagramOwnerAdapter() {
+	public Adapter createStatemachineOwnerAdapter() {
 		return null;
 	}
 
