@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -205,21 +206,26 @@ public class ClassdiagramItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASSDIAGRAM__CLASSES,
-				 ClassdiagramsFactory.eINSTANCE.createClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASSDIAGRAM__ASSOCIATIONS,
-				 ClassdiagramsFactory.eINSTANCE.createAssociation()));
+		
+			
+		if (object instanceof EObject && 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASSDIAGRAM__CLASSES,
+				 	ClassdiagramsFactory.eINSTANCE.createClass()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASSDIAGRAM__ASSOCIATIONS,
+				 	ClassdiagramsFactory.eINSTANCE.createAssociation()));
 	}
 
 }

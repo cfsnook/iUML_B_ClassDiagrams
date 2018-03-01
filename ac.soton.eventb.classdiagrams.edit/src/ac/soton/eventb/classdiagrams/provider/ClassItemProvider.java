@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -258,7 +259,7 @@ public class ClassItemProvider
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
 			case ClassdiagramsPackage.CLASS__CONSTRAINTS:
 			case ClassdiagramsPackage.CLASS__METHODS:
@@ -278,31 +279,36 @@ public class ClassItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DiagramsPackage.Literals.DIAGRAM_OWNER__DIAGRAMS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASS__CLASS_ATTRIBUTES,
-				 ClassdiagramsFactory.eINSTANCE.createClassAttribute()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASS__CONSTRAINTS,
-				 ClassdiagramsFactory.eINSTANCE.createClassConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASS__METHODS,
-				 ClassdiagramsFactory.eINSTANCE.createClassMethod()));
+		
+			
+		if (object instanceof EObject && 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(DiagramsPackage.Literals.DIAGRAM_OWNER__DIAGRAMS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__CLASS_ATTRIBUTES,
+				 	ClassdiagramsFactory.eINSTANCE.createClassAttribute()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__CONSTRAINTS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassConstraint()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__METHODS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassMethod()));
 	}
 
 	/**
