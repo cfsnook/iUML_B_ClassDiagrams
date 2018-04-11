@@ -66,6 +66,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * @see #getClassdiagrams()
 	 * @generated
 	 * @ordered
+	 * @since 2.0
 	 */
 	protected EList<Classdiagram> classdiagrams;
 
@@ -76,6 +77,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * @see #getStatemachines()
 	 * @generated
 	 * @ordered
+	 * @since 2.0
 	 */
 	protected EList<Statemachine> statemachines;
 

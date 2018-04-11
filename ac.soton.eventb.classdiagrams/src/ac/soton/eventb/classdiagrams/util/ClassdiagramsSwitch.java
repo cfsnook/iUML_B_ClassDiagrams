@@ -538,6 +538,7 @@ public class ClassdiagramsSwitch<T> {
 	 * @return the result of interpreting the object as an instance of '<em>Statemachine Owner</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
+	 * @since 2.0
 	 */
 	public T caseStatemachineOwner(StatemachineOwner object) {
 		return null;

@@ -525,6 +525,7 @@ public class ClassdiagramsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the new adapter.
 	 * @see ac.soton.eventb.statemachines.StatemachineOwner
 	 * @generated
+	 * @since 2.0
 	 */
 	public Adapter createStatemachineOwnerAdapter() {
 		return null;
