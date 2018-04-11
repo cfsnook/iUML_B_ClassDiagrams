@@ -662,6 +662,14 @@ http://www.eclipse.org/legal/epl-v10.html
          <propertyTab
                afterTab="property.tab.attributes"
                category="custom_domain"
+               id="property.tab.statemachines"
+               image="icons/obj16/Statemachine.gif"
+               indented="false"
+               label="Statemachines">
+         </propertyTab>
+         <propertyTab
+               afterTab="property.tab.attributes"
+               category="custom_domain"
                id="property.tab.methods"
                image="icons/obj16/ClassMethod.gif"
                indented="false"
@@ -749,6 +757,14 @@ http://www.eclipse.org/legal/epl-v10.html
          </propertySection>
          <propertySection
                afterSection="property.section.attributes"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.StatemachinesPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.StatemachinesPropertySection$Filter"
+               id="property.section.statemachines"
+               tab="property.tab.statemachines">
+         </propertySection>
+         <propertySection
+               afterSection="property.section.statemachines"
                class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.MethodsPropertySection"
                enablesFor="1"
                filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.MethodsPropertySection$Filter"
