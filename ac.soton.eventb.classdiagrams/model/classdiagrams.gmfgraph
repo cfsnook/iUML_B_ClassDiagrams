@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfgraph:Canvas xmi:version="2.0"
+<gmfgraph:Canvas
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="classdiagrams">
+    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition"
+    name="classdiagrams">
   <figures
       name="Default">
     <descriptors
@@ -27,6 +29,9 @@
               alignment="BEGINNING"
               vertical="true"/>
         </children>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="StatemachinesCompartmentFigure"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="ClassMethodsCompartmentFigure"
@@ -54,6 +59,8 @@
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.2"/>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.3"/>
+      <accessors
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.4"/>
       <accessors
           accessor="getFigureClassLabelFigure"
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
@@ -109,6 +116,13 @@
       </actualFigure>
     </descriptors>
     <descriptors
+        name="StatemachineFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Label"
+          name="StatemachineLabelFigure"
+          text="&lt;name?>"/>
+    </descriptors>
+    <descriptors
         name="MethodFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
@@ -134,7 +148,7 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="SupertypeFigure"
-          targetDecoration="//@figures.0/@descriptors.5/@actualFigure/@children.1">
+          targetDecoration="//@figures.0/@descriptors.6/@actualFigure/@children.1">
         <children
             xsi:type="gmfgraph:Label"
             name="SupertypeLabelFigure"
@@ -155,7 +169,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureSupertypeLabelFigure"
-          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
     </descriptors>
   </figures>
   <nodes
@@ -164,6 +178,9 @@
   <nodes
       name="AttributeNode"
       figure="AttributeFigure"/>
+  <nodes
+      name="StatemachineNode"
+      figure="StatemachineFigure"/>
   <nodes
       name="MethodNode"
       figure="MethodFigure"/>
@@ -182,15 +199,20 @@
       collapsible="true"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <compartments
-      name="MethodsCompartment"
+      name="Statemachines"
       figure="ClassFigure"
       collapsible="true"
       accessor="//@figures.0/@descriptors.0/@accessors.1"/>
   <compartments
-      name="ConstraintsCompartment"
+      name="MethodsCompartment"
       figure="ClassFigure"
       collapsible="true"
       accessor="//@figures.0/@descriptors.0/@accessors.2"/>
+  <compartments
+      name="ConstraintsCompartment"
+      figure="ClassFigure"
+      collapsible="true"
+      accessor="//@figures.0/@descriptors.0/@accessors.3"/>
   <labels
       name="AssociationLabel"
       figure="AssociationFigure"
@@ -206,10 +228,13 @@
   <labels
       name="SupertypeLabel"
       figure="SupertypeFigure"
-      accessor="//@figures.0/@descriptors.5/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.0"/>
   <labels
       name="AttributeLabel"
       figure="AttributeFigure"/>
+  <labels
+      name="StatemachineName"
+      figure="StatemachineFigure"/>
   <labels
       name="MethodLabel"
       figure="MethodFigure"/>
@@ -244,5 +269,5 @@
   <labels
       name="ClassLabel"
       figure="ClassFigure"
-      accessor="//@figures.0/@descriptors.0/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.0/@accessors.4"/>
 </gmfgraph:Canvas>
