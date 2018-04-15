@@ -14,7 +14,6 @@
       itemSemanticEditPolicyClassName="ClassdiagramItemSemanticEditPolicy"
       canonicalEditPolicyClassName="ClassdiagramCanonicalEditPolicy"
       iconProviderPriority="Low"
-      creationWizardClassName="ClassdiagramsCreationWizard"
       validationProviderPriority="Low"
       validationEnabled="true"
       validationDecorators="true">
@@ -274,7 +273,7 @@
           visualID="6005"
           editPartClassName="AssociationSurjectiveInjectiveEditPart"
           itemSemanticEditPolicyClassName="AssociationSurjectiveInjectiveItemSemanticEditPolicy"
-          alignment="SOURCE">
+          alignment="TARGET">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -306,7 +305,7 @@
           visualID="6006"
           editPartClassName="AssociationTotalFunctionalEditPart"
           itemSemanticEditPolicyClassName="AssociationTotalFunctionalItemSemanticEditPolicy"
-          alignment="TARGET">
+          alignment="SOURCE">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -404,8 +403,6 @@
           xsi:type="gmfgen:ParentAssignedViewmap"
           getterName="getFigureClassContraintsCompartmentFigure"
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
-      <styles
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/SortingStyle"/>
     </compartments>
     <palette>
       <groups
@@ -481,7 +478,7 @@
   </diagram>
   <plugin
       provider="University of Southampton"
-      version="1.1.2.qualifier"
+      version="2.0.0.qualifier"
       printingEnabled="true">
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
     <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>

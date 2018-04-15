@@ -123,7 +123,7 @@ public class AssociationSurjectiveInjectiveEditPart extends LabelEditPart implem
 	 * @generated
 	 */
 	public int getKeyPoint() {
-		return ConnectionLocator.TARGET;	//SOURCE;
+		return ConnectionLocator.TARGET;
 	}
 
 	/**

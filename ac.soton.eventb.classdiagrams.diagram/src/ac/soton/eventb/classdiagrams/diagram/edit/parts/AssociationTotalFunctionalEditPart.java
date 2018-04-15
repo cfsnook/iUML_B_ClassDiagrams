@@ -123,7 +123,7 @@ public class AssociationTotalFunctionalEditPart extends LabelEditPart implements
 	 * @generated
 	 */
 	public int getKeyPoint() {
-		return ConnectionLocator.SOURCE;	//TARGET;
+		return ConnectionLocator.SOURCE;
 	}
 
 	/**

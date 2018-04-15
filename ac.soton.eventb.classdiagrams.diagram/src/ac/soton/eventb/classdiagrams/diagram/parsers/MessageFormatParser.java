@@ -200,13 +200,11 @@ public class MessageFormatParser extends AbstractAttributeParser {
 		return getViewProcessor().format(getValues(element), new StringBuffer(), new FieldPosition(0)).toString();
 	}
 
-	protected Object[] getValues (EObject element){
+	protected Object[] getValues(EObject element) {
 		Object[] vs = super.getValues(element);
 		return vs;
 	}
-	
-	
-	
+
 	/**
 	 * This is overridden to convert the boolean properties of relations into the usual association multiplicity notation
 	 * 

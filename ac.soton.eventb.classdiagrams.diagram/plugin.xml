@@ -161,7 +161,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </extension>
 
    <extension point="org.eclipse.ui.preferencePages" id="prefpages">
-      <?gmfgen generated="true"?>
+      <?gmfgen generated="false"?>
       <page
       		category="ac.soton.eventb.iumlb"
             id="ac.soton.eventb.classdiagrams.diagram.general"
@@ -195,7 +195,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </extension>
 
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
-      <?gmfgen generated="true"?>
+      <?gmfgen generated="false"?>
       <propertyContributor
             contributorId="ac.soton.eventb.classdiagrams.diagram"
             labelProvider="ac.soton.eventb.classdiagrams.diagram.sheet.ClassdiagramsSheetLabelProvider">
@@ -207,7 +207,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </extension>
 
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
-      <?gmfgen generated="true"?>   
+      <?gmfgen generated="false"?>   
       <propertyTabs contributorId="ac.soton.eventb.classdiagrams.diagram">
          <propertyTab
              category="visual"
