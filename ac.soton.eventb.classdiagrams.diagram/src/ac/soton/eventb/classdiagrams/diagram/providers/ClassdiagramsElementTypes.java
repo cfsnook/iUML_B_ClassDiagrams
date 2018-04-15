@@ -245,6 +245,7 @@ public class ClassdiagramsElementTypes {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
 

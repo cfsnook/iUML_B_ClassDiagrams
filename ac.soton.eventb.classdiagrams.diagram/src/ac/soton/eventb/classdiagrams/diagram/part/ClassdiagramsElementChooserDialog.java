@@ -69,6 +69,7 @@ public class ClassdiagramsElementChooserDialog extends DefaultElementChooserDial
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public ClassdiagramsElementChooserDialog(Shell parentShell, View view, boolean allowMultiSelection) {
 		super(parentShell, view, new ClassdiagramsElementChooserDialogContextImpl(allowMultiSelection));
