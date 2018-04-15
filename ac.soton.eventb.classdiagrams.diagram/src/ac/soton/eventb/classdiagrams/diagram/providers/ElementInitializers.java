@@ -22,11 +22,9 @@ public class ElementInitializers {
 	 * @generated
 	 */
 	public static ElementInitializers getInstance() {
-		ElementInitializers cached = ClassdiagramsDiagramEditorPlugin
-				.getInstance().getElementInitializers();
+		ElementInitializers cached = ClassdiagramsDiagramEditorPlugin.getInstance().getElementInitializers();
 		if (cached == null) {
-			ClassdiagramsDiagramEditorPlugin.getInstance()
-					.setElementInitializers(cached = new ElementInitializers());
+			ClassdiagramsDiagramEditorPlugin.getInstance().setElementInitializers(cached = new ElementInitializers());
 		}
 		return cached;
 	}

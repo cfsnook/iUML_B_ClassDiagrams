@@ -24,8 +24,7 @@ import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 /**
  * @generated
  */
-public class ClassdiagramsSheetLabelProvider extends BaseLabelProvider
-		implements ILabelProvider {
+public class ClassdiagramsSheetLabelProvider extends BaseLabelProvider implements ILabelProvider {
 
 	/**
 	 * @generated
@@ -46,18 +45,18 @@ public class ClassdiagramsSheetLabelProvider extends BaseLabelProvider
 	 * @generated NOT
 	 */
 	public Image getImage(Object element) {
-		
+
 		//Original generated version
-//		IElementType etype = getElementType(getView(unwrap(element)));
-//		return etype == null ? null : ClassdiagramsElementTypes.getImage(etype);
-		
+		//		IElementType etype = getElementType(getView(unwrap(element)));
+		//		return etype == null ? null : ClassdiagramsElementTypes.getImage(etype);
+
 		//Modified version to support dynamic icons
 		Object domain = DiagramUtils.unwrap(unwrap(element));
-			if (domain instanceof EventBElement){
-				return ClassdiagramsElementTypes.getImage((EventBElement) domain);
-			}
+		if (domain instanceof EventBElement) {
+			return ClassdiagramsElementTypes.getImage((EventBElement) domain);
+		}
 
-		return null;	
+		return null;
 	}
 
 	/**
@@ -94,8 +93,7 @@ public class ClassdiagramsSheetLabelProvider extends BaseLabelProvider
 			if (etype != null) {
 				return etype;
 			}
-			view = view.eContainer() instanceof View ? (View) view.eContainer()
-					: null;
+			view = view.eContainer() instanceof View ? (View) view.eContainer() : null;
 		}
 		return null;
 	}

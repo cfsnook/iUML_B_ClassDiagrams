@@ -19,15 +19,13 @@ import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorPlug
 /**
  * @generated
  */
-public class ClassdiagramsDomainNavigatorLabelProvider implements
-		ICommonLabelProvider {
+public class ClassdiagramsDomainNavigatorLabelProvider implements ICommonLabelProvider {
 
 	/**
 	 * @generated
 	 */
 	private AdapterFactoryLabelProvider myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-			ClassdiagramsDiagramEditorPlugin.getInstance()
-					.getItemProvidersAdapterFactory());
+			ClassdiagramsDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated
@@ -40,9 +38,7 @@ public class ClassdiagramsDomainNavigatorLabelProvider implements
 	 */
 	public Image getImage(Object element) {
 		if (element instanceof ClassdiagramsDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider
-					.getImage(((ClassdiagramsDomainNavigatorItem) element)
-							.getEObject());
+			return myAdapterFactoryLabelProvider.getImage(((ClassdiagramsDomainNavigatorItem) element).getEObject());
 		}
 		return null;
 	}
@@ -52,9 +48,7 @@ public class ClassdiagramsDomainNavigatorLabelProvider implements
 	 */
 	public String getText(Object element) {
 		if (element instanceof ClassdiagramsDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider
-					.getText(((ClassdiagramsDomainNavigatorItem) element)
-							.getEObject());
+			return myAdapterFactoryLabelProvider.getText(((ClassdiagramsDomainNavigatorItem) element).getEObject());
 		}
 		return null;
 	}

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 
+import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationEditPart;
@@ -54,8 +55,7 @@ public class ClassdiagramsVisualIDRegistry {
 				return -1;
 			}
 		}
-		return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
-				.getVisualID(view.getType());
+		return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry.getVisualID(view.getType());
 	}
 
 	/**
@@ -80,11 +80,9 @@ public class ClassdiagramsVisualIDRegistry {
 		try {
 			return Integer.parseInt(type);
 		} catch (NumberFormatException e) {
-			if (Boolean.TRUE.toString().equalsIgnoreCase(
-					Platform.getDebugOption(DEBUG_KEY))) {
-				ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-						"Unable to parse view type as a visualID number: "
-								+ type);
+			if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
+				ClassdiagramsDiagramEditorPlugin.getInstance()
+						.logError("Unable to parse view type as a visualID number: " + type);
 			}
 		}
 		return -1;
@@ -104,8 +102,7 @@ public class ClassdiagramsVisualIDRegistry {
 		if (domainElement == null) {
 			return -1;
 		}
-		if (ClassdiagramsPackage.eINSTANCE.getClassdiagram().isSuperTypeOf(
-				domainElement.eClass())
+		if (ClassdiagramsPackage.eINSTANCE.getClassdiagram().isSuperTypeOf(domainElement.eClass())
 				&& isDiagram((Classdiagram) domainElement)) {
 			return ClassdiagramEditPart.VISUAL_ID;
 		}
@@ -121,8 +118,7 @@ public class ClassdiagramsVisualIDRegistry {
 		}
 		String containerModelID = ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
 				.getModelID(containerView);
-		if (!ClassdiagramEditPart.MODEL_ID.equals(containerModelID)
-				&& !"classdiagrams".equals(containerModelID)) { //$NON-NLS-1$
+		if (!ClassdiagramEditPart.MODEL_ID.equals(containerModelID) && !"classdiagrams".equals(containerModelID)) { //$NON-NLS-1$
 			return -1;
 		}
 		int containerVisualID;
@@ -138,26 +134,22 @@ public class ClassdiagramsVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case ClassdiagramEditPart.VISUAL_ID:
-			if (ClassdiagramsPackage.eINSTANCE.getClass_().isSuperTypeOf(
-					domainElement.eClass())) {
+			if (ClassdiagramsPackage.eINSTANCE.getClass_().isSuperTypeOf(domainElement.eClass())) {
 				return ClassEditPart.VISUAL_ID;
 			}
 			break;
 		case ClassAttributesCompartmentEditPart.VISUAL_ID:
-			if (ClassdiagramsPackage.eINSTANCE.getClassAttribute()
-					.isSuperTypeOf(domainElement.eClass())) {
+			if (ClassdiagramsPackage.eINSTANCE.getClassAttribute().isSuperTypeOf(domainElement.eClass())) {
 				return ClassAttributeEditPart.VISUAL_ID;
 			}
 			break;
 		case ClassMethodsCompartmentEditPart.VISUAL_ID:
-			if (ClassdiagramsPackage.eINSTANCE.getClassMethod().isSuperTypeOf(
-					domainElement.eClass())) {
+			if (ClassdiagramsPackage.eINSTANCE.getClassMethod().isSuperTypeOf(domainElement.eClass())) {
 				return ClassMethodEditPart.VISUAL_ID;
 			}
 			break;
 		case ClassConstraintsCompartmentEditPart.VISUAL_ID:
-			if (ClassdiagramsPackage.eINSTANCE.getClassConstraint()
-					.isSuperTypeOf(domainElement.eClass())) {
+			if (ClassdiagramsPackage.eINSTANCE.getClassConstraint().isSuperTypeOf(domainElement.eClass())) {
 				return ClassConstraintEditPart.VISUAL_ID;
 			}
 			break;
@@ -171,8 +163,7 @@ public class ClassdiagramsVisualIDRegistry {
 	public static boolean canCreateNode(View containerView, int nodeVisualID) {
 		String containerModelID = ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
 				.getModelID(containerView);
-		if (!ClassdiagramEditPart.MODEL_ID.equals(containerModelID)
-				&& !"classdiagrams".equals(containerModelID)) { //$NON-NLS-1$
+		if (!ClassdiagramEditPart.MODEL_ID.equals(containerModelID) && !"classdiagrams".equals(containerModelID)) { //$NON-NLS-1$
 			return false;
 		}
 		int containerVisualID;
@@ -243,8 +234,7 @@ public class ClassdiagramsVisualIDRegistry {
 		if (domainElement == null) {
 			return -1;
 		}
-		if (ClassdiagramsPackage.eINSTANCE.getAssociation().isSuperTypeOf(
-				domainElement.eClass())) {
+		if (ClassdiagramsPackage.eINSTANCE.getAssociation().isSuperTypeOf(domainElement.eClass())) {
 			return AssociationEditPart.VISUAL_ID;
 		}
 		return -1;
@@ -259,5 +249,112 @@ public class ClassdiagramsVisualIDRegistry {
 	private static boolean isDiagram(Classdiagram element) {
 		return true;
 	}
+
+	/**
+	* @generated
+	*/
+	public static boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
+		if (candidate == -1) {
+			//unrecognized id is always bad
+			return false;
+		}
+		int basic = getNodeVisualID(containerView, domainElement);
+		return basic == candidate;
+	}
+
+	/**
+	* @generated
+	*/
+	public static boolean isCompartmentVisualID(int visualID) {
+		switch (visualID) {
+		case ClassAttributesCompartmentEditPart.VISUAL_ID:
+		case ClassMethodsCompartmentEditPart.VISUAL_ID:
+		case ClassConstraintsCompartmentEditPart.VISUAL_ID:
+			return true;
+		default:
+			break;
+		}
+		return false;
+	}
+
+	/**
+	* @generated
+	*/
+	public static boolean isSemanticLeafVisualID(int visualID) {
+		switch (visualID) {
+		case ClassdiagramEditPart.VISUAL_ID:
+			return false;
+		case ClassAttributeEditPart.VISUAL_ID:
+		case ClassMethodEditPart.VISUAL_ID:
+		case ClassConstraintEditPart.VISUAL_ID:
+			return true;
+		default:
+			break;
+		}
+		return false;
+	}
+
+	/**
+	* @generated
+	*/
+	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
+		/**
+		* @generated
+		*/
+		@Override
+
+		public int getVisualID(View view) {
+			return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry.getVisualID(view);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public String getModelID(View view) {
+			return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry.getModelID(view);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public int getNodeVisualID(View containerView, EObject domainElement) {
+			return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
+					.getNodeVisualID(containerView, domainElement);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
+			return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
+					.checkNodeVisualID(containerView, domainElement, candidate);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public boolean isCompartmentVisualID(int visualID) {
+			return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
+					.isCompartmentVisualID(visualID);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public boolean isSemanticLeafVisualID(int visualID) {
+			return ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry
+					.isSemanticLeafVisualID(visualID);
+		}
+	};
 
 }

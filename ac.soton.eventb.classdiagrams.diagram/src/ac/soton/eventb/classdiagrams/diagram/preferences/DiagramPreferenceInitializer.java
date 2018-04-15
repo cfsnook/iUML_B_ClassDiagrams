@@ -34,7 +34,6 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 	 * @generated
 	 */
 	protected IPreferenceStore getPreferenceStore() {
-		return ClassdiagramsDiagramEditorPlugin.getInstance()
-				.getPreferenceStore();
+		return ClassdiagramsDiagramEditorPlugin.getInstance().getPreferenceStore();
 	}
 }

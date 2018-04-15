@@ -44,8 +44,7 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -63,21 +62,21 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 	/**
 	 * @generated NOT
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		ClassAttribute newElement = ClassdiagramsFactory.eINSTANCE
-				.createClassAttribute();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+		ClassAttribute newElement = ClassdiagramsFactory.eINSTANCE.createClassAttribute();
 
 		Class owner = (Class) getElementToEdit();
-	
-//+++
-		if ((owner instanceof EventBObject? ((EventBObject)owner).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT):null) instanceof Context) {
+
+		//+++
+		if ((owner instanceof EventBObject
+				? ((EventBObject) owner).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
+				: null) instanceof Context) {
 			newElement.setDataKind(DataKind.CONSTANT);
 		} else {
 			newElement.setDataKind(DataKind.VARIABLE);
 		}
-//+++
-	
+		//+++
+
 		owner.getClassAttributes().add(newElement);
 
 		doConfigure(newElement, monitor, info);
@@ -89,18 +88,13 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(ClassAttribute newElement,
-			IProgressMonitor monitor, IAdaptable info)
+	protected void doConfigure(ClassAttribute newElement, IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

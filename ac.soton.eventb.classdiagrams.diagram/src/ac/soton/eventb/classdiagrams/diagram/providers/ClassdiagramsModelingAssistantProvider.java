@@ -36,114 +36,20 @@ import ac.soton.eventb.classdiagrams.diagram.part.Messages;
 /**
  * @generated
  */
-public class ClassdiagramsModelingAssistantProvider extends
-		ModelingAssistantProvider {
+public class ClassdiagramsModelingAssistantProvider extends ModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
-	public List getTypesForPopupBar(IAdaptable host) {
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host
-				.getAdapter(IGraphicalEditPart.class);
-		if (editPart instanceof ClassdiagramEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(ClassdiagramsElementTypes.Class_2003);
-			return types;
-		}
-		if (editPart instanceof ClassEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(ClassdiagramsElementTypes.ClassAttribute_3022);
-			types.add(ClassdiagramsElementTypes.ClassMethod_3023);
-			types.add(ClassdiagramsElementTypes.ClassConstraint_3024);
-			return types;
-		}
-		return Collections.EMPTY_LIST;
+	public EObject selectExistingElementForSource(IAdaptable target, IElementType relationshipType) {
+		return selectExistingElement(target, getTypesForSource(target, relationshipType));
 	}
 
 	/**
 	 * @generated
 	 */
-	public List getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof ClassEditPart) {
-			return ((ClassEditPart) sourceEditPart).getMARelTypesOnSource();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof ClassEditPart) {
-			return ((ClassEditPart) targetEditPart).getMARelTypesOnTarget();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnSourceAndTarget(IAdaptable source,
-			IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof ClassEditPart) {
-			return ((ClassEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForSource(IAdaptable target,
-			IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof ClassEditPart) {
-			return ((ClassEditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof ClassEditPart) {
-			return ((ClassEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public EObject selectExistingElementForSource(IAdaptable target,
-			IElementType relationshipType) {
-		return selectExistingElement(target,
-				getTypesForSource(target, relationshipType));
-	}
-
-	/**
-	 * @generated
-	 */
-	public EObject selectExistingElementForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		return selectExistingElement(source,
-				getTypesForTarget(source, relationshipType));
+	public EObject selectExistingElementForTarget(IAdaptable source, IElementType relationshipType) {
+		return selectExistingElement(source, getTypesForTarget(source, relationshipType));
 	}
 
 	/**
@@ -153,15 +59,13 @@ public class ClassdiagramsModelingAssistantProvider extends
 		if (types.isEmpty()) {
 			return null;
 		}
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart editPart = (IGraphicalEditPart) host.getAdapter(IGraphicalEditPart.class);
 		if (editPart == null) {
 			return null;
 		}
 		Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
 		HashSet<EObject> elements = new HashSet<EObject>();
-		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it
-				.hasNext();) {
+		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it.hasNext();) {
 			EObject element = it.next();
 			if (isApplicableElement(element, types)) {
 				elements.add(element);
@@ -170,16 +74,14 @@ public class ClassdiagramsModelingAssistantProvider extends
 		if (elements.isEmpty()) {
 			return null;
 		}
-		return selectElement((EObject[]) elements.toArray(new EObject[elements
-				.size()]));
+		return selectElement((EObject[]) elements.toArray(new EObject[elements.size()]));
 	}
 
 	/**
 	 * @generated
 	 */
 	protected boolean isApplicableElement(EObject element, Collection types) {
-		IElementType type = ElementTypeRegistry.getInstance().getElementType(
-				element);
+		IElementType type = ElementTypeRegistry.getInstance().getElementType(element);
 		return types.contains(type);
 	}
 
@@ -189,10 +91,8 @@ public class ClassdiagramsModelingAssistantProvider extends
 	protected EObject selectElement(EObject[] elements) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		ILabelProvider labelProvider = new AdapterFactoryLabelProvider(
-				ClassdiagramsDiagramEditorPlugin.getInstance()
-						.getItemProvidersAdapterFactory());
-		ElementListSelectionDialog dialog = new ElementListSelectionDialog(
-				shell, labelProvider);
+				ClassdiagramsDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+		ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, labelProvider);
 		dialog.setMessage(Messages.ClassdiagramsModelingAssistantProviderMessage);
 		dialog.setTitle(Messages.ClassdiagramsModelingAssistantProviderTitle);
 		dialog.setMultipleSelection(false);

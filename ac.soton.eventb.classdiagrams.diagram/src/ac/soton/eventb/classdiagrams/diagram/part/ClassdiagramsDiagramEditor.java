@@ -42,6 +42,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentPro
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.part.LastClickPositionProvider;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -80,8 +81,7 @@ import ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorIte
 /**
  * @generated
  */
-public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
-		IGotoMarker {
+public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
 
 	/**
 	 * @generated
@@ -92,6 +92,11 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	 * @generated
 	 */
 	public static final String CONTEXT_ID = "ac.soton.eventb.classdiagrams.diagram.ui.diagramContext"; //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	private LastClickPositionProvider myLastClickPositionProvider;
 
 	/**
 	 * @generated
@@ -149,10 +154,8 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	 * @generated
 	 */
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			return ClassdiagramsDiagramEditorPlugin.getInstance()
-					.getDocumentProvider();
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			return ClassdiagramsDiagramEditorPlugin.getInstance().getDocumentProvider();
 		}
 		return super.getDocumentProvider(input);
 	}
@@ -161,8 +164,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	 * @generated
 	 */
 	public TransactionalEditingDomain getEditingDomain() {
-		IDocument document = getEditorInput() != null ? getDocumentProvider()
-				.getDocument(getEditorInput()) : null;
+		IDocument document = getEditorInput() != null ? getDocumentProvider().getDocument(getEditorInput()) : null;
 		if (document instanceof IDiagramDocument) {
 			return ((IDiagramDocument) document).getEditingDomain();
 		}
@@ -173,10 +175,8 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	 * @generated
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			setDocumentProvider(ClassdiagramsDiagramEditorPlugin.getInstance()
-					.getDocumentProvider());
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			setDocumentProvider(ClassdiagramsDiagramEditorPlugin.getInstance().getDocumentProvider());
 		} else {
 			super.setDocumentProvider(input);
 		}
@@ -210,8 +210,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
 		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input)
-				.getFile() : null;
+		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile() : null;
 		if (original != null) {
 			dialog.setOriginalFile(original);
 		}
@@ -222,9 +221,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 			return;
 		}
 		if (provider.isDeleted(input) && original != null) {
-			String message = NLS.bind(
-					Messages.ClassdiagramsDiagramEditor_SavingDeletedFile,
-					original.getName());
+			String message = NLS.bind(Messages.ClassdiagramsDiagramEditor_SavingDeletedFile, original.getName());
 			dialog.setErrorMessage(null);
 			dialog.setMessage(message, IMessageProvider.WARNING);
 		}
@@ -245,15 +242,12 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 		IFile file = workspaceRoot.getFile(filePath);
 		final IEditorInput newInput = new FileEditorInput(file);
 		// Check if the editor is already open
-		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor()
-				.getEditorMatchingStrategy();
-		IEditorReference[] editorRefs = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
+		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
+		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getEditorReferences();
 		for (int i = 0; i < editorRefs.length; i++) {
 			if (matchingStrategy.matches(editorRefs[i], newInput)) {
-				MessageDialog.openWarning(shell,
-						Messages.ClassdiagramsDiagramEditor_SaveAsErrorTitle,
+				MessageDialog.openWarning(shell, Messages.ClassdiagramsDiagramEditor_SaveAsErrorTitle,
 						Messages.ClassdiagramsDiagramEditor_SaveAsErrorMessage);
 				return;
 			}
@@ -261,17 +255,14 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 		boolean success = false;
 		try {
 			provider.aboutToChange(newInput);
-			getDocumentProvider(newInput).saveDocument(progressMonitor,
-					newInput,
+			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
 					getDocumentProvider().getDocument(getEditorInput()), true);
 			success = true;
 		} catch (CoreException x) {
 			IStatus status = x.getStatus();
 			if (status == null || status.getSeverity() != IStatus.CANCEL) {
-				ErrorDialog.openError(shell,
-						Messages.ClassdiagramsDiagramEditor_SaveErrorTitle,
-						Messages.ClassdiagramsDiagramEditor_SaveErrorMessage,
-						x.getStatus());
+				ErrorDialog.openError(shell, Messages.ClassdiagramsDiagramEditor_SaveErrorTitle,
+						Messages.ClassdiagramsDiagramEditor_SaveErrorMessage, x.getStatus());
 			}
 		} finally {
 			provider.changed(newInput);
@@ -305,8 +296,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 		}
 		IFile file = WorkspaceSynchronizer.getFile(diagram.eResource());
 		if (file != null) {
-			ClassdiagramsNavigatorItem item = new ClassdiagramsNavigatorItem(
-					diagram, file, false);
+			ClassdiagramsNavigatorItem item = new ClassdiagramsNavigatorItem(diagram, file, false);
 			return new StructuredSelection(item);
 		}
 		return StructuredSelection.EMPTY;
@@ -317,11 +307,10 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
-		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(
-				this, getDiagramGraphicalViewer());
+		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
+				getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU,
-				provider, getDiagramGraphicalViewer());
+		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
 	}
 
 	/**
@@ -330,24 +319,45 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	protected void initializeGraphicalViewer() {
 		super.initializeGraphicalViewer();
 		getDiagramGraphicalViewer().addDropTargetListener(
-				new DropTargetListener(getDiagramGraphicalViewer(),
-						LocalSelectionTransfer.getTransfer()) {
+				new DropTargetListener(getDiagramGraphicalViewer(), LocalSelectionTransfer.getTransfer()) {
 
 					protected Object getJavaObject(TransferData data) {
-						return LocalSelectionTransfer.getTransfer()
-								.nativeToJava(data);
+						return LocalSelectionTransfer.getTransfer().nativeToJava(data);
 					}
 
 				});
 		getDiagramGraphicalViewer().addDropTargetListener(
-				new DropTargetListener(getDiagramGraphicalViewer(),
-						LocalTransfer.getInstance()) {
+				new DropTargetListener(getDiagramGraphicalViewer(), LocalTransfer.getInstance()) {
 
 					protected Object getJavaObject(TransferData data) {
 						return LocalTransfer.getInstance().nativeToJava(data);
 					}
 
 				});
+		startupLastClickPositionProvider();
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	protected void startupLastClickPositionProvider() {
+		if (myLastClickPositionProvider == null) {
+			myLastClickPositionProvider = new LastClickPositionProvider(this);
+			myLastClickPositionProvider.attachToService();
+		}
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	protected void shutDownLastClickPositionProvider() {
+		if (myLastClickPositionProvider != null) {
+			myLastClickPositionProvider.detachFromService();
+			myLastClickPositionProvider.dispose();
+			myLastClickPositionProvider = null;
+		}
 	}
 
 	/**
@@ -375,13 +385,11 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 				for (Iterator<?> it = selection.iterator(); it.hasNext();) {
 					Object nextSelectedObject = it.next();
 					if (nextSelectedObject instanceof ClassdiagramsNavigatorItem) {
-						View view = ((ClassdiagramsNavigatorItem) nextSelectedObject)
-								.getView();
+						View view = ((ClassdiagramsNavigatorItem) nextSelectedObject).getView();
 						nextSelectedObject = view.getElement();
 					} else if (nextSelectedObject instanceof IAdaptable) {
 						IAdaptable adaptable = (IAdaptable) nextSelectedObject;
-						nextSelectedObject = adaptable
-								.getAdapter(EObject.class);
+						nextSelectedObject = adaptable.getAdapter(EObject.class);
 					}
 
 					if (nextSelectedObject instanceof EObject) {
@@ -393,8 +401,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 
 			ArrayList<EObject> result = new ArrayList<EObject>(uris.size());
 			for (URI nextURI : uris) {
-				EObject modelObject = getEditingDomain().getResourceSet()
-						.getEObject(nextURI, true);
+				EObject modelObject = getEditingDomain().getResourceSet().getEObject(nextURI, true);
 				result.add(modelObject);
 			}
 			return result;
@@ -412,7 +419,6 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	// a) save on de-activation to avoid synch problems between several editors
 	// b) provide change recording
 	////////////////////////////////////////////////////////////////////////////////
-
 
 	/**
 	 * This listens for when the outline becomes active 
@@ -461,15 +467,15 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 				deactivated = true;
 			}
 		}
-		
+
 		///////////////////changeRecording///////////////////
 		//FIXME: probably, this should be made into a different listener that only listens to the Statemachines Diagram Editor Part
 		//instead of all parts on the page.
 		@Override
 		public void partClosed(IWorkbenchPart part) {
-			if (part==ClassdiagramsDiagramEditor.this){
-				System.out.println("closing "+part.getTitle());
-				if (ecr!=null) {
+			if (part == ClassdiagramsDiagramEditor.this) {
+				System.out.println("closing " + part.getTitle());
+				if (ecr != null) {
 					ecr.disposeChangeRecorder();
 					System.out.println("... disposed change recorder");
 				}
@@ -478,21 +484,23 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 
 		@Override
 		public void partOpened(IWorkbenchPart part) {
-			if (part==ClassdiagramsDiagramEditor.this){
-				System.out.println("opening "+part.getTitle());
+			if (part == ClassdiagramsDiagramEditor.this) {
+				System.out.println("opening " + part.getTitle());
 				EObject diagramElement = ClassdiagramsDiagramEditor.this.getDiagram().getElement();
-				if (diagramElement instanceof EventBElement){
-					EventBObject component = ((EventBElement)diagramElement).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
-					ecr= Recorder.getNewRecorder((EventBNamedCommentedComponentElement)component);
-					if (ecr!=null){
+				if (diagramElement instanceof EventBElement) {
+					EventBObject component = ((EventBElement) diagramElement)
+							.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
+					ecr = Recorder.getNewRecorder((EventBNamedCommentedComponentElement) component);
+					if (ecr != null) {
 						int result = ecr.resumeRecording();
-						if (result==1){
+						if (result == 1) {
 							//TODO: message dialogue here, save old changes in a different file
-							System.out.println("... previous changes were out of sync and are lost.. restarting change record");				
+							System.out.println(
+									"... previous changes were out of sync and are lost.. restarting change record");
 						}
 					}
 				}
-				System.out.println(ecr==null? "...opened but not recording" : "... opened and recording");
+				System.out.println(ecr == null ? "...opened but not recording" : "... opened and recording");
 			}
 		}
 	};
@@ -513,48 +521,50 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	 */
 	@Override
 	public void dispose() {
-		if (ecr!=null) ecr.disposeChangeRecorder();
+		if (ecr != null)
+			ecr.disposeChangeRecorder();
 		super.dispose();
 		getSite().getPage().removePartListener(deactivationPartListener);
 	}
-	
+
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
-		
-		if (isAnimating()) return;	//must never save while animating as model contains animation artifacts which will not save
-		
-		System.out.println("saving "+this.getPartName());
-		if (ecr!=null) {
+
+		if (isAnimating())
+			return; //must never save while animating as model contains animation artifacts which will not save
+
+		System.out.println("saving " + this.getPartName());
+		if (ecr != null) {
 			ecr.endRecording();
 			System.out.println("... end recording");
 		}
 		super.doSave(progressMonitor);
 		System.out.println("... saved");
-		if (ecr!=null) {
+		if (ecr != null) {
 			ecr.resumeRecording();
 			System.out.println("... resume recording");
 		}
 
 	}
 
-	private Recorder ecr=null;
+	private Recorder ecr = null;
 
 	/////////////animating////////////////
 	private boolean animating = false;
 
-	public void startAnimating(){
+	public void startAnimating() {
 		animating = true;
-		System.out.println("started animating "+this.getPartName());
-		if (ecr!=null) {
+		System.out.println("started animating " + this.getPartName());
+		if (ecr != null) {
 			ecr.endRecording();
 			System.out.println("... stopped recording");
 		}
 	}
 
-	public void stopAnimating(){
+	public void stopAnimating() {
 		animating = false;
-		System.out.println("stopped animating "+this.getPartName());
-		if (ecr!=null) {
+		System.out.println("stopped animating " + this.getPartName());
+		if (ecr != null) {
 			ecr.resumeRecording();
 			System.out.println("... resume recording");
 		}
@@ -563,7 +573,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 	/*
 	 * checks whether this diagram is being animated
 	 */
-	public boolean isAnimating(){
-		return animating; 
+	public boolean isAnimating() {
+		return animating;
 	}
 }
