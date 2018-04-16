@@ -157,17 +157,20 @@ public class AssociationEditPart extends ConnectionNodeEditPart implements ITree
 		private void createContents() {
 
 			fFigureAssociationLabelFigure = new WrappingLabel();
+
 			fFigureAssociationLabelFigure.setText("");
 			fFigureAssociationLabelFigure.setBackgroundColor(ColorConstants.lightGray);
 
 			this.add(fFigureAssociationLabelFigure);
 
 			fFigureAssociationLabelSource = new WrappingLabel();
+
 			fFigureAssociationLabelSource.setText("");
 
 			this.add(fFigureAssociationLabelSource);
 
 			fFigureAssociationLabelTarget = new WrappingLabel();
+
 			fFigureAssociationLabelTarget.setText("");
 
 			this.add(fFigureAssociationLabelTarget);

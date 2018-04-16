@@ -387,23 +387,27 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		private void createContents() {
 
 			fFigureClassLabelFigure = new WrappingLabel();
+
 			fFigureClassLabelFigure.setText("ClassName");
 
 			this.add(fFigureClassLabelFigure);
 
 			fFigureClassAttributesCompartmentFigure = new RectangleFigure();
+
 			fFigureClassAttributesCompartmentFigure.setFill(false);
 			fFigureClassAttributesCompartmentFigure.setOutline(false);
 
 			this.add(fFigureClassAttributesCompartmentFigure);
 
 			fFigureClassMethodsCompartmentFigure = new RectangleFigure();
+
 			fFigureClassMethodsCompartmentFigure.setFill(false);
 			fFigureClassMethodsCompartmentFigure.setOutline(false);
 
 			this.add(fFigureClassMethodsCompartmentFigure);
 
 			fFigureClassContraintsCompartmentFigure = new RectangleFigure();
+
 			fFigureClassContraintsCompartmentFigure.setFill(false);
 			fFigureClassContraintsCompartmentFigure.setOutline(false);
 

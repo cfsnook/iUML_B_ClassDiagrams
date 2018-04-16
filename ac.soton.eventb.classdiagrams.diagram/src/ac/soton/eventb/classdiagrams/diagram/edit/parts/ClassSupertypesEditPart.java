@@ -91,6 +91,7 @@ public class ClassSupertypesEditPart extends ConnectionNodeEditPart implements I
 		private void createContents() {
 
 			fFigureSupertypeLabelFigure = new WrappingLabel();
+
 			fFigureSupertypeLabelFigure.setText("<…>");
 
 			this.add(fFigureSupertypeLabelFigure);
