@@ -42,6 +42,8 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodsCompartmentEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.part.Messages;
 
@@ -274,6 +276,11 @@ public class ClassdiagramsNavigatorContentProvider implements ICommonContentProv
 					ClassdiagramsVisualIDRegistry.getType(ClassAttributesCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
 					ClassdiagramsVisualIDRegistry.getType(ClassAttributeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					ClassdiagramsVisualIDRegistry.getType(StatemachinesCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					ClassdiagramsVisualIDRegistry.getType(StatemachineEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					ClassdiagramsVisualIDRegistry.getType(ClassMethodsCompartmentEditPart.VISUAL_ID));

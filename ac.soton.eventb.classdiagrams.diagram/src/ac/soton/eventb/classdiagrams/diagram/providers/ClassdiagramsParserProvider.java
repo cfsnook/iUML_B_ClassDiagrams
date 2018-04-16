@@ -29,6 +29,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributeEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassConstraintEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassNameEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.parsers.MessageFormatParser;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
@@ -76,6 +77,23 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements IPa
 			classAttribute_3022Parser = parser;
 		}
 		return classAttribute_3022Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser statemachine_3025Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getStatemachine_3025Parser() {
+		if (statemachine_3025Parser == null) {
+			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			statemachine_3025Parser = parser;
+		}
+		return statemachine_3025Parser;
 	}
 
 	/**
@@ -194,6 +212,8 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements IPa
 			return getClassName_5007Parser();
 		case ClassAttributeEditPart.VISUAL_ID:
 			return getClassAttribute_3022Parser();
+		case StatemachineEditPart.VISUAL_ID:
+			return getStatemachine_3025Parser();
 		case ClassMethodEditPart.VISUAL_ID:
 			return getClassMethod_3023Parser();
 		case ClassConstraintEditPart.VISUAL_ID:

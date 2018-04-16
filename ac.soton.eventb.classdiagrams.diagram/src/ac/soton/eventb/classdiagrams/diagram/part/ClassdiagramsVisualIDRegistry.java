@@ -29,6 +29,9 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodsCompartmentEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassNameEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -143,6 +146,11 @@ public class ClassdiagramsVisualIDRegistry {
 				return ClassAttributeEditPart.VISUAL_ID;
 			}
 			break;
+		case StatemachinesCompartmentEditPart.VISUAL_ID:
+			if (StatemachinesPackage.eINSTANCE.getStatemachine().isSuperTypeOf(domainElement.eClass())) {
+				return StatemachineEditPart.VISUAL_ID;
+			}
+			break;
 		case ClassMethodsCompartmentEditPart.VISUAL_ID:
 			if (ClassdiagramsPackage.eINSTANCE.getClassMethod().isSuperTypeOf(domainElement.eClass())) {
 				return ClassMethodEditPart.VISUAL_ID;
@@ -190,6 +198,9 @@ public class ClassdiagramsVisualIDRegistry {
 			if (ClassAttributesCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (StatemachinesCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (ClassMethodsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -199,6 +210,11 @@ public class ClassdiagramsVisualIDRegistry {
 			break;
 		case ClassAttributesCompartmentEditPart.VISUAL_ID:
 			if (ClassAttributeEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case StatemachinesCompartmentEditPart.VISUAL_ID:
+			if (StatemachineEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -252,6 +268,7 @@ public class ClassdiagramsVisualIDRegistry {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
 		if (candidate == -1) {
@@ -264,10 +281,12 @@ public class ClassdiagramsVisualIDRegistry {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static boolean isCompartmentVisualID(int visualID) {
 		switch (visualID) {
 		case ClassAttributesCompartmentEditPart.VISUAL_ID:
+		case StatemachinesCompartmentEditPart.VISUAL_ID:
 		case ClassMethodsCompartmentEditPart.VISUAL_ID:
 		case ClassConstraintsCompartmentEditPart.VISUAL_ID:
 			return true;
@@ -279,6 +298,7 @@ public class ClassdiagramsVisualIDRegistry {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static boolean isSemanticLeafVisualID(int visualID) {
 		switch (visualID) {
@@ -287,6 +307,7 @@ public class ClassdiagramsVisualIDRegistry {
 		case ClassAttributeEditPart.VISUAL_ID:
 		case ClassMethodEditPart.VISUAL_ID:
 		case ClassConstraintEditPart.VISUAL_ID:
+		case StatemachineEditPart.VISUAL_ID:
 			return true;
 		default:
 			break;
@@ -296,6 +317,7 @@ public class ClassdiagramsVisualIDRegistry {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
 		/**

@@ -56,8 +56,9 @@ public class ClassdiagramsPaletteFactory {
 		PaletteDrawer paletteContainer = new PaletteDrawer(Messages.Features2Group_title);
 		paletteContainer.setId("createFeatures2Group"); //$NON-NLS-1$
 		paletteContainer.add(createAttribute1CreationTool());
-		paletteContainer.add(createMethod2CreationTool());
-		paletteContainer.add(createConstraint3CreationTool());
+		paletteContainer.add(createStatemachine2CreationTool());
+		paletteContainer.add(createMethod3CreationTool());
+		paletteContainer.add(createConstraint4CreationTool());
 		return paletteContainer;
 	}
 
@@ -99,26 +100,40 @@ public class ClassdiagramsPaletteFactory {
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createMethod2CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Method2CreationTool_title,
-				Messages.Method2CreationTool_desc,
+	* @generated
+	*/
+	private ToolEntry createStatemachine2CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Statemachine2CreationTool_title,
+				Messages.Statemachine2CreationTool_desc,
+				Collections.singletonList(ClassdiagramsElementTypes.Statemachine_3025));
+		entry.setId("createStatemachine2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(ClassdiagramsDiagramEditorPlugin
+				.findImageDescriptor("/ac.soton.eventb.classdiagrams.edit/icons/full/obj16/Statemachine.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createMethod3CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Method3CreationTool_title,
+				Messages.Method3CreationTool_desc,
 				Collections.singletonList(ClassdiagramsElementTypes.ClassMethod_3023));
-		entry.setId("createMethod2CreationTool"); //$NON-NLS-1$
+		entry.setId("createMethod3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(ClassdiagramsElementTypes.getImageDescriptor(ClassdiagramsElementTypes.ClassMethod_3023));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 
 	/**
-	 * @generated
-	 */
-	private ToolEntry createConstraint3CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Constraint3CreationTool_title,
-				Messages.Constraint3CreationTool_desc,
+	* @generated
+	*/
+	private ToolEntry createConstraint4CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Constraint4CreationTool_title,
+				Messages.Constraint4CreationTool_desc,
 				Collections.singletonList(ClassdiagramsElementTypes.ClassConstraint_3024));
-		entry.setId("createConstraint3CreationTool"); //$NON-NLS-1$
+		entry.setId("createConstraint4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
 				ClassdiagramsElementTypes.getImageDescriptor(ClassdiagramsElementTypes.ClassConstraint_3024));
 		entry.setLargeIcon(entry.getSmallIcon());
