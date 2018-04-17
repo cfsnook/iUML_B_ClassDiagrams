@@ -93,6 +93,11 @@
           xsi:type="gmfgen:InnerClassViewmap"
           className="StatemachineFigure"
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class StatemachineFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public StatemachineFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&lt;name?>&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <behaviour
+          xsi:type="gmfgen:OpenDiagramBehaviour"
+          editPolicyClassName="OpenStatemachineDiagramEditPolicy"
+          diagramKind="Statemachines"
+          editorID="ac.soton.eventb.statemachines.diagram.part.StatemachinesDiagramEditorID"/>
       <modelFacet>
         <metaClass
             href="../../ac.soton.eventb.statemachines/model/statemachines.genmodel#//statemachines/Statemachine"/>
@@ -658,5 +663,13 @@
       context="//@diagram">
     <items
         xsi:type="gmfgen:LoadResourceAction"/>
+  </contextMenus>
+  <contextMenus
+      context="//@diagram/@childNodes.1">
+    <items
+        xsi:type="gmfgen:GenCustomAction"
+        qualifiedClassName="ac.soton.eventb.classdiagrams.diagram.part.OpenDiagramAction"
+        generateBoilerplate="true"
+        name="Open Diagram "/>
   </contextMenus>
 </gmfgen:GenEditorGenerator>

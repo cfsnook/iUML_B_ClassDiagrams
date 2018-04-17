@@ -60,6 +60,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.policies.StatemachineItemSeman
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsParserProvider;
+import ac.soton.eventb.classdiagrams.diagram.edit.policies.OpenStatemachineDiagramEditPolicy;
 
 /**
  * @generated
@@ -115,7 +116,10 @@ public class StatemachineEditPart extends CompartmentEditPart implements ITextAw
 	}
 
 	/**
-	* @generated
+	* @generated NOT
+	* 
+	* cfs: Added EditPolicyRoles.OPEN_ROLE manually as couldn't get this to generate
+	* 
 	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
@@ -123,6 +127,7 @@ public class StatemachineEditPart extends CompartmentEditPart implements ITextAw
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new ClassdiagramsTextNonResizableEditPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new ListItemComponentEditPolicy());
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new LabelDirectEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenStatemachineDiagramEditPolicy());
 	}
 
 	/**

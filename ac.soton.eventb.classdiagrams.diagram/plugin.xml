@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-Copyright (c) 2012 University of Southampton.
+Copyright (c) 2012-2018 University of Southampton.
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
@@ -630,6 +630,18 @@ http://www.eclipse.org/legal/epl-v10.html
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="ac.soton.eventb.classdiagrams.diagram.OpenDiagramAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
 
    <extension point="org.eclipse.ui.commands" id="menu-commands">
@@ -639,10 +651,20 @@ http://www.eclipse.org/legal/epl-v10.html
          name="Load Resource"
          categoryId="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"
          defaultHandler="ac.soton.eventb.classdiagrams.diagram.part.LoadResourceAction"/>
+      <command id="ac.soton.eventb.classdiagrams.diagram.OpenDiagramAction"
+         name="Open Diagram "
+         categoryId="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"/>
    </extension>
 
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
+      <handler
+         commandId="ac.soton.eventb.classdiagrams.diagram.OpenDiagramAction"
+         class="ac.soton.eventb.classdiagrams.diagram.part.OpenDiagramAction">
+         <enabledWhen>
+           <with variable="activePartId"><equals value="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"/></with>
+         </enabledWhen>
+      </handler>
    </extension>
 
    <!-- optionally, specify keybindings -->
