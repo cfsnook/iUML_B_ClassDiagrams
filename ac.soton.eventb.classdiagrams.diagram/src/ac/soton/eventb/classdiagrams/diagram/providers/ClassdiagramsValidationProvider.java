@@ -34,8 +34,7 @@ public class ClassdiagramsValidationProvider {
 	/**
 	 * @generated
 	 */
-	public static void runWithConstraints(
-			TransactionalEditingDomain editingDomain, Runnable operation) {
+	public static void runWithConstraints(TransactionalEditingDomain editingDomain, Runnable operation) {
 		final Runnable op = operation;
 		Runnable task = new Runnable() {
 			public void run() {
@@ -51,8 +50,7 @@ public class ClassdiagramsValidationProvider {
 			try {
 				editingDomain.runExclusive(task);
 			} catch (Exception e) {
-				ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-						"Validation failed", e); //$NON-NLS-1$
+				ClassdiagramsDiagramEditorPlugin.getInstance().logError("Validation failed", e); //$NON-NLS-1$
 			}
 		} else {
 			task.run();
@@ -68,9 +66,7 @@ public class ClassdiagramsValidationProvider {
 		}
 		if (object instanceof View) {
 			return constraintsActive
-					&& ClassdiagramEditPart.MODEL_ID
-							.equals(ClassdiagramsVisualIDRegistry
-									.getModelID((View) object));
+					&& ClassdiagramEditPart.MODEL_ID.equals(ClassdiagramsVisualIDRegistry.getModelID((View) object));
 		}
 		return true;
 	}

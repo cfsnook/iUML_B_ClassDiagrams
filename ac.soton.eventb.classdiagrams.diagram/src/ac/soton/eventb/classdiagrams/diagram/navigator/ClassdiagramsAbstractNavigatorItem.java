@@ -27,23 +27,20 @@ public abstract class ClassdiagramsAbstractNavigatorItem extends PlatformObject 
 				return "ac.soton.eventb.classdiagrams.diagram"; //$NON-NLS-1$
 			}
 		};
-		Platform.getAdapterManager().registerAdapters(
-				new IAdapterFactory() {
+		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject,
-							Class adapterType) {
-						if (adaptableObject instanceof ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsAbstractNavigatorItem
-								&& adapterType == ITabbedPropertySheetPageContributor.class) {
-							return propertySheetPageContributor;
-						}
-						return null;
-					}
+			public Object getAdapter(Object adaptableObject, Class adapterType) {
+				if (adaptableObject instanceof ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsAbstractNavigatorItem
+						&& adapterType == ITabbedPropertySheetPageContributor.class) {
+					return propertySheetPageContributor;
+				}
+				return null;
+			}
 
-					public Class[] getAdapterList() {
-						return supportedTypes;
-					}
-				},
-				ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsAbstractNavigatorItem.class);
+			public Class[] getAdapterList() {
+				return supportedTypes;
+			}
+		}, ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsAbstractNavigatorItem.class);
 	}
 
 	/**

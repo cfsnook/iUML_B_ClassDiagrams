@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -33,7 +34,8 @@ import org.eventb.emf.core.CorePackage;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.provider.EventBNamedCommentedDataElaborationElementItemProvider;
-import ac.soton.eventb.emf.diagrams.DiagramsPackage;
+import ac.soton.eventb.statemachines.StatemachinesFactory;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * This is the item provider adapter for a {@link ac.soton.eventb.classdiagrams.Class} object.
@@ -197,7 +199,8 @@ public class ClassItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(DiagramsPackage.Literals.DIAGRAM_OWNER__DIAGRAMS);
+			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS);
+			childrenFeatures.add(StatemachinesPackage.Literals.STATEMACHINE_OWNER__STATEMACHINES);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__CLASS_ATTRIBUTES);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__CONSTRAINTS);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__METHODS);
@@ -258,7 +261,8 @@ public class ClassItemProvider
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
+			case ClassdiagramsPackage.CLASS__STATEMACHINES:
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
 			case ClassdiagramsPackage.CLASS__CONSTRAINTS:
 			case ClassdiagramsPackage.CLASS__METHODS:
@@ -278,31 +282,51 @@ public class ClassItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DiagramsPackage.Literals.DIAGRAM_OWNER__DIAGRAMS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASS__CLASS_ATTRIBUTES,
-				 ClassdiagramsFactory.eINSTANCE.createClassAttribute()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASS__CONSTRAINTS,
-				 ClassdiagramsFactory.eINSTANCE.createClassConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASS__METHODS,
-				 ClassdiagramsFactory.eINSTANCE.createClassMethod()));
+		
+			
+		if (object instanceof EObject && 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			
+		if (object instanceof EObject && 
+			StatemachinesPackage.Literals.STATEMACHINE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			StatemachinesPackage.Literals.STATEMACHINE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	StatemachinesFactory.eINSTANCE.createStatemachine()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(StatemachinesPackage.Literals.STATEMACHINE_OWNER__STATEMACHINES,
+				 	StatemachinesFactory.eINSTANCE.createStatemachine()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__CLASS_ATTRIBUTES,
+				 	ClassdiagramsFactory.eINSTANCE.createClassAttribute()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__CONSTRAINTS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassConstraint()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__METHODS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassMethod()));
 	}
 
 	/**
@@ -318,7 +342,8 @@ public class ClassItemProvider
 
 		boolean qualify =
 			childFeature == CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS ||
-			childFeature == DiagramsPackage.Literals.DIAGRAM_OWNER__DIAGRAMS;
+			childFeature == ClassdiagramsPackage.Literals.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS ||
+			childFeature == StatemachinesPackage.Literals.STATEMACHINE_OWNER__STATEMACHINES;
 
 		if (qualify) {
 			return getString

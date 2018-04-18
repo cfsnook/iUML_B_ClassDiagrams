@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypeImages;
+import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -57,9 +59,10 @@ public class ClassdiagramsElementTypes {
 	private static Map<IElementType, ENamedElement> elements;
 
 	/**
-	 * @generated
-	 */
-	private static ImageRegistry imageRegistry;
+	* @generated
+	*/
+	private static DiagramElementTypeImages elementTypeImages = new DiagramElementTypeImages(
+			ClassdiagramsDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated
@@ -69,7 +72,8 @@ public class ClassdiagramsElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType Classdiagram_1000 = getElementType("ac.soton.eventb.classdiagrams.diagram.Classdiagram_1000"); //$NON-NLS-1$
+	public static final IElementType Classdiagram_1000 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.Classdiagram_1000"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
@@ -77,123 +81,55 @@ public class ClassdiagramsElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType ClassAttribute_3022 = getElementType("ac.soton.eventb.classdiagrams.diagram.ClassAttribute_3022"); //$NON-NLS-1$
+	public static final IElementType ClassAttribute_3022 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.ClassAttribute_3022"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ClassMethod_3023 = getElementType("ac.soton.eventb.classdiagrams.diagram.ClassMethod_3023"); //$NON-NLS-1$
+	public static final IElementType ClassMethod_3023 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.ClassMethod_3023"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ClassConstraint_3024 = getElementType("ac.soton.eventb.classdiagrams.diagram.ClassConstraint_3024"); //$NON-NLS-1$
+	public static final IElementType ClassConstraint_3024 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.ClassConstraint_3024"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType Association_4005 = getElementType("ac.soton.eventb.classdiagrams.diagram.Association_4005"); //$NON-NLS-1$
+	public static final IElementType Association_4005 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.Association_4005"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ClassSupertypes_4006 = getElementType("ac.soton.eventb.classdiagrams.diagram.ClassSupertypes_4006"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	private static ImageRegistry getImageRegistry() {
-		if (imageRegistry == null) {
-			imageRegistry = new ImageRegistry();
-		}
-		return imageRegistry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static String getImageRegistryKey(ENamedElement element) {
-		return element.getName();
-	}
-
-	/**
-	 * @generated
-	 */
-	private static ImageDescriptor getProvidedImageDescriptor(
-			ENamedElement element) {
-		if (element instanceof EStructuralFeature) {
-			EStructuralFeature feature = ((EStructuralFeature) element);
-			EClass eContainingClass = feature.getEContainingClass();
-			EClassifier eType = feature.getEType();
-			if (eContainingClass != null && !eContainingClass.isAbstract()) {
-				element = eContainingClass;
-			} else if (eType instanceof EClass
-					&& !((EClass) eType).isAbstract()) {
-				element = eType;
-			}
-		}
-		if (element instanceof EClass) {
-			EClass eClass = (EClass) element;
-			if (!eClass.isAbstract()) {
-				return ClassdiagramsDiagramEditorPlugin.getInstance()
-						.getItemImageDescriptor(
-								eClass.getEPackage().getEFactoryInstance()
-										.create(eClass));
-			}
-		}
-		// TODO : support structural features
-		return null;
-	}
+	public static final IElementType ClassSupertypes_4006 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.ClassSupertypes_4006"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
 	public static ImageDescriptor getImageDescriptor(ENamedElement element) {
-		String key = getImageRegistryKey(element);
-		ImageDescriptor imageDescriptor = getImageRegistry().getDescriptor(key);
-		if (imageDescriptor == null) {
-			imageDescriptor = getProvidedImageDescriptor(element);
-			if (imageDescriptor == null) {
-				imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-			}
-			getImageRegistry().put(key, imageDescriptor);
-		}
-		return imageDescriptor;
+		return elementTypeImages.getImageDescriptor(element);
 	}
 
 	/**
 	 * @generated
 	 */
 	public static Image getImage(ENamedElement element) {
-		String key = getImageRegistryKey(element);
-		Image image = getImageRegistry().get(key);
-		if (image == null) {
-			ImageDescriptor imageDescriptor = getProvidedImageDescriptor(element);
-			if (imageDescriptor == null) {
-				imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-			}
-			getImageRegistry().put(key, imageDescriptor);
-			image = getImageRegistry().get(key);
-		}
-		return image;
+		return elementTypeImages.getImage(element);
 	}
 
 	/**
 	 * @generated
 	 */
 	public static ImageDescriptor getImageDescriptor(IAdaptable hint) {
-		ENamedElement element = getElement(hint);
-		if (element == null) {
-			return null;
-		}
-		return getImageDescriptor(element);
+		return getImageDescriptor(getElement(hint));
 	}
 
 	/**
 	 * @generated
 	 */
 	public static Image getImage(IAdaptable hint) {
-		ENamedElement element = getElement(hint);
-		if (element == null) {
-			return null;
-		}
-		return getImage(element);
+		return getImage(getElement(hint));
 	}
 
 	/**
@@ -206,32 +142,33 @@ public class ClassdiagramsElementTypes {
 	 * @param imageDescriptor
 	 * @return
 	 */
-	public static Image getImage(EventBElement element){
+	public static Image getImage(EventBElement element) {
 
 		ENamedElement elementType = element.eClass();
-		if (element instanceof EventBDataElaboration){
-			Object refines = element ;
-			while (refines instanceof EventBElement){
-				element = (EventBElement)refines;
+		if (element instanceof EventBDataElaboration) {
+			Object refines = element;
+			while (refines instanceof EventBElement) {
+				element = (EventBElement) refines;
 				EStructuralFeature feature = element.eClass().getEStructuralFeature("refines");
-				refines = (feature==null? null : element.eGet(feature));
+				refines = (feature == null ? null : element.eGet(feature));
 			}
 			EStructuralFeature elaboratesfeature = element.eClass().getEStructuralFeature("elaborates");
-			Object elabs = elaboratesfeature==null? null : element.eGet(elaboratesfeature);
-			if (elabs instanceof EventBElement){
+			Object elabs = elaboratesfeature == null ? null : element.eGet(elaboratesfeature);
+			if (elabs instanceof EventBElement) {
 				elementType = ((EventBElement) elabs).eClass();
 			}
-		} else if (elementType == ClassdiagramsPackage.Literals.CLASS_CONSTRAINT){
-			if (((ClassConstraint)element).isTheorem()) {
+		} else if (elementType == ClassdiagramsPackage.Literals.CLASS_CONSTRAINT) {
+			if (((ClassConstraint) element).isTheorem()) {
 				return IMAGE_THEOREM;
 			}
-			elementType = ((ClassConstraint)element).getContaining(ContextPackage.Literals.CONTEXT)==null ?
-						MachinePackage.Literals.INVARIANT : ContextPackage.Literals.AXIOM;
+			elementType = ((ClassConstraint) element).getContaining(ContextPackage.Literals.CONTEXT) == null
+					? MachinePackage.Literals.INVARIANT : ContextPackage.Literals.AXIOM;
 		}
 		return getImage(elementType);
 	}
-	
+
 	private static final Image IMAGE_THEOREM = EventbcoreEditPlugin.getEventBImage(IEventBSharedImages.IMG_THEOREM);
+
 	/**
 	 * Returns 'type' of the ecore object associated with the hint.
 	 * 
@@ -242,25 +179,19 @@ public class ClassdiagramsElementTypes {
 		if (elements == null) {
 			elements = new IdentityHashMap<IElementType, ENamedElement>();
 
-			elements.put(Classdiagram_1000,
-					ClassdiagramsPackage.eINSTANCE.getClassdiagram());
+			elements.put(Classdiagram_1000, ClassdiagramsPackage.eINSTANCE.getClassdiagram());
 
 			elements.put(Class_2003, ClassdiagramsPackage.eINSTANCE.getClass_());
 
-			elements.put(ClassAttribute_3022,
-					ClassdiagramsPackage.eINSTANCE.getClassAttribute());
+			elements.put(ClassAttribute_3022, ClassdiagramsPackage.eINSTANCE.getClassAttribute());
 
-			elements.put(ClassMethod_3023,
-					ClassdiagramsPackage.eINSTANCE.getClassMethod());
+			elements.put(ClassMethod_3023, ClassdiagramsPackage.eINSTANCE.getClassMethod());
 
-			elements.put(ClassConstraint_3024,
-					ClassdiagramsPackage.eINSTANCE.getClassConstraint());
+			elements.put(ClassConstraint_3024, ClassdiagramsPackage.eINSTANCE.getClassConstraint());
 
-			elements.put(Association_4005,
-					ClassdiagramsPackage.eINSTANCE.getAssociation());
+			elements.put(Association_4005, ClassdiagramsPackage.eINSTANCE.getAssociation());
 
-			elements.put(ClassSupertypes_4006,
-					ClassdiagramsPackage.eINSTANCE.getClass_Supertypes());
+			elements.put(ClassSupertypes_4006, ClassdiagramsPackage.eINSTANCE.getClass_Supertypes());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -311,5 +242,41 @@ public class ClassdiagramsElementTypes {
 		}
 		return null;
 	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public boolean isKnownElementType(IElementType elementType) {
+			return ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes
+					.isKnownElementType(elementType);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public IElementType getElementTypeForVisualId(int visualID) {
+			return ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes.getElementType(visualID);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
+			return ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes
+					.getElement(elementTypeAdapter);
+		}
+	};
 
 }

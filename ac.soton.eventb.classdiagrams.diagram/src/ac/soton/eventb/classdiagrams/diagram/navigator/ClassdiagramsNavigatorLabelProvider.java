@@ -49,14 +49,10 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	static {
-		ClassdiagramsDiagramEditorPlugin
-				.getInstance()
-				.getImageRegistry()
-				.put("Navigator?UnknownElement", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
-		ClassdiagramsDiagramEditorPlugin
-				.getInstance()
-				.getImageRegistry()
-				.put("Navigator?ImageNotFound", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
+		ClassdiagramsDiagramEditorPlugin.getInstance().getImageRegistry().put("Navigator?UnknownElement", //$NON-NLS-1$
+				ImageDescriptor.getMissingImageDescriptor());
+		ClassdiagramsDiagramEditorPlugin.getInstance().getImageRegistry().put("Navigator?ImageNotFound", //$NON-NLS-1$
+				ImageDescriptor.getMissingImageDescriptor());
 	}
 
 	/**
@@ -78,8 +74,7 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	public Image getImage(Object element) {
 		if (element instanceof ClassdiagramsNavigatorGroup) {
 			ClassdiagramsNavigatorGroup group = (ClassdiagramsNavigatorGroup) element;
-			return ClassdiagramsDiagramEditorPlugin.getInstance()
-					.getBundledImage(group.getIcon());
+			return ClassdiagramsDiagramEditorPlugin.getInstance().getBundledImage(group.getIcon());
 		}
 
 		if (element instanceof ClassdiagramsNavigatorItem) {
@@ -106,27 +101,27 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 */
 	public Image getImage(View view) {
 		switch (ClassdiagramsVisualIDRegistry.getVisualID(view)) {
-		case ClassSupertypesEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2015?Class?supertypes", ClassdiagramsElementTypes.ClassSupertypes_4006); //$NON-NLS-1$
-		case AssociationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2015?Association", ClassdiagramsElementTypes.Association_4005); //$NON-NLS-1$
 		case ClassdiagramEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http://soton.ac.uk/models/eventb/classdiagrams/2015?Classdiagram", ClassdiagramsElementTypes.Classdiagram_1000); //$NON-NLS-1$
-		case ClassConstraintEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassConstraint", ClassdiagramsElementTypes.ClassConstraint_3024); //$NON-NLS-1$
-		case ClassAttributeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassAttribute", ClassdiagramsElementTypes.ClassAttribute_3022); //$NON-NLS-1$
+			return getImage("Navigator?Diagram?http://soton.ac.uk/models/eventb/classdiagrams/2015?Classdiagram", //$NON-NLS-1$
+					ClassdiagramsElementTypes.Classdiagram_1000);
 		case ClassEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://soton.ac.uk/models/eventb/classdiagrams/2015?Class", ClassdiagramsElementTypes.Class_2003); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http://soton.ac.uk/models/eventb/classdiagrams/2015?Class", //$NON-NLS-1$
+					ClassdiagramsElementTypes.Class_2003);
+		case ClassAttributeEditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassAttribute", //$NON-NLS-1$
+					ClassdiagramsElementTypes.ClassAttribute_3022);
 		case ClassMethodEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassMethod", ClassdiagramsElementTypes.ClassMethod_3023); //$NON-NLS-1$
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassMethod", //$NON-NLS-1$
+					ClassdiagramsElementTypes.ClassMethod_3023);
+		case ClassConstraintEditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassConstraint", //$NON-NLS-1$
+					ClassdiagramsElementTypes.ClassConstraint_3024);
+		case AssociationEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2015?Association", //$NON-NLS-1$
+					ClassdiagramsElementTypes.Association_4005);
+		case ClassSupertypesEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2015?Class?supertypes", //$NON-NLS-1$
+					ClassdiagramsElementTypes.ClassSupertypes_4006);
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -135,11 +130,9 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private Image getImage(String key, IElementType elementType) {
-		ImageRegistry imageRegistry = ClassdiagramsDiagramEditorPlugin
-				.getInstance().getImageRegistry();
+		ImageRegistry imageRegistry = ClassdiagramsDiagramEditorPlugin.getInstance().getImageRegistry();
 		Image image = imageRegistry.get(key);
-		if (image == null && elementType != null
-				&& ClassdiagramsElementTypes.isKnownElementType(elementType)) {
+		if (image == null && elementType != null && ClassdiagramsElementTypes.isKnownElementType(elementType)) {
 			image = ClassdiagramsElementTypes.getImage(elementType);
 			imageRegistry.put(key, image);
 		}
@@ -187,20 +180,20 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (ClassdiagramsVisualIDRegistry.getVisualID(view)) {
-		case ClassSupertypesEditPart.VISUAL_ID:
-			return getClassSupertypes_4006Text(view);
-		case AssociationEditPart.VISUAL_ID:
-			return getAssociation_4005Text(view);
 		case ClassdiagramEditPart.VISUAL_ID:
 			return getClassdiagram_1000Text(view);
-		case ClassConstraintEditPart.VISUAL_ID:
-			return getClassConstraint_3024Text(view);
-		case ClassAttributeEditPart.VISUAL_ID:
-			return getClassAttribute_3022Text(view);
 		case ClassEditPart.VISUAL_ID:
 			return getClass_2003Text(view);
+		case ClassAttributeEditPart.VISUAL_ID:
+			return getClassAttribute_3022Text(view);
 		case ClassMethodEditPart.VISUAL_ID:
 			return getClassMethod_3023Text(view);
+		case ClassConstraintEditPart.VISUAL_ID:
+			return getClassConstraint_3024Text(view);
+		case AssociationEditPart.VISUAL_ID:
+			return getAssociation_4005Text(view);
+		case ClassSupertypesEditPart.VISUAL_ID:
+			return getClassSupertypes_4006Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -216,18 +209,14 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private String getAssociation_4005Text(View view) {
-		IParser parser = ClassdiagramsParserProvider.getParser(
-				ClassdiagramsElementTypes.Association_4005,
+		IParser parser = ClassdiagramsParserProvider.getParser(ClassdiagramsElementTypes.Association_4005,
 				view.getElement() != null ? view.getElement() : view,
-				ClassdiagramsVisualIDRegistry
-						.getType(AssociationNameEditPart.VISUAL_ID));
+				ClassdiagramsVisualIDRegistry.getType(AssociationNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 6004); //$NON-NLS-1$
+			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 6004); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -240,8 +229,8 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 1000); //$NON-NLS-1$
+			ClassdiagramsDiagramEditorPlugin.getInstance()
+					.logError("No domain element for view with visualID = " + 1000); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -250,18 +239,14 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private String getClassConstraint_3024Text(View view) {
-		IParser parser = ClassdiagramsParserProvider.getParser(
-				ClassdiagramsElementTypes.ClassConstraint_3024, view
-						.getElement() != null ? view.getElement() : view,
-				ClassdiagramsVisualIDRegistry
-						.getType(ClassConstraintEditPart.VISUAL_ID));
+		IParser parser = ClassdiagramsParserProvider.getParser(ClassdiagramsElementTypes.ClassConstraint_3024,
+				view.getElement() != null ? view.getElement() : view,
+				ClassdiagramsVisualIDRegistry.getType(ClassConstraintEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 3024); //$NON-NLS-1$
+			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 3024); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -270,18 +255,14 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private String getClassAttribute_3022Text(View view) {
-		IParser parser = ClassdiagramsParserProvider.getParser(
-				ClassdiagramsElementTypes.ClassAttribute_3022, view
-						.getElement() != null ? view.getElement() : view,
-				ClassdiagramsVisualIDRegistry
-						.getType(ClassAttributeEditPart.VISUAL_ID));
+		IParser parser = ClassdiagramsParserProvider.getParser(ClassdiagramsElementTypes.ClassAttribute_3022,
+				view.getElement() != null ? view.getElement() : view,
+				ClassdiagramsVisualIDRegistry.getType(ClassAttributeEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 3022); //$NON-NLS-1$
+			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 3022); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -290,18 +271,14 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private String getClass_2003Text(View view) {
-		IParser parser = ClassdiagramsParserProvider.getParser(
-				ClassdiagramsElementTypes.Class_2003,
+		IParser parser = ClassdiagramsParserProvider.getParser(ClassdiagramsElementTypes.Class_2003,
 				view.getElement() != null ? view.getElement() : view,
-				ClassdiagramsVisualIDRegistry
-						.getType(ClassNameEditPart.VISUAL_ID));
+				ClassdiagramsVisualIDRegistry.getType(ClassNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5007); //$NON-NLS-1$
+			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5007); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -310,18 +287,14 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private String getClassMethod_3023Text(View view) {
-		IParser parser = ClassdiagramsParserProvider.getParser(
-				ClassdiagramsElementTypes.ClassMethod_3023,
+		IParser parser = ClassdiagramsParserProvider.getParser(ClassdiagramsElementTypes.ClassMethod_3023,
 				view.getElement() != null ? view.getElement() : view,
-				ClassdiagramsVisualIDRegistry
-						.getType(ClassMethodEditPart.VISUAL_ID));
+				ClassdiagramsVisualIDRegistry.getType(ClassMethodEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			ClassdiagramsDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 3023); //$NON-NLS-1$
+			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 3023); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -369,8 +342,7 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private boolean isOwnView(View view) {
-		return ClassdiagramEditPart.MODEL_ID
-				.equals(ClassdiagramsVisualIDRegistry.getModelID(view));
+		return ClassdiagramEditPart.MODEL_ID.equals(ClassdiagramsVisualIDRegistry.getModelID(view));
 	}
 
 }

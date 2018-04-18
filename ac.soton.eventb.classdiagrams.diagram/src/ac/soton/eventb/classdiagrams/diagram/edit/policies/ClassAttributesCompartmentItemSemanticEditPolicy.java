@@ -16,8 +16,7 @@ import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes
 /**
  * @generated
  */
-public class ClassAttributesCompartmentItemSemanticEditPolicy extends
-		ClassdiagramsBaseItemSemanticEditPolicy {
+public class ClassAttributesCompartmentItemSemanticEditPolicy extends ClassdiagramsBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -30,8 +29,7 @@ public class ClassAttributesCompartmentItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (ClassdiagramsElementTypes.ClassAttribute_3022 == req
-				.getElementType()) {
+		if (ClassdiagramsElementTypes.ClassAttribute_3022 == req.getElementType()) {
 			return getGEFWrapper(new ClassAttributeCreateCommand(req));
 		}
 		return super.getCreateCommand(req);

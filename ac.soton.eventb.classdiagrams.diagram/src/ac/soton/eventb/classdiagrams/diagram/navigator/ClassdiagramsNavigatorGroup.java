@@ -13,8 +13,7 @@ import java.util.LinkedList;
 /**
  * @generated
  */
-public class ClassdiagramsNavigatorGroup extends
-		ClassdiagramsAbstractNavigatorItem {
+public class ClassdiagramsNavigatorGroup extends ClassdiagramsAbstractNavigatorItem {
 
 	/**
 	 * @generated

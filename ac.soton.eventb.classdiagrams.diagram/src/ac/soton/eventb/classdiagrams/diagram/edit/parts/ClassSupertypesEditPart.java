@@ -24,8 +24,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.policies.ClassSupertypesItemSe
 /**
  * @generated
  */
-public class ClassSupertypesEditPart extends ConnectionNodeEditPart implements
-		ITreeBranchEditPart {
+public class ClassSupertypesEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
 	 * @generated
@@ -44,8 +43,7 @@ public class ClassSupertypesEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ClassSupertypesItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ClassSupertypesItemSemanticEditPolicy());
 	}
 
 	/**
@@ -93,7 +91,8 @@ public class ClassSupertypesEditPart extends ConnectionNodeEditPart implements
 		private void createContents() {
 
 			fFigureSupertypeLabelFigure = new WrappingLabel();
-			fFigureSupertypeLabelFigure.setText("<É>");
+
+			fFigureSupertypeLabelFigure.setText("<â€¦>");
 
 			this.add(fFigureSupertypeLabelFigure);
 

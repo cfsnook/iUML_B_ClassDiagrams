@@ -16,8 +16,7 @@ import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes
 /**
  * @generated
  */
-public class ClassSupertypesItemSemanticEditPolicy extends
-		ClassdiagramsBaseItemSemanticEditPolicy {
+public class ClassSupertypesItemSemanticEditPolicy extends ClassdiagramsBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated

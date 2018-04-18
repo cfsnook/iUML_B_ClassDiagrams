@@ -39,6 +39,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 import org.eventb.emf.core.EventBElement;
 
@@ -80,10 +81,9 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+				new CreationEditPolicyWithCustomReparent(ClassdiagramsVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ClassItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ClassItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -96,8 +96,7 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -134,32 +133,25 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ClassNameEditPart) {
-			((ClassNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureClassLabelFigure());
+			((ClassNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureClassLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof ClassAttributesCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getFigureClassAttributesCompartmentFigure();
+			IFigure pane = getPrimaryShape().getFigureClassAttributesCompartmentFigure();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.add(((ClassAttributesCompartmentEditPart) childEditPart)
-					.getFigure());
+			pane.add(((ClassAttributesCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof ClassMethodsCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getFigureClassMethodsCompartmentFigure();
+			IFigure pane = getPrimaryShape().getFigureClassMethodsCompartmentFigure();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.add(((ClassMethodsCompartmentEditPart) childEditPart)
-					.getFigure());
+			pane.add(((ClassMethodsCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof ClassConstraintsCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getFigureClassContraintsCompartmentFigure();
+			IFigure pane = getPrimaryShape().getFigureClassContraintsCompartmentFigure();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.add(((ClassConstraintsCompartmentEditPart) childEditPart)
-					.getFigure());
+			pane.add(((ClassConstraintsCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -173,27 +165,18 @@ public class ClassEditPart extends ShapeNodeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof ClassAttributesCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getFigureClassAttributesCompartmentFigure();
-			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.remove(((ClassAttributesCompartmentEditPart) childEditPart)
-					.getFigure());
+			IFigure pane = getPrimaryShape().getFigureClassAttributesCompartmentFigure();
+			pane.remove(((ClassAttributesCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof ClassMethodsCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getFigureClassMethodsCompartmentFigure();
-			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.remove(((ClassMethodsCompartmentEditPart) childEditPart)
-					.getFigure());
+			IFigure pane = getPrimaryShape().getFigureClassMethodsCompartmentFigure();
+			pane.remove(((ClassMethodsCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof ClassConstraintsCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getFigureClassContraintsCompartmentFigure();
-			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.remove(((ClassConstraintsCompartmentEditPart) childEditPart)
-					.getFigure());
+			IFigure pane = getPrimaryShape().getFigureClassContraintsCompartmentFigure();
+			pane.remove(((ClassConstraintsCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -224,15 +207,13 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		if (editPart instanceof ClassAttributesCompartmentEditPart) {
-			return getPrimaryShape()
-					.getFigureClassAttributesCompartmentFigure();
+			return getPrimaryShape().getFigureClassAttributesCompartmentFigure();
 		}
 		if (editPart instanceof ClassMethodsCompartmentEditPart) {
 			return getPrimaryShape().getFigureClassMethodsCompartmentFigure();
 		}
 		if (editPart instanceof ClassConstraintsCompartmentEditPart) {
-			return getPrimaryShape()
-					.getFigureClassContraintsCompartmentFigure();
+			return getPrimaryShape().getFigureClassContraintsCompartmentFigure();
 		}
 		return getContentPane();
 	}
@@ -327,69 +308,7 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(ClassdiagramsVisualIDRegistry
-				.getType(ClassNameEditPart.VISUAL_ID));
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSource() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(ClassdiagramsElementTypes.Association_4005);
-		types.add(ClassdiagramsElementTypes.ClassSupertypes_4006);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassEditPart) {
-			types.add(ClassdiagramsElementTypes.Association_4005);
-		}
-		if (targetEditPart instanceof ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassEditPart) {
-			types.add(ClassdiagramsElementTypes.ClassSupertypes_4006);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == ClassdiagramsElementTypes.Association_4005) {
-			types.add(ClassdiagramsElementTypes.Class_2003);
-		} else if (relationshipType == ClassdiagramsElementTypes.ClassSupertypes_4006) {
-			types.add(ClassdiagramsElementTypes.Class_2003);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(ClassdiagramsElementTypes.Association_4005);
-		types.add(ClassdiagramsElementTypes.ClassSupertypes_4006);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == ClassdiagramsElementTypes.Association_4005) {
-			types.add(ClassdiagramsElementTypes.Class_2003);
-		} else if (relationshipType == ClassdiagramsElementTypes.ClassSupertypes_4006) {
-			types.add(ClassdiagramsElementTypes.Class_2003);
-		}
-		return types;
+		return getChildBySemanticHint(ClassdiagramsVisualIDRegistry.getType(ClassNameEditPart.VISUAL_ID));
 	}
 
 	/**
@@ -397,22 +316,20 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 */
 	public EditPart getTargetEditPart(Request request) {
 		if (request instanceof CreateViewAndElementRequest) {
-			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
-					.getViewAndElementDescriptor()
+			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
-			IElementType type = (IElementType) adapter
-					.getAdapter(IElementType.class);
+			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
 			if (type == ClassdiagramsElementTypes.ClassAttribute_3022) {
-				return getChildBySemanticHint(ClassdiagramsVisualIDRegistry
-						.getType(ClassAttributesCompartmentEditPart.VISUAL_ID));
+				return getChildBySemanticHint(
+						ClassdiagramsVisualIDRegistry.getType(ClassAttributesCompartmentEditPart.VISUAL_ID));
 			}
 			if (type == ClassdiagramsElementTypes.ClassMethod_3023) {
-				return getChildBySemanticHint(ClassdiagramsVisualIDRegistry
-						.getType(ClassMethodsCompartmentEditPart.VISUAL_ID));
+				return getChildBySemanticHint(
+						ClassdiagramsVisualIDRegistry.getType(ClassMethodsCompartmentEditPart.VISUAL_ID));
 			}
 			if (type == ClassdiagramsElementTypes.ClassConstraint_3024) {
-				return getChildBySemanticHint(ClassdiagramsVisualIDRegistry
-						.getType(ClassConstraintsCompartmentEditPart.VISUAL_ID));
+				return getChildBySemanticHint(
+						ClassdiagramsVisualIDRegistry.getType(ClassConstraintsCompartmentEditPart.VISUAL_ID));
 			}
 		}
 		return super.getTargetEditPart(request);
@@ -422,12 +339,11 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void handleNotificationEvent(Notification event) {
-//+++
-		refresh();		//refresh to get background to dynamically change
-//+++
+		//+++
+		refresh(); //refresh to get background to dynamically change
+		//+++
 		if (event.getNotifier() == getModel()
-				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
-						.equals(event.getFeature())) {
+				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations().equals(event.getFeature())) {
 			handleMajorSemanticChange();
 		} else {
 			super.handleNotificationEvent(event);
@@ -460,8 +376,7 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ClassFigure() {
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
-					getMapMode().DPtoLP(8)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8), getMapMode().DPtoLP(8)));
 			this.setBackgroundColor(ColorConstants.lightGray);
 			createContents();
 		}
@@ -472,23 +387,27 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		private void createContents() {
 
 			fFigureClassLabelFigure = new WrappingLabel();
+
 			fFigureClassLabelFigure.setText("ClassName");
 
 			this.add(fFigureClassLabelFigure);
 
 			fFigureClassAttributesCompartmentFigure = new RectangleFigure();
+
 			fFigureClassAttributesCompartmentFigure.setFill(false);
 			fFigureClassAttributesCompartmentFigure.setOutline(false);
 
 			this.add(fFigureClassAttributesCompartmentFigure);
 
 			fFigureClassMethodsCompartmentFigure = new RectangleFigure();
+
 			fFigureClassMethodsCompartmentFigure.setFill(false);
 			fFigureClassMethodsCompartmentFigure.setOutline(false);
 
 			this.add(fFigureClassMethodsCompartmentFigure);
 
 			fFigureClassContraintsCompartmentFigure = new RectangleFigure();
+
 			fFigureClassContraintsCompartmentFigure.setFill(false);
 			fFigureClassContraintsCompartmentFigure.setOutline(false);
 
@@ -530,9 +449,9 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	 * CUSTOM SECTION
 	 * Override refresh to update background colour depending on elaborates and refines
 	 */
-	
+
 	@Override
-	public void refresh(){
+	public void refresh() {
 		super.refresh();
 		setBackground();
 	}
@@ -541,19 +460,20 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	static final Color VISUALIZES = new Color(null, 255, 255, 200); //light yellow;
 	static final Color DEFINES = new Color(null, 200, 255, 200); //light green;
 	static final Color NOT_ELABORATED = new Color(null, 245, 255, 245); //very light green;
+
 	private void setBackground() { //Object elabs, Object refines){
 		Object refines = DiagramUtils.getModelFeatureValue(this, "refines");
 		Object elabs = DiagramUtils.getModelFeatureValue(this, "elaborates");
-		if (refines != null){
-			setBackgroundColor(REFINED);			
-		}else{
-			if (elabs instanceof EventBElement){
-				if (Is.generatedBy(elabs,DiagramUtils.unwrap(getModel()))){
+		if (refines != null) {
+			setBackgroundColor(REFINED);
+		} else {
+			if (elabs instanceof EventBElement) {
+				if (Is.generatedBy(elabs, DiagramUtils.unwrap(getModel()))) {
 					setBackgroundColor(DEFINES);
-				}else{
+				} else {
 					setBackgroundColor(VISUALIZES);
 				}
-			}else{
+			} else {
 				setBackgroundColor(NOT_ELABORATED);
 			}
 		}

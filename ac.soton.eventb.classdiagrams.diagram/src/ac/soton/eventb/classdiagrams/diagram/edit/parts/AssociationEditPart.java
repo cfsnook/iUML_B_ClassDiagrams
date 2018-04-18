@@ -24,8 +24,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.policies.AssociationItemSemant
 /**
  * @generated
  */
-public class AssociationEditPart extends ConnectionNodeEditPart implements
-		ITreeBranchEditPart {
+public class AssociationEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
 	 * @generated
@@ -44,8 +43,7 @@ public class AssociationEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new AssociationItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new AssociationItemSemanticEditPolicy());
 	}
 
 	/**
@@ -53,21 +51,17 @@ public class AssociationEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof AssociationNameEditPart) {
-			((AssociationNameEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureAssociationLabelFigure());
+			((AssociationNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureAssociationLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof AssociationSurjectiveInjectiveEditPart) {
 			((AssociationSurjectiveInjectiveEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureAssociationLabelSource());
+					.setLabel(getPrimaryShape().getFigureAssociationLabelSource());
 			return true;
 		}
 		if (childEditPart instanceof AssociationTotalFunctionalEditPart) {
 			((AssociationTotalFunctionalEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureAssociationLabelTarget());
+					.setLabel(getPrimaryShape().getFigureAssociationLabelTarget());
 			return true;
 		}
 		return false;
@@ -163,18 +157,20 @@ public class AssociationEditPart extends ConnectionNodeEditPart implements
 		private void createContents() {
 
 			fFigureAssociationLabelFigure = new WrappingLabel();
+
 			fFigureAssociationLabelFigure.setText("");
-			fFigureAssociationLabelFigure
-					.setBackgroundColor(ColorConstants.lightGray);
+			fFigureAssociationLabelFigure.setBackgroundColor(ColorConstants.lightGray);
 
 			this.add(fFigureAssociationLabelFigure);
 
 			fFigureAssociationLabelSource = new WrappingLabel();
+
 			fFigureAssociationLabelSource.setText("");
 
 			this.add(fFigureAssociationLabelSource);
 
 			fFigureAssociationLabelTarget = new WrappingLabel();
+
 			fFigureAssociationLabelTarget.setText("");
 
 			this.add(fFigureAssociationLabelTarget);

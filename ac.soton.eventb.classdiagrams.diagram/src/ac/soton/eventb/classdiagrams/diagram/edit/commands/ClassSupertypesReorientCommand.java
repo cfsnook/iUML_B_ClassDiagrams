@@ -47,8 +47,7 @@ public class ClassSupertypesReorientCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	public ClassSupertypesReorientCommand(
-			ReorientReferenceRelationshipRequest request) {
+	public ClassSupertypesReorientCommand(ReorientReferenceRelationshipRequest request) {
 		super(request.getLabel(), null, request);
 		reorientDirection = request.getDirection();
 		referenceOwner = request.getReferenceOwner();
@@ -79,8 +78,8 @@ public class ClassSupertypesReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Class && newEnd instanceof Class)) {
 			return false;
 		}
-		return ClassdiagramsBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistClassSupertypes_4006(getNewSource(), getOldTarget());
+		return ClassdiagramsBaseItemSemanticEditPolicy.getLinkConstraints().canExistClassSupertypes_4006(getNewSource(),
+				getOldTarget());
 	}
 
 	/**
@@ -90,18 +89,16 @@ public class ClassSupertypesReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Class && newEnd instanceof Class)) {
 			return false;
 		}
-		return ClassdiagramsBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistClassSupertypes_4006(getOldSource(), getNewTarget());
+		return ClassdiagramsBaseItemSemanticEditPolicy.getLinkConstraints().canExistClassSupertypes_4006(getOldSource(),
+				getNewTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();

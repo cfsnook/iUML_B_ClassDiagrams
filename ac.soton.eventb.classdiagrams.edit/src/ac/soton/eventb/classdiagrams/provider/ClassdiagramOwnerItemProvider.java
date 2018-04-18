@@ -139,11 +139,11 @@ public class ClassdiagramOwnerItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
 	}
 
 	/**

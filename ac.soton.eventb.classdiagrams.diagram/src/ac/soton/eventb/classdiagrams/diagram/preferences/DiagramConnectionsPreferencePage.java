@@ -20,7 +20,6 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
 	 * @generated
 	 */
 	public DiagramConnectionsPreferencePage() {
-		setPreferenceStore(ClassdiagramsDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(ClassdiagramsDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

@@ -37,8 +37,7 @@ import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 /**
  * @generated
  */
-public class ClassAttributesCompartmentCanonicalEditPolicy extends
-		CanonicalEditPolicy {
+public class ClassAttributesCompartmentCanonicalEditPolicy extends CanonicalEditPolicy {
 
 	/**
 	 * @generated
@@ -77,18 +76,15 @@ public class ClassAttributesCompartmentCanonicalEditPolicy extends
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		return ClassAttributeEditPart.VISUAL_ID == ClassdiagramsVisualIDRegistry
-				.getVisualID(view);
+		return ClassAttributeEditPart.VISUAL_ID == ClassdiagramsVisualIDRegistry.getVisualID(view);
 	}
 
 	/**
@@ -100,8 +96,7 @@ public class ClassAttributesCompartmentCanonicalEditPolicy extends
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<ClassdiagramsNodeDescriptor> childDescriptors = ClassdiagramsDiagramUpdater
-				.getClassAttributesCompartment_7006SemanticChildren((View) getHost()
-						.getModel());
+				.getClassAttributesCompartment_7006SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -118,8 +113,7 @@ public class ClassAttributesCompartmentCanonicalEditPolicy extends
 		for (Iterator<ClassdiagramsNodeDescriptor> descriptorsIterator = childDescriptors
 				.iterator(); descriptorsIterator.hasNext();) {
 			ClassdiagramsNodeDescriptor next = descriptorsIterator.next();
-			String hint = ClassdiagramsVisualIDRegistry.getType(next
-					.getVisualID());
+			String hint = ClassdiagramsVisualIDRegistry.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
 			for (View childView : getViewChildren()) {
 				EObject semanticElement = childView.getElement();
@@ -145,13 +139,10 @@ public class ClassAttributesCompartmentCanonicalEditPolicy extends
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
 		for (ClassdiagramsNodeDescriptor next : childDescriptors) {
-			String hint = ClassdiagramsVisualIDRegistry.getType(next
-					.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
-			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+			String hint = ClassdiagramsVisualIDRegistry.getType(next.getVisualID());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
+			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(elementAdapter,
+					Node.class, hint, ViewUtil.APPEND, false, host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -160,10 +151,10 @@ public class ClassAttributesCompartmentCanonicalEditPolicy extends
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
+
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
 			createdViews.addAll(nl);
 		}
@@ -172,8 +163,8 @@ public class ClassAttributesCompartmentCanonicalEditPolicy extends
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(), createdViews,
+					host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

@@ -36,35 +36,51 @@ public class ClassdiagramsOCLFactory {
 	private final ClassdiagramsAbstractExpression[] expressions;
 
 	/**
+	* @generated
+	*/
+	private final String[] expressionBodies;
+
+	/**
 	 * @generated
 	 */
 	protected ClassdiagramsOCLFactory() {
 		this.expressions = new ClassdiagramsAbstractExpression[1];
+		this.expressionBodies = new String[] {
+				"self <> oppositeEnd and not self->closure(supertypes)->includes(oppositeEnd)", //$NON-NLS-1$
+		};
+	}
+
+	/**
+	* @generated
+	*/
+	private static ClassdiagramsOCLFactory getInstance() {
+		ClassdiagramsOCLFactory instance = ClassdiagramsDiagramEditorPlugin.getInstance().getClassdiagramsOCLFactory();
+		if (instance == null) {
+			ClassdiagramsDiagramEditorPlugin.getInstance()
+					.setClassdiagramsOCLFactory(instance = new ClassdiagramsOCLFactory());
+		}
+		return instance;
+	}
+
+	/**
+	* @generated
+	*/
+	public static String getExpressionBody(int index) {
+		return getInstance().expressionBodies[index];
 	}
 
 	/**
 	 * @generated
 	 */
-	public static ClassdiagramsAbstractExpression getExpression(int index,
-			EClassifier context, Map<String, EClassifier> environment) {
-		ClassdiagramsOCLFactory cached = ClassdiagramsDiagramEditorPlugin
-				.getInstance().getClassdiagramsOCLFactory();
-		if (cached == null) {
-			ClassdiagramsDiagramEditorPlugin.getInstance()
-					.setClassdiagramsOCLFactory(
-							cached = new ClassdiagramsOCLFactory());
-		}
+	public static ClassdiagramsAbstractExpression getExpression(int index, EClassifier context,
+			Map<String, EClassifier> environment) {
+		ClassdiagramsOCLFactory cached = getInstance();
 		if (index < 0 || index >= cached.expressions.length) {
 			throw new IllegalArgumentException();
 		}
 		if (cached.expressions[index] == null) {
-			final String[] exprBodies = new String[] { "self <> oppositeEnd and not self->closure(supertypes)->includes(oppositeEnd)", //$NON-NLS-1$
-			};
-			cached.expressions[index] = getExpression(
-					exprBodies[index],
-					context,
-					environment == null ? Collections
-							.<String, EClassifier> emptyMap() : environment);
+			cached.expressions[index] = getExpression(cached.expressionBodies[index], context,
+					environment == null ? Collections.<String, EClassifier>emptyMap() : environment);
 		}
 		return cached.expressions[index];
 	}
@@ -73,8 +89,8 @@ public class ClassdiagramsOCLFactory {
 	 * This is factory method, callers are responsible to keep reference to the return value if they want to reuse parsed expression
 	 * @generated
 	 */
-	public static ClassdiagramsAbstractExpression getExpression(String body,
-			EClassifier context, Map<String, EClassifier> environment) {
+	public static ClassdiagramsAbstractExpression getExpression(String body, EClassifier context,
+			Map<String, EClassifier> environment) {
 		return new Expression(body, context, environment);
 	}
 
@@ -82,10 +98,8 @@ public class ClassdiagramsOCLFactory {
 	 * This method will become private in the next release
 	 * @generated
 	 */
-	public static ClassdiagramsAbstractExpression getExpression(String body,
-			EClassifier context) {
-		return getExpression(body, context,
-				Collections.<String, EClassifier> emptyMap());
+	public static ClassdiagramsAbstractExpression getExpression(String body, EClassifier context) {
+		return getExpression(body, context, Collections.<String, EClassifier>emptyMap());
 	}
 
 	/**
@@ -106,8 +120,7 @@ public class ClassdiagramsOCLFactory {
 		/**
 		 * @generated
 		 */
-		public Expression(String body, EClassifier context,
-				Map<String, EClassifier> environment) {
+		public Expression(String body, EClassifier context, Map<String, EClassifier> environment) {
 			super(body, context);
 			oclInstance = org.eclipse.ocl.ecore.OCL.newInstance();
 			initCustomEnv(oclInstance.getEnvironment(), environment);
@@ -130,8 +143,7 @@ public class ClassdiagramsOCLFactory {
 				return null;
 			}
 			// on the first call, both evalEnvironment and extentMap are clear, for later we have finally, below.
-			EvaluationEnvironment<?, ?, ?, ?, ?> evalEnv = oclInstance
-					.getEvaluationEnvironment();
+			EvaluationEnvironment<?, ?, ?, ?, ?> evalEnv = oclInstance.getEvaluationEnvironment();
 			// initialize environment
 			for (Object nextKey : env.keySet()) {
 				evalEnv.replace((String) nextKey, env.get(nextKey));
@@ -148,25 +160,21 @@ public class ClassdiagramsOCLFactory {
 		/**
 		 * @generated
 		 */
-		private static void initCustomEnv(
-				Environment<?, EClassifier, ?, ?, ?, EParameter, ?, ?, ?, ?, ?, ?> ecoreEnv,
+		private static void initCustomEnv(Environment<?, EClassifier, ?, ?, ?, EParameter, ?, ?, ?, ?, ?, ?> ecoreEnv,
 				Map<String, EClassifier> environment) {
 			// Use EObject as implicit root class for any object, to allow eContainer() and other EObject operations from OCL expressions
-			ParsingOptions.setOption(ecoreEnv,
-					ParsingOptions.implicitRootClass(ecoreEnv),
+			ParsingOptions.setOption(ecoreEnv, ParsingOptions.implicitRootClass(ecoreEnv),
 					EcorePackage.eINSTANCE.getEObject());
 			for (String varName : environment.keySet()) {
 				EClassifier varType = environment.get(varName);
-				ecoreEnv.addElement(varName,
-						createVar(ecoreEnv, varName, varType), false);
+				ecoreEnv.addElement(varName, createVar(ecoreEnv, varName, varType), false);
 			}
 		}
 
 		/**
 		 * @generated
 		 */
-		private static Variable createVar(
-				Environment<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?> ecoreEnv,
+		private static Variable createVar(Environment<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?> ecoreEnv,
 				String name, EClassifier type) {
 			Variable var = EcoreFactory.eINSTANCE.createVariable();
 			var.setName(name);

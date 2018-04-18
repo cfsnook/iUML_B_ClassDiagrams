@@ -36,8 +36,7 @@ import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 /**
  * @generated
  */
-public class ClassdiagramsParserProvider extends AbstractProvider implements
-		IParserProvider {
+public class ClassdiagramsParserProvider extends AbstractProvider implements IParserProvider {
 
 	/**
 	 * @generated
@@ -49,12 +48,9 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 */
 	private IParser getClassName_5007Parser() {
 		if (className_5007Parser == null) {
-			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE
-					.getEventBNamed_Name() };
-			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE
-					.getEventBNamed_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name() };
+			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			className_5007Parser = parser;
 		}
 		return className_5007Parser;
@@ -70,13 +66,10 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 */
 	private IParser getClassAttribute_3022Parser() {
 		if (classAttribute_3022Parser == null) {
-			EAttribute[] features = new EAttribute[] {
-					CorePackage.eINSTANCE.getEventBNamed_Name(),
+			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name(),
 					ClassdiagramsPackage.eINSTANCE.getClassAttribute_Target() };
-			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE
-					.getEventBNamed_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			parser.setViewPattern("{0}: {1}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0}: {1}"); //$NON-NLS-1$
 			parser.setEditPattern("{0}: {1}"); //$NON-NLS-1$
@@ -95,8 +88,7 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 */
 	private IParser getClassMethod_3023Parser() {
 		if (classMethod_3023Parser == null) {
-			EAttribute[] features = new EAttribute[] { CoreextensionPackage.eINSTANCE
-					.getEventBLabeled_Label() };
+			EAttribute[] features = new EAttribute[] { CoreextensionPackage.eINSTANCE.getEventBLabeled_Label() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			classMethod_3023Parser = parser;
 		}
@@ -113,14 +105,11 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 */
 	private IParser getClassConstraint_3024Parser() {
 		if (classConstraint_3024Parser == null) {
-			EAttribute[] features = new EAttribute[] {
-					CorePackage.eINSTANCE.getEventBNamed_Name(),
+			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name(),
 					CorePackage.eINSTANCE.getEventBPredicate_Predicate() };
-			EAttribute[] editableFeatures = new EAttribute[] {
-					CorePackage.eINSTANCE.getEventBNamed_Name(),
+			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name(),
 					CorePackage.eINSTANCE.getEventBPredicate_Predicate() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			parser.setViewPattern("{0}: {1}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0}: {1}"); //$NON-NLS-1$
 			parser.setEditPattern("{0}: {1}"); //$NON-NLS-1$
@@ -139,12 +128,9 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAssociationName_6004Parser() {
 		if (associationName_6004Parser == null) {
-			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE
-					.getEventBNamed_Name() };
-			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE
-					.getEventBNamed_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+			EAttribute[] features = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name() };
+			EAttribute[] editableFeatures = new EAttribute[] { CorePackage.eINSTANCE.getEventBNamed_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			associationName_6004Parser = parser;
 		}
 		return associationName_6004Parser;
@@ -161,17 +147,12 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	private IParser getAssociationSurjectiveInjective_6005Parser() {
 		if (associationSurjectiveInjective_6005Parser == null) {
 			EAttribute[] features = new EAttribute[] {
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Surjective(),
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Injective() };
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Surjective(),
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Injective() };
 			EAttribute[] editableFeatures = new EAttribute[] {
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Surjective(),
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Injective() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Surjective(),
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Injective() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			parser.setViewPattern("{0}..{1}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0}..{1}"); //$NON-NLS-1$
 			parser.setEditPattern("{0}..{1}"); //$NON-NLS-1$
@@ -190,18 +171,12 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAssociationTotalFunctional_6006Parser() {
 		if (associationTotalFunctional_6006Parser == null) {
-			EAttribute[] features = new EAttribute[] {
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Total(),
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Functional() };
+			EAttribute[] features = new EAttribute[] { CoreextensionPackage.eINSTANCE.getEventBRelationKind_Total(),
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Functional() };
 			EAttribute[] editableFeatures = new EAttribute[] {
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Total(),
-					CoreextensionPackage.eINSTANCE
-							.getEventBRelationKind_Functional() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Total(),
+					CoreextensionPackage.eINSTANCE.getEventBRelationKind_Functional() };
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			parser.setViewPattern("{0}..{1}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0}..{1}"); //$NON-NLS-1$
 			parser.setEditPattern("{0}..{1}"); //$NON-NLS-1$
@@ -237,10 +212,8 @@ public class ClassdiagramsParserProvider extends AbstractProvider implements
 	 * Utility method that consults ParserService
 	 * @generated
 	 */
-	public static IParser getParser(IElementType type, EObject object,
-			String parserHint) {
-		return ParserService.getInstance().getParser(
-				new HintAdapter(type, object, parserHint));
+	public static IParser getParser(IElementType type, EObject object, String parserHint) {
+		return ParserService.getInstance().getParser(new HintAdapter(type, object, parserHint));
 	}
 
 	/**

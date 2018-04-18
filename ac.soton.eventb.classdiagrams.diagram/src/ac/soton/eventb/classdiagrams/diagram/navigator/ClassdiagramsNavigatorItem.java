@@ -16,32 +16,28 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ClassdiagramsNavigatorItem extends
-		ClassdiagramsAbstractNavigatorItem {
+public class ClassdiagramsNavigatorItem extends ClassdiagramsAbstractNavigatorItem {
 
 	/**
 	 * @generated
 	 */
 	static {
 		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
-		Platform.getAdapterManager().registerAdapters(
-				new IAdapterFactory() {
+		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject,
-							Class adapterType) {
-						if (adaptableObject instanceof ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem
-								&& (adapterType == View.class || adapterType == EObject.class)) {
-							return ((ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem) adaptableObject)
-									.getView();
-						}
-						return null;
-					}
+			public Object getAdapter(Object adaptableObject, Class adapterType) {
+				if (adaptableObject instanceof ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem
+						&& (adapterType == View.class || adapterType == EObject.class)) {
+					return ((ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem) adaptableObject)
+							.getView();
+				}
+				return null;
+			}
 
-					public Class[] getAdapterList() {
-						return supportedTypes;
-					}
-				},
-				ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem.class);
+			public Class[] getAdapterList() {
+				return supportedTypes;
+			}
+		}, ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem.class);
 	}
 
 	/**
@@ -82,11 +78,8 @@ public class ClassdiagramsNavigatorItem extends
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem) {
-			return EcoreUtil
-					.getURI(getView())
-					.equals(EcoreUtil
-							.getURI(((ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem) obj)
-									.getView()));
+			return EcoreUtil.getURI(getView()).equals(EcoreUtil.getURI(
+					((ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsNavigatorItem) obj).getView()));
 		}
 		return super.equals(obj);
 	}

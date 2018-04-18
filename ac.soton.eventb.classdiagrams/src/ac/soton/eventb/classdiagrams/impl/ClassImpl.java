@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 - University of Southampton.
+ * Copyright (c) 2012-2018 - University of Southampton.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
  * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -27,12 +27,14 @@ import ac.soton.eventb.classdiagrams.Association;
 import ac.soton.eventb.classdiagrams.ClassAttribute;
 import ac.soton.eventb.classdiagrams.ClassConstraint;
 import ac.soton.eventb.classdiagrams.ClassMethod;
+import ac.soton.eventb.classdiagrams.Classdiagram;
+import ac.soton.eventb.classdiagrams.ClassdiagramOwner;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
 import ac.soton.eventb.emf.core.extension.coreextension.impl.EventBNamedCommentedDataElaborationElementImpl;
-import ac.soton.eventb.emf.diagrams.Diagram;
-import ac.soton.eventb.emf.diagrams.DiagramOwner;
-import ac.soton.eventb.emf.diagrams.DiagramsPackage;
+import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachineOwner;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +43,8 @@ import ac.soton.eventb.emf.diagrams.DiagramsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getDiagrams <em>Diagrams</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getClassdiagrams <em>Classdiagrams</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getStatemachines <em>Statemachines</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getSupertypes <em>Supertypes</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getClassAttributes <em>Class Attributes</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getIncoming <em>Incoming</em>}</li>
@@ -57,14 +60,26 @@ import ac.soton.eventb.emf.diagrams.DiagramsPackage;
  */
 public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl implements ac.soton.eventb.classdiagrams.Class {
 	/**
-	 * The cached value of the '{@link #getDiagrams() <em>Diagrams</em>}' containment reference list.
+	 * The cached value of the '{@link #getClassdiagrams() <em>Classdiagrams</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDiagrams()
+	 * @see #getClassdiagrams()
 	 * @generated
 	 * @ordered
+	 * @since 2.0
 	 */
-	protected EList<Diagram> diagrams;
+	protected EList<Classdiagram> classdiagrams;
+
+	/**
+	 * The cached value of the '{@link #getStatemachines() <em>Statemachines</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatemachines()
+	 * @generated
+	 * @ordered
+	 * @since 2.0
+	 */
+	protected EList<Statemachine> statemachines;
 
 	/**
 	 * The cached value of the '{@link #getSupertypes() <em>Supertypes</em>}' reference list.
@@ -180,11 +195,23 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Diagram> getDiagrams() {
-		if (diagrams == null) {
-			diagrams = new EObjectContainmentEList.Resolving<Diagram>(Diagram.class, this, ClassdiagramsPackage.CLASS__DIAGRAMS);
+	public EList<Classdiagram> getClassdiagrams() {
+		if (classdiagrams == null) {
+			classdiagrams = new EObjectContainmentEList.Resolving<Classdiagram>(Classdiagram.class, this, ClassdiagramsPackage.CLASS__CLASSDIAGRAMS);
 		}
-		return diagrams;
+		return classdiagrams;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Statemachine> getStatemachines() {
+		if (statemachines == null) {
+			statemachines = new EObjectContainmentEList<Statemachine>(Statemachine.class, this, ClassdiagramsPackage.CLASS__STATEMACHINES);
+		}
+		return statemachines;
 	}
 
 	/**
@@ -352,8 +379,10 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
-				return ((InternalEList<?>)getDiagrams()).basicRemove(otherEnd, msgs);
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
+				return ((InternalEList<?>)getClassdiagrams()).basicRemove(otherEnd, msgs);
+			case ClassdiagramsPackage.CLASS__STATEMACHINES:
+				return ((InternalEList<?>)getStatemachines()).basicRemove(otherEnd, msgs);
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
 				return ((InternalEList<?>)getClassAttributes()).basicRemove(otherEnd, msgs);
 			case ClassdiagramsPackage.CLASS__INCOMING:
@@ -376,8 +405,10 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
-				return getDiagrams();
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
+				return getClassdiagrams();
+			case ClassdiagramsPackage.CLASS__STATEMACHINES:
+				return getStatemachines();
 			case ClassdiagramsPackage.CLASS__SUPERTYPES:
 				return getSupertypes();
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
@@ -408,9 +439,13 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
-				getDiagrams().clear();
-				getDiagrams().addAll((Collection<? extends Diagram>)newValue);
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
+				getClassdiagrams().clear();
+				getClassdiagrams().addAll((Collection<? extends Classdiagram>)newValue);
+				return;
+			case ClassdiagramsPackage.CLASS__STATEMACHINES:
+				getStatemachines().clear();
+				getStatemachines().addAll((Collection<? extends Statemachine>)newValue);
 				return;
 			case ClassdiagramsPackage.CLASS__SUPERTYPES:
 				getSupertypes().clear();
@@ -454,8 +489,11 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
-				getDiagrams().clear();
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
+				getClassdiagrams().clear();
+				return;
+			case ClassdiagramsPackage.CLASS__STATEMACHINES:
+				getStatemachines().clear();
 				return;
 			case ClassdiagramsPackage.CLASS__SUPERTYPES:
 				getSupertypes().clear();
@@ -493,8 +531,10 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ClassdiagramsPackage.CLASS__DIAGRAMS:
-				return diagrams != null && !diagrams.isEmpty();
+			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
+				return classdiagrams != null && !classdiagrams.isEmpty();
+			case ClassdiagramsPackage.CLASS__STATEMACHINES:
+				return statemachines != null && !statemachines.isEmpty();
 			case ClassdiagramsPackage.CLASS__SUPERTYPES:
 				return supertypes != null && !supertypes.isEmpty();
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
@@ -522,9 +562,15 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == DiagramOwner.class) {
+		if (baseClass == ClassdiagramOwner.class) {
 			switch (derivedFeatureID) {
-				case ClassdiagramsPackage.CLASS__DIAGRAMS: return DiagramsPackage.DIAGRAM_OWNER__DIAGRAMS;
+				case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS: return ClassdiagramsPackage.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS;
+				default: return -1;
+			}
+		}
+		if (baseClass == StatemachineOwner.class) {
+			switch (derivedFeatureID) {
+				case ClassdiagramsPackage.CLASS__STATEMACHINES: return StatemachinesPackage.STATEMACHINE_OWNER__STATEMACHINES;
 				default: return -1;
 			}
 		}
@@ -538,9 +584,15 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == DiagramOwner.class) {
+		if (baseClass == ClassdiagramOwner.class) {
 			switch (baseFeatureID) {
-				case DiagramsPackage.DIAGRAM_OWNER__DIAGRAMS: return ClassdiagramsPackage.CLASS__DIAGRAMS;
+				case ClassdiagramsPackage.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS: return ClassdiagramsPackage.CLASS__CLASSDIAGRAMS;
+				default: return -1;
+			}
+		}
+		if (baseClass == StatemachineOwner.class) {
+			switch (baseFeatureID) {
+				case StatemachinesPackage.STATEMACHINE_OWNER__STATEMACHINES: return ClassdiagramsPackage.CLASS__STATEMACHINES;
 				default: return -1;
 			}
 		}

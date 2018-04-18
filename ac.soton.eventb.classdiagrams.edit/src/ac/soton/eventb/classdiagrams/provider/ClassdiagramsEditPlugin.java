@@ -16,6 +16,7 @@ import org.eventb.emf.core.provider.EventbcoreEditPlugin;
 
 import ac.soton.eventb.emf.core.extension.coreextension.provider.EventbcoreextensionEditPlugin;
 import ac.soton.eventb.emf.diagrams.provider.DiagramsEditPlugin;
+import ac.soton.eventb.statemachines.provider.StatemachinesEditPlugin;
 
 /**
  * This is the central singleton for the Classdiagrams edit plugin.
@@ -53,6 +54,7 @@ public final class ClassdiagramsEditPlugin extends EMFPlugin {
 		     EcoreEditPlugin.INSTANCE,
 		     EventbcoreEditPlugin.INSTANCE,
 		     EventbcoreextensionEditPlugin.INSTANCE,
+		     StatemachinesEditPlugin.INSTANCE,
 		   });
 	}
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -34,6 +35,8 @@ import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.statemachines.StatemachinesFactory;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * This is the item provider adapter for a {@link ac.soton.eventb.classdiagrams.Classdiagram} object.
@@ -205,21 +208,36 @@ public class ClassdiagramItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
-				 ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASSDIAGRAM__CLASSES,
-				 ClassdiagramsFactory.eINSTANCE.createClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClassdiagramsPackage.Literals.CLASSDIAGRAM__ASSOCIATIONS,
-				 ClassdiagramsFactory.eINSTANCE.createAssociation()));
+		
+			
+		if (object instanceof EObject && 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			ClassdiagramsPackage.Literals.CLASSDIAGRAM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	ClassdiagramsFactory.eINSTANCE.createClassdiagram()));
+		
+			
+		if (object instanceof EObject && 
+			StatemachinesPackage.Literals.STATEMACHINE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			StatemachinesPackage.Literals.STATEMACHINE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	StatemachinesFactory.eINSTANCE.createStatemachine()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASSDIAGRAM__CLASSES,
+				 	ClassdiagramsFactory.eINSTANCE.createClass()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASSDIAGRAM__ASSOCIATIONS,
+				 	ClassdiagramsFactory.eINSTANCE.createAssociation()));
 	}
 
 }
