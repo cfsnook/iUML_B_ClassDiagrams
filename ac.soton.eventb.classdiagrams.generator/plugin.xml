@@ -16,7 +16,7 @@
    <extension
          point="org.eclipse.ui.handlers"> 
       <handler
-            class="ac.soton.eventb.emf.diagrams.generator.handlers.IUMLBTranslateHandler"
+            class="ac.soton.eventb.classdiagrams.generator.handlers.ClassdiagramTranslateHandler"
             commandId="ac.soton.eventb.emf.diagrams.generator.translateToEventB">
          <enabledWhen>
             <with
