@@ -249,19 +249,21 @@ public class Strings {
 				p.getType());
 	}
 	
-	/// intialisation to intialValue of associations/attributes
+	/// intialisation to initialValue of associations/attributes
 	/// ....in fixed classes
 	public static String INITIALISATION_NAME;
 	public static String INITIALISATION_NAME(EventBNamed e) {
 		return bind(INITIALISATION_NAME, e.getName());
 	}
 
-	public static String ATTR_VALUE_INITIALISATION_ACTION_EXPR;
+	public static String ATTR_VALUE_INITIALISATION_ACTION_EXPR_1;
+	public static String ATTR_VALUE_INITIALISATION_ACTION_EXPR_2;
 	public static String ATTR_VALUE_INITIALISATION_ACTION_EXPR(EventBNamed e) {
-		return bind(ATTR_VALUE_INITIALISATION_ACTION_EXPR, 
-				e.getName(), 
-				((EventBNamed) e.eContainer()).getName(), 
-				((EventBInitialisable)e).getInitialValue());
+		String v = ((EventBInitialisable)e).getInitialValue();
+		return v.startsWith("\u2254") || v.startsWith("\u003A\u2208") || v.startsWith("\u003A\u2223") ?
+				bind(ATTR_VALUE_INITIALISATION_ACTION_EXPR_1, e.getName(),  v)			
+				:
+				bind(ATTR_VALUE_INITIALISATION_ACTION_EXPR_2, e.getName(), ((EventBNamed) e.eContainer()).getName(),  v);
 	}
 	//initialisation to empty set of associations/attributes etc.
 	//... in variable classes
