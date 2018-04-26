@@ -76,11 +76,16 @@ public class ClassAttributeImpl extends EventBNamedCommentedRelationDataElaborat
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Class Attributes are usually a required single valued for each instance. 
+	 * Therefore the default false values of the relation properties are overridden  with
+	 * total = true, functional = true
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ClassAttributeImpl() {
 		super();
+		this.functional=true;
+		this.total=true;
 	}
 
 	/**
