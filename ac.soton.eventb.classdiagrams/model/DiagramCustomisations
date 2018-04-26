@@ -400,34 +400,27 @@ Class=ClassCreateCommand
 * package=ac.soton.eventb.classdiagrams.diagram.parsers
 **********************************************************************************************
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ class=AbstractParser
++ class=MessageFormatParser  (n.b. before April 2018 was in AbstractParser)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 + translates association multiplicity into surjective/injective/functional/total
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	/**
+	 * This is overridden to convert the boolean properties of relations into the usual association multiplicity notation
+	 * 
 	 * @generated NOT
+	 * 
 	 */
-	protected Object getValue(EObject element, EAttribute feature) {
-		Object value;
-
+	protected Object getValue(EObject element, EStructuralFeature feature) {
 		if (feature.getName().equals("surjective")) {
-			value = ((Boolean) element.eGet(feature)) ? "1" : "0";
+			return ((Boolean) element.eGet(feature)) ? "1" : "0";
 		} else if (feature.getName().equals("injective")) {
-			value = ((Boolean) element.eGet(feature)) ? "1" : "n";
+			return ((Boolean) element.eGet(feature)) ? "1" : "n";
 		} else if (feature.getName().equals("total")) {
-			value = ((Boolean) element.eGet(feature)) ? "1" : "0";
+			return ((Boolean) element.eGet(feature)) ? "1" : "0";
 		} else if (feature.getName().equals("functional")) {
-			value = ((Boolean) element.eGet(feature)) ? "1" : "n";
+			return ((Boolean) element.eGet(feature)) ? "1" : "n";
 		} else {
-			value = element.eGet(feature);
+			return super.getValue(element, feature);
 		}
-
-		Class iClass = feature.getEAttributeType().getInstanceClass();
-		if (String.class.equals(iClass)) {
-			if (value == null) {
-				value = ""; //$NON-NLS-1$
-			}
-		}
-		return value;
 	}
