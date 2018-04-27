@@ -15,6 +15,7 @@ import ac.soton.eventb.emf.core.extension.coreextension.TypedParameter;
 public class Strings {
 
 	private static final String BUNDLE_NAME = "ac.soton.eventb.classdiagrams.generator.strings.Strings"; //$NON-NLS-1$
+	private static final String IDENTIFIER_SEPARATOR = "\\W+";
 
 	private Strings() {
 		// Do not instantiate
@@ -182,10 +183,14 @@ public class Strings {
 	
 	public static String CLASS_CONSTRAINT_PRED;
 	public static String CLASS_CONSTRAINT_PRED(String selfName, String instances, String predicate) {
-		return bind(CLASS_CONSTRAINT_PRED, 
-				selfName, 
-				instances,
-				predicate);
+		String[] tokens = predicate.split(IDENTIFIER_SEPARATOR);
+		for (String tok : tokens) {
+			if (tok.equals(selfName) ) {
+				return bind(CLASS_CONSTRAINT_PRED, selfName, instances, predicate);
+			}
+		}
+		return predicate;
+
 	}
 	
 	public static String CLASS_PARAMETER_NAME;
