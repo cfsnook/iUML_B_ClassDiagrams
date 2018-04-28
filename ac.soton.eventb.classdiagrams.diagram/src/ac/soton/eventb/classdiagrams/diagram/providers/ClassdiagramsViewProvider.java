@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.notation.DecorationNode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
+import org.eclipse.gmf.runtime.notation.HintedDiagramLinkStyle;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -63,6 +64,8 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodsCompartmentE
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassNameEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 
 /**
@@ -150,6 +153,7 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 				switch (visualID) {
 				case ClassEditPart.VISUAL_ID:
 				case ClassAttributeEditPart.VISUAL_ID:
+				case StatemachineEditPart.VISUAL_ID:
 				case ClassMethodEditPart.VISUAL_ID:
 				case ClassConstraintEditPart.VISUAL_ID:
 					if (domainElement == null || visualID != ClassdiagramsVisualIDRegistry
@@ -163,7 +167,8 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 			}
 		}
 		return ClassEditPart.VISUAL_ID == visualID || ClassAttributeEditPart.VISUAL_ID == visualID
-				|| ClassMethodEditPart.VISUAL_ID == visualID || ClassConstraintEditPart.VISUAL_ID == visualID;
+				|| StatemachineEditPart.VISUAL_ID == visualID || ClassMethodEditPart.VISUAL_ID == visualID
+				|| ClassConstraintEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -217,6 +222,8 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 			return createClass_2003(domainElement, containerView, index, persisted, preferencesHint);
 		case ClassAttributeEditPart.VISUAL_ID:
 			return createClassAttribute_3022(domainElement, containerView, index, persisted, preferencesHint);
+		case StatemachineEditPart.VISUAL_ID:
+			return createStatemachine_3025(domainElement, containerView, index, persisted, preferencesHint);
 		case ClassMethodEditPart.VISUAL_ID:
 			return createClassMethod_3023(domainElement, containerView, index, persisted, preferencesHint);
 		case ClassConstraintEditPart.VISUAL_ID:
@@ -279,6 +286,8 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 		Node label5007 = createLabel(node, ClassdiagramsVisualIDRegistry.getType(ClassNameEditPart.VISUAL_ID));
 		createCompartment(node, ClassdiagramsVisualIDRegistry.getType(ClassAttributesCompartmentEditPart.VISUAL_ID),
 				true, false, true, true);
+		createCompartment(node, ClassdiagramsVisualIDRegistry.getType(StatemachinesCompartmentEditPart.VISUAL_ID), true,
+				false, true, true);
 		createCompartment(node, ClassdiagramsVisualIDRegistry.getType(ClassMethodsCompartmentEditPart.VISUAL_ID), true,
 				false, true, true);
 		createCompartment(node, ClassdiagramsVisualIDRegistry.getType(ClassConstraintsCompartmentEditPart.VISUAL_ID),
@@ -294,6 +303,25 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
 		node.setType(ClassdiagramsVisualIDRegistry.getType(ClassAttributeEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		return node;
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public Node createStatemachine_3025(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
+		{
+			HintedDiagramLinkStyle diagramFacet = NotationFactory.eINSTANCE.createHintedDiagramLinkStyle();
+			diagramFacet.setHint("Statemachines"); //$NON-NLS-1$
+			node.getStyles().add(diagramFacet);
+		}
+		node.setType(ClassdiagramsVisualIDRegistry.getType(StatemachineEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		return node;

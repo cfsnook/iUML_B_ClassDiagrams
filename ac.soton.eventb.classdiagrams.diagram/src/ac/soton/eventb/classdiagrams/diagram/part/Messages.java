@@ -283,24 +283,40 @@ public class Messages extends NLS {
 	public static String Attribute1CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String Method2CreationTool_title;
+	* @generated
+	 * @since 2.0
+	*/
+	public static String Statemachine2CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String Method2CreationTool_desc;
+	* @generated
+	 * @since 2.0
+	*/
+	public static String Statemachine2CreationTool_desc;
 
 	/**
-	 * @generated
-	 */
-	public static String Constraint3CreationTool_title;
+	* @generated
+	 * @since 2.0
+	*/
+	public static String Method3CreationTool_title;
 
 	/**
-	 * @generated
-	 */
-	public static String Constraint3CreationTool_desc;
+	* @generated
+	 * @since 2.0
+	*/
+	public static String Method3CreationTool_desc;
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static String Constraint4CreationTool_title;
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static String Constraint4CreationTool_desc;
 
 	/**
 	 * @generated
@@ -324,8 +340,15 @@ public class Messages extends NLS {
 
 	/**
 	 * @generated
+	 * @since 2.0
 	 */
 	public static String ClassAttributesCompartmentEditPart_title;
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static String StatemachinesCompartmentEditPart_title;
 
 	/**
 	 * @generated

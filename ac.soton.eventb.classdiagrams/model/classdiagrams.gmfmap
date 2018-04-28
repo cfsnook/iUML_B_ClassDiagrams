@@ -63,6 +63,8 @@
               href="../../ac.soton.eventb.statemachines/model/statemachines.ecore#//Statemachine"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
+            <diagramLabel
+                href="classdiagrams.gmfgraph#StatemachineName"/>
             <features
                 href="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed/name"/>
           </labelMappings>

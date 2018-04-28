@@ -30,8 +30,9 @@ public class ClassdiagramsModelingAssistantProviderOfClassEditPart extends Class
 	@Override
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(3);
+		List<IElementType> types = new ArrayList<IElementType>(4);
 		types.add(ClassdiagramsElementTypes.ClassAttribute_3022);
+		types.add(ClassdiagramsElementTypes.Statemachine_3025);
 		types.add(ClassdiagramsElementTypes.ClassMethod_3023);
 		types.add(ClassdiagramsElementTypes.ClassConstraint_3024);
 		return types;

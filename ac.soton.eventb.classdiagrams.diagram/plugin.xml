@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-Copyright (c) 2012 University of Southampton.
+Copyright (c) 2012-2018 University of Southampton.
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
@@ -268,7 +268,7 @@ http://www.eclipse.org/legal/epl-v10.html
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Classdiagrams"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2003,3022,3023,3024"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2003,3022,3025,3023,3024"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4005,4006"/>
       </viewProvider>
    </extension>
@@ -281,7 +281,7 @@ http://www.eclipse.org/legal/epl-v10.html
             <method name="getType()" value="Classdiagrams"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2003,3022,3023,3024"/>
+            <method name="getType()" value="2003,3022,3025,3023,3024"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4005,4006"/>
@@ -290,7 +290,7 @@ http://www.eclipse.org/legal/epl-v10.html
             <method name="getType()" value="5007"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
-            <method name="getType()" value="7006,7007,7008"/>
+            <method name="getType()" value="7006,7009,7007,7008"/>
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
@@ -312,6 +312,11 @@ http://www.eclipse.org/legal/epl-v10.html
          <Priority name="Lowest"/>
          <object class="ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributeEditPart" id="ClassAttribute_3022"/>
          <context elements="ClassAttribute_3022"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="ac.soton.eventb.classdiagrams.diagram.providers.assistants.ClassdiagramsModelingAssistantProviderOfStatemachineEditPart">
+         <Priority name="Lowest"/>
+         <object class="ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart" id="Statemachine_3025"/>
+         <context elements="Statemachine_3025"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="ac.soton.eventb.classdiagrams.diagram.providers.assistants.ClassdiagramsModelingAssistantProviderOfClassMethodEditPart">
          <Priority name="Lowest"/>
@@ -383,6 +388,16 @@ http://www.eclipse.org/legal/epl-v10.html
             <param name="semanticHint" value="3022"/>
          </metamodelType>
       </metamodel>
+      <metamodel nsURI="http://soton.ac.uk/models/eventb/statemachines/2014">
+         <metamodelType
+               id="ac.soton.eventb.classdiagrams.diagram.Statemachine_3025"
+               name="%metatype.name.Statemachine_3025"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Statemachine"
+               edithelper="ac.soton.eventb.classdiagrams.diagram.edit.helpers.StatemachineEditHelper">
+            <param name="semanticHint" value="3025"/>
+         </metamodelType>
+      </metamodel>
       <metamodel nsURI="http://soton.ac.uk/models/eventb/classdiagrams/2015">
          <metamodelType
                id="ac.soton.eventb.classdiagrams.diagram.ClassMethod_3023"
@@ -437,6 +452,7 @@ http://www.eclipse.org/legal/epl-v10.html
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.Classdiagram_1000"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.Class_2003"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.ClassAttribute_3022"/>
+         <elementType ref="ac.soton.eventb.classdiagrams.diagram.Statemachine_3025"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.ClassMethod_3023"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.ClassConstraint_3024"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.Association_4005"/>
@@ -614,6 +630,18 @@ http://www.eclipse.org/legal/epl-v10.html
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="ac.soton.eventb.classdiagrams.diagram.OpenDiagramAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
 
    <extension point="org.eclipse.ui.commands" id="menu-commands">
@@ -623,10 +651,20 @@ http://www.eclipse.org/legal/epl-v10.html
          name="Load Resource"
          categoryId="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"
          defaultHandler="ac.soton.eventb.classdiagrams.diagram.part.LoadResourceAction"/>
+      <command id="ac.soton.eventb.classdiagrams.diagram.OpenDiagramAction"
+         name="Open Diagram "
+         categoryId="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"/>
    </extension>
 
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
+      <handler
+         commandId="ac.soton.eventb.classdiagrams.diagram.OpenDiagramAction"
+         class="ac.soton.eventb.classdiagrams.diagram.part.OpenDiagramAction">
+         <enabledWhen>
+           <with variable="activePartId"><equals value="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorID"/></with>
+         </enabledWhen>
+      </handler>
    </extension>
 
    <!-- optionally, specify keybindings -->

@@ -37,7 +37,10 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodsCompartmentEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
+import ac.soton.eventb.statemachines.Statemachine;
 
 /**
  * @generated
@@ -60,6 +63,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClassdiagram_1000SemanticChildren(view);
 		case ClassAttributesCompartmentEditPart.VISUAL_ID:
 			return getClassAttributesCompartment_7006SemanticChildren(view);
+		case StatemachinesCompartmentEditPart.VISUAL_ID:
+			return getClassStatemachines_7009SemanticChildren(view);
 		case ClassMethodsCompartmentEditPart.VISUAL_ID:
 			return getClassMethodsCompartment_7007SemanticChildren(view);
 		case ClassConstraintsCompartmentEditPart.VISUAL_ID:
@@ -105,6 +110,31 @@ public class ClassdiagramsDiagramUpdater {
 			ClassAttribute childElement = (ClassAttribute) it.next();
 			int visualID = ClassdiagramsVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == ClassAttributeEditPart.VISUAL_ID) {
+				result.add(new ClassdiagramsNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static List<ClassdiagramsNodeDescriptor> getClassStatemachines_7009SemanticChildren(View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Class modelElement = (Class) containerView.getElement();
+		LinkedList<ClassdiagramsNodeDescriptor> result = new LinkedList<ClassdiagramsNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getStatemachines().iterator(); it.hasNext();) {
+			Statemachine childElement = (Statemachine) it.next();
+			int visualID = ClassdiagramsVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == StatemachineEditPart.VISUAL_ID) {
 				result.add(new ClassdiagramsNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -171,6 +201,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClass_2003ContainedLinks(view);
 		case ClassAttributeEditPart.VISUAL_ID:
 			return getClassAttribute_3022ContainedLinks(view);
+		case StatemachineEditPart.VISUAL_ID:
+			return getStatemachine_3025ContainedLinks(view);
 		case ClassMethodEditPart.VISUAL_ID:
 			return getClassMethod_3023ContainedLinks(view);
 		case ClassConstraintEditPart.VISUAL_ID:
@@ -190,6 +222,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClass_2003IncomingLinks(view);
 		case ClassAttributeEditPart.VISUAL_ID:
 			return getClassAttribute_3022IncomingLinks(view);
+		case StatemachineEditPart.VISUAL_ID:
+			return getStatemachine_3025IncomingLinks(view);
 		case ClassMethodEditPart.VISUAL_ID:
 			return getClassMethod_3023IncomingLinks(view);
 		case ClassConstraintEditPart.VISUAL_ID:
@@ -209,6 +243,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClass_2003OutgoingLinks(view);
 		case ClassAttributeEditPart.VISUAL_ID:
 			return getClassAttribute_3022OutgoingLinks(view);
+		case StatemachineEditPart.VISUAL_ID:
+			return getStatemachine_3025OutgoingLinks(view);
 		case ClassMethodEditPart.VISUAL_ID:
 			return getClassMethod_3023OutgoingLinks(view);
 		case ClassConstraintEditPart.VISUAL_ID:
@@ -243,6 +279,14 @@ public class ClassdiagramsDiagramUpdater {
 	 * @generated
 	 */
 	public static List<ClassdiagramsLinkDescriptor> getClassAttribute_3022ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static List<ClassdiagramsLinkDescriptor> getStatemachine_3025ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -288,6 +332,14 @@ public class ClassdiagramsDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static List<ClassdiagramsLinkDescriptor> getStatemachine_3025IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<ClassdiagramsLinkDescriptor> getClassMethod_3023IncomingLinks(View view) {
@@ -323,6 +375,14 @@ public class ClassdiagramsDiagramUpdater {
 	 * @generated
 	 */
 	public static List<ClassdiagramsLinkDescriptor> getClassAttribute_3022OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static List<ClassdiagramsLinkDescriptor> getStatemachine_3025OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

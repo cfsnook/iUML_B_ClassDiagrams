@@ -34,6 +34,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassNameEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorPlugin;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
@@ -116,6 +117,9 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 		case ClassConstraintEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?ClassConstraint", //$NON-NLS-1$
 					ClassdiagramsElementTypes.ClassConstraint_3024);
+		case StatemachineEditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/statemachines/2014?Statemachine", //$NON-NLS-1$
+					ClassdiagramsElementTypes.Statemachine_3025);
 		case AssociationEditPart.VISUAL_ID:
 			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2015?Association", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Association_4005);
@@ -190,6 +194,8 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 			return getClassMethod_3023Text(view);
 		case ClassConstraintEditPart.VISUAL_ID:
 			return getClassConstraint_3024Text(view);
+		case StatemachineEditPart.VISUAL_ID:
+			return getStatemachine_3025Text(view);
 		case AssociationEditPart.VISUAL_ID:
 			return getAssociation_4005Text(view);
 		case ClassSupertypesEditPart.VISUAL_ID:
@@ -247,6 +253,22 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 					ParserOptions.NONE.intValue());
 		} else {
 			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 3024); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getStatemachine_3025Text(View view) {
+		IParser parser = ClassdiagramsParserProvider.getParser(ClassdiagramsElementTypes.Statemachine_3025,
+				view.getElement() != null ? view.getElement() : view,
+				ClassdiagramsVisualIDRegistry.getType(StatemachineEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 3025); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

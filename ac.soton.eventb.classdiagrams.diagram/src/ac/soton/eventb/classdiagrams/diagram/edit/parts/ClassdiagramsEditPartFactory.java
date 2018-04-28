@@ -49,6 +49,9 @@ public class ClassdiagramsEditPartFactory implements EditPartFactory {
 			case ClassAttributeEditPart.VISUAL_ID:
 				return new ClassAttributeEditPart(view);
 
+			case StatemachineEditPart.VISUAL_ID:
+				return new StatemachineEditPart(view);
+
 			case ClassMethodEditPart.VISUAL_ID:
 				return new ClassMethodEditPart(view);
 
@@ -57,6 +60,9 @@ public class ClassdiagramsEditPartFactory implements EditPartFactory {
 
 			case ClassAttributesCompartmentEditPart.VISUAL_ID:
 				return new ClassAttributesCompartmentEditPart(view);
+
+			case StatemachinesCompartmentEditPart.VISUAL_ID:
+				return new StatemachinesCompartmentEditPart(view);
 
 			case ClassMethodsCompartmentEditPart.VISUAL_ID:
 				return new ClassMethodsCompartmentEditPart(view);

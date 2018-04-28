@@ -39,8 +39,10 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorPlugin;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBDataElaboration;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
  * @generated
@@ -83,6 +85,13 @@ public class ClassdiagramsElementTypes {
 	 */
 	public static final IElementType ClassAttribute_3022 = getElementType(
 			"ac.soton.eventb.classdiagrams.diagram.ClassAttribute_3022"); //$NON-NLS-1$
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static final IElementType Statemachine_3025 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.Statemachine_3025"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -185,6 +194,8 @@ public class ClassdiagramsElementTypes {
 
 			elements.put(ClassAttribute_3022, ClassdiagramsPackage.eINSTANCE.getClassAttribute());
 
+			elements.put(Statemachine_3025, StatemachinesPackage.eINSTANCE.getStatemachine());
+
 			elements.put(ClassMethod_3023, ClassdiagramsPackage.eINSTANCE.getClassMethod());
 
 			elements.put(ClassConstraint_3024, ClassdiagramsPackage.eINSTANCE.getClassConstraint());
@@ -212,6 +223,7 @@ public class ClassdiagramsElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Classdiagram_1000);
 			KNOWN_ELEMENT_TYPES.add(Class_2003);
 			KNOWN_ELEMENT_TYPES.add(ClassAttribute_3022);
+			KNOWN_ELEMENT_TYPES.add(Statemachine_3025);
 			KNOWN_ELEMENT_TYPES.add(ClassMethod_3023);
 			KNOWN_ELEMENT_TYPES.add(ClassConstraint_3024);
 			KNOWN_ELEMENT_TYPES.add(Association_4005);
@@ -231,6 +243,8 @@ public class ClassdiagramsElementTypes {
 			return Class_2003;
 		case ClassAttributeEditPart.VISUAL_ID:
 			return ClassAttribute_3022;
+		case StatemachineEditPart.VISUAL_ID:
+			return Statemachine_3025;
 		case ClassMethodEditPart.VISUAL_ID:
 			return ClassMethod_3023;
 		case ClassConstraintEditPart.VISUAL_ID:

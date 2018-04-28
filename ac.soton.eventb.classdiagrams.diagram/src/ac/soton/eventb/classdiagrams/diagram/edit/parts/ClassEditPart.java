@@ -142,6 +142,12 @@ public class ClassEditPart extends ShapeNodeEditPart {
 			pane.add(((ClassAttributesCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
+		if (childEditPart instanceof StatemachinesCompartmentEditPart) {
+			IFigure pane = getPrimaryShape().getFigureStatemachinesCompartmentFigure();
+			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
+			pane.add(((StatemachinesCompartmentEditPart) childEditPart).getFigure());
+			return true;
+		}
 		if (childEditPart instanceof ClassMethodsCompartmentEditPart) {
 			IFigure pane = getPrimaryShape().getFigureClassMethodsCompartmentFigure();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
@@ -167,6 +173,11 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof ClassAttributesCompartmentEditPart) {
 			IFigure pane = getPrimaryShape().getFigureClassAttributesCompartmentFigure();
 			pane.remove(((ClassAttributesCompartmentEditPart) childEditPart).getFigure());
+			return true;
+		}
+		if (childEditPart instanceof StatemachinesCompartmentEditPart) {
+			IFigure pane = getPrimaryShape().getFigureStatemachinesCompartmentFigure();
+			pane.remove(((StatemachinesCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof ClassMethodsCompartmentEditPart) {
@@ -208,6 +219,9 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		if (editPart instanceof ClassAttributesCompartmentEditPart) {
 			return getPrimaryShape().getFigureClassAttributesCompartmentFigure();
+		}
+		if (editPart instanceof StatemachinesCompartmentEditPart) {
+			return getPrimaryShape().getFigureStatemachinesCompartmentFigure();
 		}
 		if (editPart instanceof ClassMethodsCompartmentEditPart) {
 			return getPrimaryShape().getFigureClassMethodsCompartmentFigure();
@@ -323,6 +337,10 @@ public class ClassEditPart extends ShapeNodeEditPart {
 				return getChildBySemanticHint(
 						ClassdiagramsVisualIDRegistry.getType(ClassAttributesCompartmentEditPart.VISUAL_ID));
 			}
+			if (type == ClassdiagramsElementTypes.Statemachine_3025) {
+				return getChildBySemanticHint(
+						ClassdiagramsVisualIDRegistry.getType(StatemachinesCompartmentEditPart.VISUAL_ID));
+			}
 			if (type == ClassdiagramsElementTypes.ClassMethod_3023) {
 				return getChildBySemanticHint(
 						ClassdiagramsVisualIDRegistry.getType(ClassMethodsCompartmentEditPart.VISUAL_ID));
@@ -360,8 +378,12 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		 */
 		private RectangleFigure fFigureClassAttributesCompartmentFigure;
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
+		private RectangleFigure fFigureStatemachinesCompartmentFigure;
+		/**
+			 * @generated
+			 */
 		private RectangleFigure fFigureClassMethodsCompartmentFigure;
 		/**
 		 * @generated
@@ -377,7 +399,6 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		 */
 		public ClassFigure() {
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8), getMapMode().DPtoLP(8)));
-			this.setBackgroundColor(ColorConstants.lightGray);
 			createContents();
 		}
 
@@ -398,6 +419,13 @@ public class ClassEditPart extends ShapeNodeEditPart {
 			fFigureClassAttributesCompartmentFigure.setOutline(false);
 
 			this.add(fFigureClassAttributesCompartmentFigure);
+
+			fFigureStatemachinesCompartmentFigure = new RectangleFigure();
+
+			fFigureStatemachinesCompartmentFigure.setFill(false);
+			fFigureStatemachinesCompartmentFigure.setOutline(false);
+
+			this.add(fFigureStatemachinesCompartmentFigure);
 
 			fFigureClassMethodsCompartmentFigure = new RectangleFigure();
 
@@ -423,8 +451,16 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		 * @since 2.0
+		*/
+		public RectangleFigure getFigureStatemachinesCompartmentFigure() {
+			return fFigureStatemachinesCompartmentFigure;
+		}
+
+		/**
+			 * @generated
+			 */
 		public RectangleFigure getFigureClassMethodsCompartmentFigure() {
 			return fFigureClassMethodsCompartmentFigure;
 		}
