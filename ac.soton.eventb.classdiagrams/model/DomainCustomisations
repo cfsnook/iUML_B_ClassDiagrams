@@ -1,3 +1,23 @@
+
+**********************************************************************************************
+* ClassAttributeImpl - Class Attributes are usually total functions
+********************************************************************************************** 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Class Attributes are usually a required single valued for each instance. 
+	 * Therefore the default false values of the relation properties are overridden  with
+	 * total = true, functional = true
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected ClassAttributeImpl() {
+		super();
+		this.functional=true;
+		this.total=true;
+	}
+
+
 **********************************************************************************************
 * changed default extension id
 **********************************************************************************************
@@ -21,6 +41,9 @@
 	 * @ordered
 	 */
 	protected String extensionId = EXTENSION_ID_EDEFAULT+"."+EcoreUtil.generateUUID();
+
+
+
 
 **********************************************************************************************
 * in edit plugin.xml - 
