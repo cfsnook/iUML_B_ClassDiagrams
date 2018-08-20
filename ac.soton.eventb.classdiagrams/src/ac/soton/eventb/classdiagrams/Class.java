@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 20122018 - University of Southampton.
+ * Copyright (c) 2012-2018 - University of Southampton.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
  * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -30,6 +30,7 @@ import ac.soton.eventb.statemachines.StatemachineOwner;
  *   <li>{@link ac.soton.eventb.classdiagrams.Class#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.Class#getMethods <em>Methods</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.Class#getSelfName <em>Self Name</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.Class#getInstances <em>Instances</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,10 +38,10 @@ import ac.soton.eventb.statemachines.StatemachineOwner;
  * @model
  * @generated
  */
-public interface Class extends EventBNamedCommentedDataElaborationElement, ClassdiagramOwner, StatemachineOwner {
+public interface Class extends EventBNamedCommentedDataElaborationElement, EventBSuperType, ClassdiagramOwner, StatemachineOwner {
 	/**
 	 * Returns the value of the '<em><b>Supertypes</b></em>' reference list.
-	 * The list contents are of type {@link ac.soton.eventb.classdiagrams.Class}.
+	 * The list contents are of type {@link ac.soton.eventb.classdiagrams.EventBSuperType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Supertypes</em>' reference list isn't clear,
@@ -52,7 +53,7 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Class
 	 * @model
 	 * @generated
 	 */
-	EList<Class> getSupertypes();
+	EList<EventBSuperType> getSupertypes();
 
 	/**
 	 * Returns the value of the '<em><b>Class Attributes</b></em>' containment reference list.
@@ -190,4 +191,38 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Class
 	 */
 	void setSelfName(String value);
 
+	/**
+	 * Returns the value of the '<em><b>Instances</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Instances</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Instances</em>' attribute.
+	 * @see #setInstances(String)
+	 * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getClass_Instances()
+	 * @model
+	 * @generated
+	 */
+	String getInstances();
+
+	/**
+	 * Sets the value of the '{@link ac.soton.eventb.classdiagrams.Class#getInstances <em>Instances</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Instances</em>' attribute.
+	 * @see #getInstances()
+	 * @generated
+	 */
+	void setInstances(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated NOT
+	 */
+	public abstract ac.soton.eventb.classdiagrams.Class toSuperClass();
+	
 } // Class

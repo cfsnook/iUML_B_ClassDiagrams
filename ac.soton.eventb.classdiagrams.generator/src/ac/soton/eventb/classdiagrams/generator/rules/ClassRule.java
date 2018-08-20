@@ -22,6 +22,7 @@ import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
 import ac.soton.emf.translator.eventb.utils.Find;
 import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.classdiagrams.Class;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
@@ -46,7 +47,10 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		if (element.getSupertypes() != null && element.getSupertypes().size() > 0){
 			EventBNamedCommentedComponentElement sourceContainer = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
 			EventBNamedCommentedComponentElement targetContainer;
-			for (Class superClass : element.getSupertypes()){
+			for (EventBSuperType superType : element.getSupertypes()){
+				//note: other constraints such as disjoint and partitioned sub classes, must be handled by other rules. 
+				// Here we just handle simple subsets.
+				Class superClass = 	superType.toSuperClass();
 				int pri = subsetPriority(superClass);
 				targetContainer = sourceContainer ;				
 				if (sourceContainer instanceof Machine && elaborated instanceof Constant && !(superClass.getElaborates() instanceof Variable)){
@@ -97,7 +101,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 
 	/**
 	 * calculates the priority of this subset constraint (1 high, 10 low)
-	 * the priority must ensure that the superclass has got as type constraint with higher priority
+	 * the priority must ensure that the superclass has got a type constraint with higher priority
 	 * therefore we add one to the min distance (in supertype relations) of the supertype 
 	 * from a carrier set (or class with no supertypes). If a class with no supertypes was found we
 	 *  have to assume that the top class is defined in a context elsewhere.
@@ -105,16 +109,15 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	 * @param element
 	 * @return
 	 */
-	private int subsetPriority(Class element) {
-		Class c = element;
+	private int subsetPriority(Class c) {
 		if (c.getDataKind().equals(DataKind.SET)){
 			return 1;
 		}else if (c.getSupertypes().isEmpty()){
 			return 1;
 		}else{
 			Integer p = 10; //FIXME: There is a limit to the number of priorities we can use.
-			for (Class s : c.getSupertypes()){
-					int d = subsetPriority(s);
+			for (EventBSuperType st : c.getSupertypes()){
+					int d = subsetPriority(st.toSuperClass());
 					if (d<p) p = d;
 			}
 			return p+1;

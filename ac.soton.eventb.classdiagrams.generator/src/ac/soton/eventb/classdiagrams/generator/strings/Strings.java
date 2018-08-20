@@ -1,6 +1,7 @@
 package ac.soton.eventb.classdiagrams.generator.strings;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 import org.eclipse.osgi.util.NLS;
 import org.eventb.emf.core.EventBNamed;
@@ -57,6 +58,23 @@ public class Strings {
 	public static String CLASS_SUPERTYPE_NAME;
 	public static String CLASS_SUPERTYPE_NAME(Class cp, Class sc) {
 		return bind(CLASS_SUPERTYPE_NAME, cp.getName(), sc.getName());
+	}
+	
+	public static String SUBTYPEGROUP_NAME;
+	public static String SUBTYPEGROUP_NAME(String name) {
+		return bind(SUBTYPEGROUP_NAME, name);
+	}
+	
+	public static String SUBTYPEGROUP_PARTITION_PRED;
+	public static String SUBTYPEGROUP_PARTITION_PRED(String superSetName, List<String>subtypeNames) {
+		String subsets = subtypeNames.toString();
+		subsets = subsets.substring(1, subsets.length()-1);
+		return bind(SUBTYPEGROUP_PARTITION_PRED, superSetName, subsets);
+	}
+
+	public static String SUBTYPEGROUP_UNION_PRED;
+	public static String SUBTYPEGROUP_UNION_PRED(String superSetName, String expression) {
+		return bind(SUBTYPEGROUP_UNION_PRED, superSetName, expression);
 	}
 	
 	public static String ASSOCIATION_PRED;
@@ -301,4 +319,5 @@ public class Strings {
 				name, 
 				selfName);
 	}
+
 }

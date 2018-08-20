@@ -24,6 +24,7 @@ import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.MethodKind;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,6 +76,7 @@ public class ClassdiagramsFactoryImpl extends EFactoryImpl implements Classdiagr
 			case ClassdiagramsPackage.CLASS: return createClass();
 			case ClassdiagramsPackage.CLASS_METHOD: return createClassMethod();
 			case ClassdiagramsPackage.CLASS_CONSTRAINT: return createClassConstraint();
+			case ClassdiagramsPackage.SUBTYPE_GROUP: return createSubtypeGroup();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -168,6 +170,16 @@ public class ClassdiagramsFactoryImpl extends EFactoryImpl implements Classdiagr
 	public ClassConstraint createClassConstraint() {
 		ClassConstraintImpl classConstraint = new ClassConstraintImpl();
 		return classConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SubtypeGroup createSubtypeGroup() {
+		SubtypeGroupImpl subtypeGroup = new SubtypeGroupImpl();
+		return subtypeGroup;
 	}
 
 	/**

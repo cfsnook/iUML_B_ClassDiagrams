@@ -30,6 +30,7 @@ import ac.soton.eventb.classdiagrams.ClassMethod;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramOwner;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
 import ac.soton.eventb.emf.core.extension.coreextension.impl.EventBNamedCommentedDataElaborationElementImpl;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -53,6 +54,7 @@ import ac.soton.eventb.statemachines.StatemachinesPackage;
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getMethods <em>Methods</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getSelfName <em>Self Name</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getInstances <em>Instances</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,7 +68,6 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * @see #getClassdiagrams()
 	 * @generated
 	 * @ordered
-	 * @since 2.0
 	 */
 	protected EList<Classdiagram> classdiagrams;
 
@@ -77,7 +78,6 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * @see #getStatemachines()
 	 * @generated
 	 * @ordered
-	 * @since 2.0
 	 */
 	protected EList<Statemachine> statemachines;
 
@@ -89,7 +89,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ac.soton.eventb.classdiagrams.Class> supertypes;
+	protected EList<EventBSuperType> supertypes;
 
 	/**
 	 * The cached value of the '{@link #getClassAttributes() <em>Class Attributes</em>}' containment reference list.
@@ -172,6 +172,26 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	protected String selfName = SELF_NAME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getInstances() <em>Instances</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstances()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INSTANCES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInstances() <em>Instances</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstances()
+	 * @generated
+	 * @ordered
+	 */
+	protected String instances = INSTANCES_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -219,9 +239,9 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ac.soton.eventb.classdiagrams.Class> getSupertypes() {
+	public EList<EventBSuperType> getSupertypes() {
 		if (supertypes == null) {
-			supertypes = new EObjectResolvingEList<ac.soton.eventb.classdiagrams.Class>(ac.soton.eventb.classdiagrams.Class.class, this, ClassdiagramsPackage.CLASS__SUPERTYPES);
+			supertypes = new EObjectResolvingEList<EventBSuperType>(EventBSuperType.class, this, ClassdiagramsPackage.CLASS__SUPERTYPES);
 		}
 		return supertypes;
 	}
@@ -359,6 +379,39 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getInstances() {
+		return instances;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInstances(String newInstances) {
+		String oldInstances = instances;
+		instances = newInstances;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClassdiagramsPackage.CLASS__INSTANCES, oldInstances, instances));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * If this class is used as an EventBSuperType then this method will return the 
+	 * class it represents.. i.e. itself
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public ac.soton.eventb.classdiagrams.Class toSuperClass() {
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -426,6 +479,8 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return getMethods();
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
 				return getSelfName();
+			case ClassdiagramsPackage.CLASS__INSTANCES:
+				return getInstances();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -449,7 +504,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return;
 			case ClassdiagramsPackage.CLASS__SUPERTYPES:
 				getSupertypes().clear();
-				getSupertypes().addAll((Collection<? extends ac.soton.eventb.classdiagrams.Class>)newValue);
+				getSupertypes().addAll((Collection<? extends EventBSuperType>)newValue);
 				return;
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
 				getClassAttributes().clear();
@@ -476,6 +531,9 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return;
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
 				setSelfName((String)newValue);
+				return;
+			case ClassdiagramsPackage.CLASS__INSTANCES:
+				setInstances((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -519,6 +577,9 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
 				setSelfName(SELF_NAME_EDEFAULT);
 				return;
+			case ClassdiagramsPackage.CLASS__INSTANCES:
+				setInstances(INSTANCES_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -551,6 +612,8 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return methods != null && !methods.isEmpty();
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
 				return SELF_NAME_EDEFAULT == null ? selfName != null : !SELF_NAME_EDEFAULT.equals(selfName);
+			case ClassdiagramsPackage.CLASS__INSTANCES:
+				return INSTANCES_EDEFAULT == null ? instances != null : !INSTANCES_EDEFAULT.equals(instances);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -562,6 +625,11 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == EventBSuperType.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == ClassdiagramOwner.class) {
 			switch (derivedFeatureID) {
 				case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS: return ClassdiagramsPackage.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS;
@@ -584,6 +652,11 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == EventBSuperType.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == ClassdiagramOwner.class) {
 			switch (baseFeatureID) {
 				case ClassdiagramsPackage.CLASSDIAGRAM_OWNER__CLASSDIAGRAMS: return ClassdiagramsPackage.CLASS__CLASSDIAGRAMS;
@@ -611,6 +684,8 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (selfName: ");
 		result.append(selfName);
+		result.append(", instances: ");
+		result.append(instances);
 		result.append(')');
 		return result.toString();
 	}

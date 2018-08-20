@@ -247,6 +247,29 @@ public class ClassdiagramsItemProviderAdapterFactory extends ClassdiagramsAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ac.soton.eventb.classdiagrams.SubtypeGroup} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubtypeGroupItemProvider subtypeGroupItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ac.soton.eventb.classdiagrams.SubtypeGroup}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubtypeGroupAdapter() {
+		if (subtypeGroupItemProvider == null) {
+			subtypeGroupItemProvider = new SubtypeGroupItemProvider(this);
+		}
+
+		return subtypeGroupItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,6 +401,7 @@ public class ClassdiagramsItemProviderAdapterFactory extends ClassdiagramsAdapte
 		if (classItemProvider != null) classItemProvider.dispose();
 		if (classMethodItemProvider != null) classMethodItemProvider.dispose();
 		if (classConstraintItemProvider != null) classConstraintItemProvider.dispose();
+		if (subtypeGroupItemProvider != null) subtypeGroupItemProvider.dispose();
 	}
 
 	/**
@@ -588,6 +612,14 @@ public class ClassdiagramsItemProviderAdapterFactory extends ClassdiagramsAdapte
 						(createChildParameter
 							(CorePackage.Literals.ANNOTATION__CONTENTS,
 							 ClassdiagramsFactory.eINSTANCE.createClassConstraint()));
+
+				
+				annotation = ClassdiagramsPackage.Literals.SUBTYPE_GROUP.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
+				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
+					newChildDescriptors.add
+						(createChildParameter
+							(CorePackage.Literals.ANNOTATION__CONTENTS,
+							 ClassdiagramsFactory.eINSTANCE.createSubtypeGroup()));
 
 				return null;
 			}

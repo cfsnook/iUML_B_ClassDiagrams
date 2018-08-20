@@ -100,6 +100,11 @@
                rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassMethodDestructorRule"
                source_class="ClassMethod">
          </rule>
+         <rule
+               name="SubtypeGroupRule"
+               rule_class="ac.soton.eventb.classdiagrams.generator.rules.SubtypeGroupRule"
+               source_class="SubtypeGroup">
+         </rule>
       </ruleset>
    </extension>
    

@@ -33,6 +33,8 @@ import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramOwner;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.EventBInitialisable;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBCommentedLabeledElement;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBCommentedLabeledEventGroupElement;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBDataElaboration;
@@ -131,6 +133,14 @@ public class ClassdiagramsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEventBInitialisable(EventBInitialisable object) {
 				return createEventBInitialisableAdapter();
+			}
+			@Override
+			public Adapter caseSubtypeGroup(SubtypeGroup object) {
+				return createSubtypeGroupAdapter();
+			}
+			@Override
+			public Adapter caseEventBSuperType(EventBSuperType object) {
+				return createEventBSuperTypeAdapter();
 			}
 			@Override
 			public Adapter caseEventBObject(EventBObject object) {
@@ -345,6 +355,34 @@ public class ClassdiagramsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventBInitialisableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ac.soton.eventb.classdiagrams.SubtypeGroup <em>Subtype Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup
+	 * @generated
+	 */
+	public Adapter createSubtypeGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ac.soton.eventb.classdiagrams.EventBSuperType <em>Event BSuper Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ac.soton.eventb.classdiagrams.EventBSuperType
+	 * @generated
+	 */
+	public Adapter createEventBSuperTypeAdapter() {
 		return null;
 	}
 

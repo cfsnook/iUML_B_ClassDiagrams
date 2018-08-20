@@ -27,6 +27,7 @@ import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
 import ac.soton.eventb.classdiagrams.Association;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.emf.diagrams.Diagram;
 
 /**
@@ -40,6 +41,7 @@ import ac.soton.eventb.emf.diagrams.Diagram;
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassdiagramImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassdiagramImpl#getAssociations <em>Associations</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassdiagramImpl#getRefines <em>Refines</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassdiagramImpl#getSubtypeGroups <em>Subtype Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,6 +97,16 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 	 * @ordered
 	 */
 	protected Classdiagram refines;
+
+	/**
+	 * The cached value of the '{@link #getSubtypeGroups() <em>Subtype Groups</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubtypeGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected SubtypeGroup subtypeGroups;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,6 +215,72 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SubtypeGroup getSubtypeGroups() {
+		if (subtypeGroups != null && subtypeGroups.eIsProxy()) {
+			InternalEObject oldSubtypeGroups = (InternalEObject)subtypeGroups;
+			subtypeGroups = (SubtypeGroup)eResolveProxy(oldSubtypeGroups);
+			if (subtypeGroups != oldSubtypeGroups) {
+				InternalEObject newSubtypeGroups = (InternalEObject)subtypeGroups;
+				NotificationChain msgs = oldSubtypeGroups.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, null, null);
+				if (newSubtypeGroups.eInternalContainer() == null) {
+					msgs = newSubtypeGroups.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, oldSubtypeGroups, subtypeGroups));
+			}
+		}
+		return subtypeGroups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SubtypeGroup basicGetSubtypeGroups() {
+		return subtypeGroups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSubtypeGroups(SubtypeGroup newSubtypeGroups, NotificationChain msgs) {
+		SubtypeGroup oldSubtypeGroups = subtypeGroups;
+		subtypeGroups = newSubtypeGroups;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, oldSubtypeGroups, newSubtypeGroups);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubtypeGroups(SubtypeGroup newSubtypeGroups) {
+		if (newSubtypeGroups != subtypeGroups) {
+			NotificationChain msgs = null;
+			if (subtypeGroups != null)
+				msgs = ((InternalEObject)subtypeGroups).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, null, msgs);
+			if (newSubtypeGroups != null)
+				msgs = ((InternalEObject)newSubtypeGroups).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, null, msgs);
+			msgs = basicSetSubtypeGroups(newSubtypeGroups, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS, newSubtypeGroups, newSubtypeGroups));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -210,6 +288,8 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 				return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
 			case ClassdiagramsPackage.CLASSDIAGRAM__ASSOCIATIONS:
 				return ((InternalEList<?>)getAssociations()).basicRemove(otherEnd, msgs);
+			case ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS:
+				return basicSetSubtypeGroups(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -231,6 +311,9 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 			case ClassdiagramsPackage.CLASSDIAGRAM__REFINES:
 				if (resolve) return getRefines();
 				return basicGetRefines();
+			case ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS:
+				if (resolve) return getSubtypeGroups();
+				return basicGetSubtypeGroups();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -258,6 +341,9 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 			case ClassdiagramsPackage.CLASSDIAGRAM__REFINES:
 				setRefines((Classdiagram)newValue);
 				return;
+			case ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS:
+				setSubtypeGroups((SubtypeGroup)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -282,6 +368,9 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 			case ClassdiagramsPackage.CLASSDIAGRAM__REFINES:
 				setRefines((Classdiagram)null);
 				return;
+			case ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS:
+				setSubtypeGroups((SubtypeGroup)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -302,6 +391,8 @@ public class ClassdiagramImpl extends EventBNamedCommentedElementImpl implements
 				return associations != null && !associations.isEmpty();
 			case ClassdiagramsPackage.CLASSDIAGRAM__REFINES:
 				return refines != null;
+			case ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS:
+				return subtypeGroups != null;
 		}
 		return super.eIsSet(featureID);
 	}
