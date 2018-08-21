@@ -9,6 +9,7 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
+import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
@@ -44,7 +45,8 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	@Override
 	public List<TranslationDescriptor> fire(EObject sourceElement, List<TranslationDescriptor> generatedElements) throws Exception {
 		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
-	
+		EventBNamedCommentedComponentElement targetContainer;
+		
 		// generate supertype invariants/axioms
 		Class element = (Class)sourceElement;
 		EventBElement elaborated = (EventBElement) element.getElaborates();
@@ -55,7 +57,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 				Class superClass = 	superType.toSuperClass();
 				int pri = subsetPriority(superClass);
 				
-				EventBNamedCommentedComponentElement targetContainer = getTargetContainer(superClass, element);				
+				targetContainer = getTargetContainer(element, superClass);				
 				if (targetContainer instanceof Machine){
 					ret.add(Make.descriptor(targetContainer, invariants, Make.invariant(
 							Strings.CLASS_SUPERTYPE_NAME(element, superClass), 
@@ -67,6 +69,30 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 				}
 			}	
 		}
+		
+		String instances = element.getInstances();
+		if (instances!=null) instances = instances.trim();
+		targetContainer = getTargetContainer(element, null);
+		//for constant instance classes, initialise the instances set
+		if (elaborated instanceof Constant && instances!=null && instances.length()>0){
+			if (instances.startsWith("{") && instances.endsWith("}")) {
+				//instances = instances.substring(1, instances.length()-1);
+				instances = instances.replaceAll(" ", "");
+				String[] instanceNames = instances.split("[,{}]");
+				instances = instances.replaceAll(",", "},{");
+				for (String iname : instanceNames) {
+					if (iname.length()>0) {
+					//create a constant
+					ret.add(Make.descriptor(targetContainer, constants, Make.constant(iname, "instance of class "+element.getName()), 10));	
+					}
+				}
+				// create the partition axiom
+				ret.add(Make.descriptor(targetContainer, axioms, Make.axiom(
+						Strings.ENUMERATION_NAME(element), 
+						Strings.ENUMERATION_PRED(element, instances), element.getComment()), 10));	
+			}
+		}
+		
 		//for variable instance classes, initialise the instances set to empty
 		if (elaborated instanceof Variable){
 			Event initialisationEvent = (Event) Find.named(
@@ -81,6 +107,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 							Strings.EMPTY_INITIALISATION_ACTION_EXPR((EventBNamed)sourceElement))
 					, 5));
 		}
+		
 		return ret;
 	}
 
@@ -98,12 +125,12 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	 * @param 
 	 * @return
 	 */
-	private EventBNamedCommentedComponentElement getTargetContainer(Class superClass, Class subClass) {
+	private EventBNamedCommentedComponentElement getTargetContainer(Class class_, Class superClass) {
 		//get the components that contain the elaborated data elements
 		List<EventBElement> elements = new ArrayList<EventBElement>();
-		elements.add((EventBElement) subClass.getElaborates());
-		elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
-		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) subClass.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+		elements.add((EventBElement) class_.getElaborates());
+		if (superClass!= null) elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
+		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) class_.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
 	}
 	
 	/**

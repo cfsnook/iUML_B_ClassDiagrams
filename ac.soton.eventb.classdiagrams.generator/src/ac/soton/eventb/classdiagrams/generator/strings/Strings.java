@@ -77,6 +77,16 @@ public class Strings {
 		return bind(SUBTYPEGROUP_UNION_PRED, superSetName, expression);
 	}
 	
+	public static String ENUMERATION_NAME;
+	public static String ENUMERATION_NAME(Class class_) {
+		return bind(ENUMERATION_NAME, class_.getName());
+	}
+
+	public static String ENUMERATION_PRED;
+	public static String ENUMERATION_PRED(Class class_, String instances) {
+		return bind(ENUMERATION_PRED, class_.getName(), instances);
+	}
+	
 	public static String ASSOCIATION_PRED;
 
 	public static String ASSOCIATION_PRED(Association element) {
