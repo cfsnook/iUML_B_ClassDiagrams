@@ -9,7 +9,6 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
-import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
@@ -27,6 +26,11 @@ import ac.soton.eventb.classdiagrams.generator.strings.Strings;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
 
+/**
+ * Generator rule for iUML-B Class
+ * 
+ * 
+ */
 public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	
 	protected static final EReference elaborates = CoreextensionPackage.Literals.EVENT_BDATA_ELABORATION__ELABORATES;
@@ -45,21 +49,13 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		Class element = (Class)sourceElement;
 		EventBElement elaborated = (EventBElement) element.getElaborates();
 		if (element.getSupertypes() != null && element.getSupertypes().size() > 0){
-			EventBNamedCommentedComponentElement sourceContainer = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
-			EventBNamedCommentedComponentElement targetContainer;
+						
 			for (EventBSuperType superType : element.getSupertypes()){
-				//note: other constraints such as disjoint and partitioned sub classes, must be handled by other rules. 
-				// Here we just handle simple subsets.
+				//note: other constraints such as disjoint and partitioned sub classes, must be handled by other rules. Here we just handle simple subsets.
 				Class superClass = 	superType.toSuperClass();
 				int pri = subsetPriority(superClass);
-				targetContainer = sourceContainer ;				
-				if (sourceContainer instanceof Machine && elaborated instanceof Constant && !(superClass.getElaborates() instanceof Variable)){
-					for (Context ctx : ((Machine)sourceContainer).getSees()){
-						if (sees(ctx,elaborated) && sees(ctx,(EventBElement) superClass.getElaborates())) {
-							targetContainer = ctx;
-						};
-					}
-				}
+				
+				EventBNamedCommentedComponentElement targetContainer = getTargetContainer(superClass, element);				
 				if (targetContainer instanceof Machine){
 					ret.add(Make.descriptor(targetContainer, invariants, Make.invariant(
 							Strings.CLASS_SUPERTYPE_NAME(element, superClass), 
@@ -87,18 +83,29 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		}
 		return ret;
 	}
-	
-	private boolean sees(Context ctx, EventBElement el) {
-		if (ctx.getConstants().contains(el) || ctx.getSets().contains(el)){
-			return true;
-		}else{
-			for (Context ectx : ctx.getExtends()){
-				if (sees(ectx, el)) return true;
-			}
-		}
-		return false;
-	}
 
+	/**
+	 * Returns a suitable component to put the constraint predicate for this supertype in.
+	 * 
+	 * starting from the source container, 
+	 * searches down the hierarchy of in-scope components (sees and extends)
+	 * until a component is found that contains one of the elaborated data elements.
+	 * If all other components are in scope of this component, it is return.
+	 * 
+	 * If no such component can be found, the source container is returned.
+	 * 
+	 * 
+	 * @param 
+	 * @return
+	 */
+	private EventBNamedCommentedComponentElement getTargetContainer(Class superClass, Class subClass) {
+		//get the components that contain the elaborated data elements
+		List<EventBElement> elements = new ArrayList<EventBElement>();
+		elements.add((EventBElement) subClass.getElaborates());
+		elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
+		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) subClass.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+	}
+	
 	/**
 	 * calculates the priority of this subset constraint (1 high, 10 low)
 	 * the priority must ensure that the superclass has got a type constraint with higher priority
