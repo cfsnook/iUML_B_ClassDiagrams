@@ -3,24 +3,17 @@ package ac.soton.eventb.classdiagrams.generator.rules;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
-import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
-import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.MachinePackage;
-import org.eventb.emf.core.machine.Variable;
 
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
-import ac.soton.emf.translator.eventb.utils.Find;
 import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.EventBSuperType;
@@ -28,6 +21,12 @@ import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
+
+/**
+ * Generator rule for iUML-B SubtypeGroup
+ * 
+ * 
+ */
 
 public class SubtypeGroupRule  extends AbstractEventBGeneratorRule  implements IRule {
 	
@@ -89,33 +88,29 @@ public class SubtypeGroupRule  extends AbstractEventBGeneratorRule  implements I
 	}
 
 	/**
-	 * returns a suitable component to put the constraint predicate for this supertypeGroup in
+	 * Returns a suitable component to put the constraint predicate for this supertypeGroup in.
+	 * 
+	 * starting from the source container (that contains the subtypeGroup, 
+	 * searches down the hierarchy of in-scope components (sees and extends)
+	 * until a component is found that contains one of the elaborated data elements.
+	 * If all other components are in scope of this component, it is return.
+	 * 
+	 * If no such component can be found, the source container is returned.
+	 * 
 	 * 
 	 * @param subtypeGroup
 	 * @return
 	 */
 	private EventBNamedCommentedComponentElement getTargetContainer(SubtypeGroup subtypeGroup) {
-		EventBNamedCommentedComponentElement sourceContainer = (EventBNamedCommentedComponentElement) subtypeGroup.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
-		EventBNamedCommentedComponentElement targetContainer = sourceContainer ;
-		
+		//get the components that contain the elaborated data elements
+		List<EventBElement> elements = new ArrayList<EventBElement>();
 		for (Class c : subtypeGroup.getSubtypes()) {
-			EventBElement elaborated = (EventBElement) c.getElaborates();
-			EventBNamedCommentedComponentElement cont = (EventBNamedCommentedComponentElement) elaborated.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
-			if (cont instanceof Machine) return cont;
+			elements.add((EventBElement) c.getElaborates());
 		}
-		//TODO: if no classes elaborate variables, find the 'lowest' context
-		
-//		if (sourceContainer instanceof Machine && elaborated instanceof Constant && !(superClass.getElaborates() instanceof Variable)){
-//			for (Context ctx : ((Machine)sourceContainer).getSees()){
-//				if (sees(ctx,elaborated) && sees(ctx,(EventBElement) superClass.getElaborates())) {
-//					targetContainer = ctx;
-//				};
-//			}
-//		}
-
-		return targetContainer;
+		elements.add((EventBElement) subtypeGroup.getClass_().getElaborates()); //the supertype must also be in scope 
+		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) subtypeGroup.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
 	}
-
+	
 	/**
 	 * returns a string expression giving the union of the given list of names
 	 * @param subtypeNames
