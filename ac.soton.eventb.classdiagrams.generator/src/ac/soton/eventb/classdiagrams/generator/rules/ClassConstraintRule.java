@@ -37,12 +37,14 @@ public class ClassConstraintRule extends AbstractEventBGeneratorRule  implements
 		ClassConstraint element = (ClassConstraint)sourceElement;
 		Class parentClass = (Class) element.eContainer();
 		String instances = parentClass.getElaborates() == null? "("+parentClass.getName()+")" : parentClass.getElaborates().getName();
-		EventBNamedCommentedComponentElement component = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);		
 
 		//create element
 		EventBElement newGeneratedPredicateElement = null;
 		EReference newGeneratedPredicateContainmentFeature = null;
 		String predicate = Strings.CLASS_CONSTRAINT_PRED(parentClass.getSelfName(), instances, element.getPredicate());
+
+		EventBNamedCommentedComponentElement component = element.getComponent();
+		if (component==null) component = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);		
 
 		if (component instanceof Machine){
 			newGeneratedPredicateContainmentFeature = invariants;
