@@ -18,7 +18,7 @@ import ac.soton.eventb.emf.diagrams.sheet.AbstractTextPropertySection;
 import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 
 /**
- * SelfName property section for Class.
+ * InitialValue property section for Associations and Attributes.
  * 
  * @author cfs
  *
