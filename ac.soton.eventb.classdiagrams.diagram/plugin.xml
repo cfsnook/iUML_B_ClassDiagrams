@@ -856,6 +856,14 @@ http://www.eclipse.org/legal/epl-v10.html
          </propertySection>
          <propertySection
                afterSection="property.section.selfname"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.InstancesPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.InstancesPropertySection$Filter"
+               id="property.section.instances"
+               tab="property.tab.overview">
+         </propertySection>  
+         <propertySection
+               afterSection="property.section.instances"
                class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ClassAttributeTargetSection"
                enablesFor="1"
                filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ClassdiagramsSheetPropertyFilter$ClassAttributeFilter"
@@ -936,8 +944,17 @@ http://www.eclipse.org/legal/epl-v10.html
                id="property.section.refinesClassSection"
                tab="property.tab.overview">
          </propertySection> 
+         
          <propertySection
-               afterSection="property.section.refinesClassPropertySection"
+               afterSection="property.section.name"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ConstraintContainerPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ConstraintContainerPropertySection$Filter"
+               id="property.section.component"
+               tab="property.tab.overview">
+         </propertySection>
+         <propertySection
+               afterSection="property.section.component"
                class="ac.soton.eventb.emf.diagrams.sheet.PredicatePropertySection"
                enablesFor="1"
                filter="ac.soton.eventb.emf.diagrams.sheet.PredicatePropertySection$Filter"
@@ -952,7 +969,8 @@ http://www.eclipse.org/legal/epl-v10.html
                id="property.section.theorem"
                tab="property.tab.overview">
          </propertySection>
-         
+
+            
           <propertySection
                afterSection="property.section.theorem"
                class="ac.soton.eventb.emf.diagrams.sheet.ElaboratesPropertySection"
