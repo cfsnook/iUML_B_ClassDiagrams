@@ -703,7 +703,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 */
 	@Override
 	public String getName() { 
-		if (getRefines()!=null) {
+		if (getRefines()!=null && getRefines()!=this) {
 			return getRefines().getName();
 		}
 		return super.getName();
