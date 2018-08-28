@@ -970,9 +970,24 @@ http://www.eclipse.org/legal/epl-v10.html
                tab="property.tab.overview">
          </propertySection>
 
-            
+         <propertySection
+               afterSection="property.section.label"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.RefinesMethodPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.RefinesMethodPropertySection$Filter"
+               id="property.section.refinesMethod"
+               tab="property.tab.overview">
+         </propertySection>
+         <propertySection
+               afterSection="property.section.refinesMethod"
+               class="ac.soton.eventb.emf.diagrams.sheet.ExtendedPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.emf.diagrams.sheet.ExtendedPropertySection$Filter"
+               id="property.section.methodExtended"
+               tab="property.tab.overview">
+         </propertySection>
           <propertySection
-               afterSection="property.section.theorem"
+               afterSection="property.section.methodExtended"
                class="ac.soton.eventb.emf.diagrams.sheet.ElaboratesPropertySection"
                enablesFor="1"
                filter="ac.soton.eventb.emf.diagrams.sheet.ElaboratesPropertySection$Filter"
