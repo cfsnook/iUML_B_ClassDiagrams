@@ -171,7 +171,8 @@ public class ClassdiagramsElementTypes {
 				return IMAGE_THEOREM;
 			}
 			elementType = ((ClassConstraint) element).getContaining(ContextPackage.Literals.CONTEXT) == null
-					? MachinePackage.Literals.INVARIANT : ContextPackage.Literals.AXIOM;
+					? MachinePackage.Literals.INVARIANT
+					: ContextPackage.Literals.AXIOM;
 		}
 		return getImage(elementType);
 	}
