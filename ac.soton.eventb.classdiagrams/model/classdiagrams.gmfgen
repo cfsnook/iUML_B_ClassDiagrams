@@ -650,7 +650,7 @@
         xsi:type="gmfgen:GenExpressionInterpreter">
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self &lt;> oppositeEnd and not self->closure(supertypes)->includes(oppositeEnd)"/>
+          body="self &lt;> oppositeEnd and not self->closure(self.toSuperClass().supertypes)->includes(oppositeEnd)"/>
     </providers>
   </expressionProviders>
   <labelParsers

@@ -16,6 +16,7 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 
 import ac.soton.eventb.classdiagrams.Class;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.diagram.edit.policies.ClassdiagramsBaseItemSemanticEditPolicy;
 
 /**
@@ -52,7 +53,7 @@ public class ClassSupertypesCreateCommand extends EditElementCommand {
 		if (source != null && false == source instanceof Class) {
 			return false;
 		}
-		if (target != null && false == target instanceof Class) {
+		if (target != null && false == target instanceof EventBSuperType) {
 			return false;
 		}
 		if (getSource() == null) {
@@ -95,7 +96,7 @@ public class ClassSupertypesCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected Class getTarget() {
-		return (Class) target;
+	protected EventBSuperType getTarget() {
+		return (EventBSuperType) target;
 	}
 }

@@ -27,6 +27,7 @@ import ac.soton.eventb.classdiagrams.ClassConstraint;
 import ac.soton.eventb.classdiagrams.ClassMethod;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributeEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributesCompartmentEditPart;
@@ -454,10 +455,10 @@ public class ClassdiagramsDiagramUpdater {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static Collection<ClassdiagramsLinkDescriptor> getIncomingFeatureModelFacetLinks_Class_Supertypes_4006(
-			Class target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+			EventBSuperType target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<ClassdiagramsLinkDescriptor> result = new LinkedList<ClassdiagramsLinkDescriptor>();
 		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
@@ -514,7 +515,7 @@ public class ClassdiagramsDiagramUpdater {
 			Class source) {
 		LinkedList<ClassdiagramsLinkDescriptor> result = new LinkedList<ClassdiagramsLinkDescriptor>();
 		for (Iterator<?> destinations = source.getSupertypes().iterator(); destinations.hasNext();) {
-			Class destination = (Class) destinations.next();
+			EventBSuperType destination = (EventBSuperType) destinations.next();
 			result.add(new ClassdiagramsLinkDescriptor(source, destination,
 					ClassdiagramsElementTypes.ClassSupertypes_4006, ClassSupertypesEditPart.VISUAL_ID));
 		}

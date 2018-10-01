@@ -46,6 +46,7 @@ import ac.soton.eventb.classdiagrams.Association;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.diagram.edit.helpers.ClassdiagramsBaseEditHelper;
 import ac.soton.eventb.classdiagrams.diagram.expressions.ClassdiagramsOCLFactory;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorPlugin;
@@ -132,7 +133,8 @@ public class ClassdiagramsBaseItemSemanticEditPolicy extends SemanticEditPolicy 
 	private Command getEditHelperCommand(IEditCommandRequest request, Command editPolicyCommand) {
 		if (editPolicyCommand != null) {
 			ICommand command = editPolicyCommand instanceof ICommandProxy
-					? ((ICommandProxy) editPolicyCommand).getICommand() : new CommandProxy(editPolicyCommand);
+					? ((ICommandProxy) editPolicyCommand).getICommand()
+					: new CommandProxy(editPolicyCommand);
 			request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND, command);
 		}
 		IElementType requestContextElementType = getContextElementType(request);
@@ -326,9 +328,9 @@ public class ClassdiagramsBaseItemSemanticEditPolicy extends SemanticEditPolicy 
 		}
 
 		/**
-		 * @generated
-		 */
-		public boolean canCreateClassSupertypes_4006(Class source, Class target) {
+		* @generated
+		*/
+		public boolean canCreateClassSupertypes_4006(Class source, EventBSuperType target) {
 			if (source != null) {
 				if (source.getSupertypes().contains(target)) {
 					return false;
@@ -339,17 +341,17 @@ public class ClassdiagramsBaseItemSemanticEditPolicy extends SemanticEditPolicy 
 		}
 
 		/**
-		 * @generated
-		 */
+			 * @generated
+			 */
 		public boolean canExistAssociation_4005(Classdiagram container, Association linkInstance, Class source,
 				Class target) {
 			return true;
 		}
 
 		/**
-		 * @generated
-		 */
-		public boolean canExistClassSupertypes_4006(Class source, Class target) {
+		* @generated
+		*/
+		public boolean canExistClassSupertypes_4006(Class source, EventBSuperType target) {
 			try {
 				if (target == null) {
 					return true;
@@ -357,7 +359,7 @@ public class ClassdiagramsBaseItemSemanticEditPolicy extends SemanticEditPolicy 
 					Map<String, EClassifier> env = Collections.<String, EClassifier>singletonMap("oppositeEnd", //$NON-NLS-1$
 							ClassdiagramsPackage.eINSTANCE.getClass_());
 					Object targetVal = ClassdiagramsOCLFactory
-							.getExpression(0, ClassdiagramsPackage.eINSTANCE.getClass_(), env)
+							.getExpression(0, ClassdiagramsPackage.eINSTANCE.getEventBSuperType(), env)
 							.evaluate(target, Collections.singletonMap("oppositeEnd", source)); //$NON-NLS-1$
 					if (false == targetVal instanceof Boolean || !((Boolean) targetVal).booleanValue()) {
 						return false;

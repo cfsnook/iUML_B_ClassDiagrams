@@ -46,7 +46,7 @@ public class ClassdiagramsOCLFactory {
 	protected ClassdiagramsOCLFactory() {
 		this.expressions = new ClassdiagramsAbstractExpression[1];
 		this.expressionBodies = new String[] {
-				"self <> oppositeEnd and not self->closure(supertypes)->includes(oppositeEnd)", //$NON-NLS-1$
+				"self <> oppositeEnd and not self->closure(self.toSuperClass().supertypes)->includes(oppositeEnd)", //$NON-NLS-1$
 		};
 	}
 

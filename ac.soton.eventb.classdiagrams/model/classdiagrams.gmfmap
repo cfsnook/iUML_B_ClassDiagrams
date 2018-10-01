@@ -217,7 +217,7 @@
         href="classdiagrams.ecore#//Class/supertypes"/>
     <creationConstraints>
       <targetEnd
-          body="self &lt;> oppositeEnd and not self->closure(supertypes)->includes(oppositeEnd)"/>
+          body="self &lt;> oppositeEnd and not self->closure(self.toSuperClass().supertypes)->includes(oppositeEnd)"/>
     </creationConstraints>
   </links>
   <diagram>
