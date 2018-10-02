@@ -559,11 +559,11 @@ public class ClassdiagramsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see ac.soton.eventb.statemachines.StatemachineOwner
 	 * @generated
-	 * @since 2.0
 	 */
 	public Adapter createStatemachineOwnerAdapter() {
 		return null;
