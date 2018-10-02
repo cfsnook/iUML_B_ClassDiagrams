@@ -31,6 +31,7 @@ import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramOwner;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.EventBSuperType;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
 import ac.soton.eventb.emf.core.extension.coreextension.impl.EventBNamedCommentedDataElaborationElementImpl;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -55,6 +56,7 @@ import ac.soton.eventb.statemachines.StatemachinesPackage;
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getMethods <em>Methods</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getSelfName <em>Self Name</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getInstances <em>Instances</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.impl.ClassImpl#getSubtypeGroups <em>Subtype Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -190,6 +192,16 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	 * @ordered
 	 */
 	protected String instances = INSTANCES_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSubtypeGroups() <em>Subtype Groups</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubtypeGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SubtypeGroup> subtypeGroups;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -397,6 +409,18 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SubtypeGroup> getSubtypeGroups() {
+		if (subtypeGroups == null) {
+			subtypeGroups = new EObjectContainmentEList.Resolving<SubtypeGroup>(SubtypeGroup.class, this, ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS);
+		}
+		return subtypeGroups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * If this class is used as an EventBSuperType then this method will return the 
 	 * class it represents.. i.e. itself
 	 * <!-- end-user-doc -->
@@ -446,6 +470,8 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 			case ClassdiagramsPackage.CLASS__METHODS:
 				return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
+			case ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS:
+				return ((InternalEList<?>)getSubtypeGroups()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -481,6 +507,8 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return getSelfName();
 			case ClassdiagramsPackage.CLASS__INSTANCES:
 				return getInstances();
+			case ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS:
+				return getSubtypeGroups();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -535,6 +563,10 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 			case ClassdiagramsPackage.CLASS__INSTANCES:
 				setInstances((String)newValue);
 				return;
+			case ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS:
+				getSubtypeGroups().clear();
+				getSubtypeGroups().addAll((Collection<? extends SubtypeGroup>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -580,6 +612,9 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 			case ClassdiagramsPackage.CLASS__INSTANCES:
 				setInstances(INSTANCES_EDEFAULT);
 				return;
+			case ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS:
+				getSubtypeGroups().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -614,6 +649,8 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 				return SELF_NAME_EDEFAULT == null ? selfName != null : !SELF_NAME_EDEFAULT.equals(selfName);
 			case ClassdiagramsPackage.CLASS__INSTANCES:
 				return INSTANCES_EDEFAULT == null ? instances != null : !INSTANCES_EDEFAULT.equals(instances);
+			case ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS:
+				return subtypeGroups != null && !subtypeGroups.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

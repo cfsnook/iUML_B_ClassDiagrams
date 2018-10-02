@@ -133,7 +133,6 @@ public class ClassdiagramItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASSDIAGRAM__CLASSES);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASSDIAGRAM__ASSOCIATIONS);
-			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASSDIAGRAM__SUBTYPE_GROUPS);
 		}
 		return childrenFeatures;
 	}
@@ -193,7 +192,6 @@ public class ClassdiagramItemProvider
 				return;
 			case ClassdiagramsPackage.CLASSDIAGRAM__CLASSES:
 			case ClassdiagramsPackage.CLASSDIAGRAM__ASSOCIATIONS:
-			case ClassdiagramsPackage.CLASSDIAGRAM__SUBTYPE_GROUPS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -240,11 +238,6 @@ public class ClassdiagramItemProvider
 				(createChildParameter
 					(ClassdiagramsPackage.Literals.CLASSDIAGRAM__ASSOCIATIONS,
 				 	ClassdiagramsFactory.eINSTANCE.createAssociation()));
-		
-			newChildDescriptors.add
-				(createChildParameter
-					(ClassdiagramsPackage.Literals.CLASSDIAGRAM__SUBTYPE_GROUPS,
-				 	ClassdiagramsFactory.eINSTANCE.createSubtypeGroup()));
 	}
 
 }

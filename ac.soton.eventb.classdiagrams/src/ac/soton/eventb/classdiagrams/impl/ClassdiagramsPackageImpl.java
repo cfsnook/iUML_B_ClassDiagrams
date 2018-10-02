@@ -260,15 +260,6 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassdiagram_SubtypeGroups() {
-		return (EReference)classdiagramEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAssociation() {
 		return associationEClass;
 	}
@@ -404,6 +395,15 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getClass_SubtypeGroups() {
+		return (EReference)classEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClassMethod() {
 		return classMethodEClass;
 	}
@@ -467,17 +467,8 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSubtypeGroup_Class() {
-		return (EReference)subtypeGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSubtypeGroup_Cover() {
-		return (EAttribute)subtypeGroupEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)subtypeGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -486,7 +477,7 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 	 * @generated
 	 */
 	public EAttribute getSubtypeGroup_Disjoint() {
-		return (EAttribute)subtypeGroupEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)subtypeGroupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -495,7 +486,7 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 	 * @generated
 	 */
 	public EReference getSubtypeGroup_Subtypes() {
-		return (EReference)subtypeGroupEClass.getEStructuralFeatures().get(3);
+		return (EReference)subtypeGroupEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -551,7 +542,6 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		createEReference(classdiagramEClass, CLASSDIAGRAM__CLASSES);
 		createEReference(classdiagramEClass, CLASSDIAGRAM__ASSOCIATIONS);
 		createEReference(classdiagramEClass, CLASSDIAGRAM__REFINES);
-		createEReference(classdiagramEClass, CLASSDIAGRAM__SUBTYPE_GROUPS);
 
 		associationEClass = createEClass(ASSOCIATION);
 		createEReference(associationEClass, ASSOCIATION__TARGET);
@@ -570,6 +560,7 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		createEReference(classEClass, CLASS__METHODS);
 		createEAttribute(classEClass, CLASS__SELF_NAME);
 		createEAttribute(classEClass, CLASS__INSTANCES);
+		createEReference(classEClass, CLASS__SUBTYPE_GROUPS);
 
 		classMethodEClass = createEClass(CLASS_METHOD);
 		createEAttribute(classMethodEClass, CLASS_METHOD__KIND);
@@ -581,7 +572,6 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		createEAttribute(eventBInitialisableEClass, EVENT_BINITIALISABLE__INITIAL_VALUE);
 
 		subtypeGroupEClass = createEClass(SUBTYPE_GROUP);
-		createEReference(subtypeGroupEClass, SUBTYPE_GROUP__CLASS);
 		createEAttribute(subtypeGroupEClass, SUBTYPE_GROUP__COVER);
 		createEAttribute(subtypeGroupEClass, SUBTYPE_GROUP__DISJOINT);
 		createEReference(subtypeGroupEClass, SUBTYPE_GROUP__SUBTYPES);
@@ -651,7 +641,6 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		initEReference(getClassdiagram_Classes(), this.getClass_(), null, "classes", null, 0, -1, Classdiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassdiagram_Associations(), this.getAssociation(), null, "associations", null, 0, -1, Classdiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassdiagram_Refines(), this.getClassdiagram(), null, "refines", null, 0, 1, Classdiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getClassdiagram_SubtypeGroups(), this.getSubtypeGroup(), null, "subtypeGroups", null, 0, 1, Classdiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(associationEClass, Association.class, "Association", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAssociation_Target(), this.getClass_(), this.getClass_Incoming(), "target", null, 1, 1, Association.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -670,6 +659,7 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		initEReference(getClass_Methods(), this.getClassMethod(), null, "methods", null, 0, -1, ac.soton.eventb.classdiagrams.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClass_SelfName(), theEcorePackage.getEString(), "selfName", null, 0, 1, ac.soton.eventb.classdiagrams.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClass_Instances(), theEcorePackage.getEString(), "instances", null, 0, 1, ac.soton.eventb.classdiagrams.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClass_SubtypeGroups(), this.getSubtypeGroup(), null, "subtypeGroups", null, 0, -1, ac.soton.eventb.classdiagrams.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classMethodEClass, ClassMethod.class, "ClassMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassMethod_Kind(), this.getMethodKind(), "kind", "normal", 1, 1, ClassMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -681,7 +671,6 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		initEAttribute(getEventBInitialisable_InitialValue(), theEcorePackage.getEString(), "initialValue", null, 0, 1, EventBInitialisable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subtypeGroupEClass, SubtypeGroup.class, "SubtypeGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSubtypeGroup_Class(), this.getClass_(), null, "class", null, 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSubtypeGroup_Cover(), theEcorePackage.getEBoolean(), "cover", "true", 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSubtypeGroup_Disjoint(), theEcorePackage.getEBoolean(), "disjoint", "true", 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubtypeGroup_Subtypes(), this.getClass_(), null, "subtypes", null, 0, -1, SubtypeGroup.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);

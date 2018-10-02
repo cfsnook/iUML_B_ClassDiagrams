@@ -31,6 +31,7 @@ import ac.soton.eventb.statemachines.StatemachineOwner;
  *   <li>{@link ac.soton.eventb.classdiagrams.Class#getMethods <em>Methods</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.Class#getSelfName <em>Self Name</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.Class#getInstances <em>Instances</em>}</li>
+ *   <li>{@link ac.soton.eventb.classdiagrams.Class#getSubtypeGroups <em>Subtype Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -216,6 +217,22 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Event
 	 * @generated
 	 */
 	void setInstances(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Subtype Groups</b></em>' containment reference list.
+	 * The list contents are of type {@link ac.soton.eventb.classdiagrams.SubtypeGroup}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Subtype Groups</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Subtype Groups</em>' containment reference list.
+	 * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getClass_SubtypeGroups()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<SubtypeGroup> getSubtypeGroups();
 
 	/**
 	 * <!-- begin-user-doc -->

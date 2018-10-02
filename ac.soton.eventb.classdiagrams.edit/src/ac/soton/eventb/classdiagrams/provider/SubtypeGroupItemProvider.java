@@ -76,34 +76,11 @@ public class SubtypeGroupItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addClassPropertyDescriptor(object);
 			addCoverPropertyDescriptor(object);
 			addDisjointPropertyDescriptor(object);
 			addSubtypesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Class feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SubtypeGroup_class_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SubtypeGroup_class_feature", "_UI_SubtypeGroup_type"),
-				 ClassdiagramsPackage.Literals.SUBTYPE_GROUP__CLASS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

@@ -48,7 +48,7 @@ public class SubtypeGroupRule  extends AbstractEventBGeneratorRule  implements I
 	
 		// generate supertype invariants/axioms
 		SubtypeGroup subtypeGroup = (SubtypeGroup)sourceElement;
-		Class superClass = subtypeGroup.getClass_();
+		Class superClass = subtypeGroup.toSuperClass();
 		List<String> subtypeNames = new ArrayList<String>();
 		for (Class st : subtypeGroup.getSubtypes()) {
 			subtypeNames.add(st.getName());
@@ -107,7 +107,7 @@ public class SubtypeGroupRule  extends AbstractEventBGeneratorRule  implements I
 		for (Class c : subtypeGroup.getSubtypes()) {
 			elements.add((EventBElement) c.getElaborates());
 		}
-		elements.add((EventBElement) subtypeGroup.getClass_().getElaborates()); //the supertype must also be in scope 
+		elements.add((EventBElement) subtypeGroup.toSuperClass().getElaborates()); //the supertype must also be in scope 
 		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) subtypeGroup.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
 	}
 	

@@ -20,7 +20,6 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ac.soton.eventb.classdiagrams.SubtypeGroup#getClass_ <em>Class</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isCover <em>Cover</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isDisjoint <em>Disjoint</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.SubtypeGroup#getSubtypes <em>Subtypes</em>}</li>
@@ -32,32 +31,6 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * @generated
  */
 public interface SubtypeGroup extends EventBNamedCommentedElement, EventBSuperType {
-	/**
-	 * Returns the value of the '<em><b>Class</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Class</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Class</em>' reference.
-	 * @see #setClass(ac.soton.eventb.classdiagrams.Class)
-	 * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getSubtypeGroup_Class()
-	 * @model
-	 * @generated
-	 */
-	ac.soton.eventb.classdiagrams.Class getClass_();
-
-	/**
-	 * Sets the value of the '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#getClass_ <em>Class</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Class</em>' reference.
-	 * @see #getClass_()
-	 * @generated
-	 */
-	void setClass(ac.soton.eventb.classdiagrams.Class value);
-
 	/**
 	 * Returns the value of the '<em><b>Cover</b></em>' attribute.
 	 * The default value is <code>"true"</code>.

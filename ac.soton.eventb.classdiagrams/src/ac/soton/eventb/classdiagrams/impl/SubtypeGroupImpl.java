@@ -33,7 +33,6 @@ import ac.soton.eventb.classdiagrams.SubtypeGroup;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl#isCover <em>Cover</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl#isDisjoint <em>Disjoint</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl#getSubtypes <em>Subtypes</em>}</li>
@@ -43,16 +42,6 @@ import ac.soton.eventb.classdiagrams.SubtypeGroup;
  * @generated
  */
 public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements SubtypeGroup {
-	/**
-	 * The cached value of the '{@link #getClass_() <em>Class</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClass_()
-	 * @generated
-	 * @ordered
-	 */
-	protected ac.soton.eventb.classdiagrams.Class class_;
-
 	/**
 	 * The default value of the '{@link #isCover() <em>Cover</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -110,44 +99,6 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	@Override
 	protected EClass eStaticClass() {
 		return ClassdiagramsPackage.Literals.SUBTYPE_GROUP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ac.soton.eventb.classdiagrams.Class getClass_() {
-		if (class_ != null && class_.eIsProxy()) {
-			InternalEObject oldClass = (InternalEObject)class_;
-			class_ = (ac.soton.eventb.classdiagrams.Class)eResolveProxy(oldClass);
-			if (class_ != oldClass) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ClassdiagramsPackage.SUBTYPE_GROUP__CLASS, oldClass, class_));
-			}
-		}
-		return class_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ac.soton.eventb.classdiagrams.Class basicGetClass() {
-		return class_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setClass(ac.soton.eventb.classdiagrams.Class newClass) {
-		ac.soton.eventb.classdiagrams.Class oldClass = class_;
-		class_ = newClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClassdiagramsPackage.SUBTYPE_GROUP__CLASS, oldClass, class_));
 	}
 
 	/**
@@ -217,9 +168,6 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ClassdiagramsPackage.SUBTYPE_GROUP__CLASS:
-				if (resolve) return getClass_();
-				return basicGetClass();
 			case ClassdiagramsPackage.SUBTYPE_GROUP__COVER:
 				return isCover();
 			case ClassdiagramsPackage.SUBTYPE_GROUP__DISJOINT:
@@ -238,9 +186,6 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ClassdiagramsPackage.SUBTYPE_GROUP__CLASS:
-				setClass((ac.soton.eventb.classdiagrams.Class)newValue);
-				return;
 			case ClassdiagramsPackage.SUBTYPE_GROUP__COVER:
 				setCover((Boolean)newValue);
 				return;
@@ -259,9 +204,6 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ClassdiagramsPackage.SUBTYPE_GROUP__CLASS:
-				setClass((ac.soton.eventb.classdiagrams.Class)null);
-				return;
 			case ClassdiagramsPackage.SUBTYPE_GROUP__COVER:
 				setCover(COVER_EDEFAULT);
 				return;
@@ -280,8 +222,6 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ClassdiagramsPackage.SUBTYPE_GROUP__CLASS:
-				return class_ != null;
 			case ClassdiagramsPackage.SUBTYPE_GROUP__COVER:
 				return cover != COVER_EDEFAULT;
 			case ClassdiagramsPackage.SUBTYPE_GROUP__DISJOINT:
@@ -313,12 +253,13 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * Returns the iUML-B Class that this SuperType represents
+	 * For a SubtypeGroup, this is its parent (i.e. the Class that owns it)
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
 	public Class toSuperClass() {
-		return this.getClass_();
+		return (Class) this.eContainer();
 	}
 
 } //SuperTypeConnectorImpl

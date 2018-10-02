@@ -23,7 +23,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Classdiagram/classes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Classdiagram/associations"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Classdiagram/refines"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Classdiagram/subtypeGroups"/>
     </genClasses>
     <genClasses ecoreClass="classdiagrams.ecore#//Association">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Association/target"/>
@@ -42,6 +41,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Class/methods"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//Class/selfName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//Class/instances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Class/subtypeGroups"/>
     </genClasses>
     <genClasses ecoreClass="classdiagrams.ecore#//ClassMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//ClassMethod/kind"/>
@@ -53,7 +53,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//EventBInitialisable/initialValue"/>
     </genClasses>
     <genClasses ecoreClass="classdiagrams.ecore#//SubtypeGroup">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//SubtypeGroup/class"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//SubtypeGroup/cover"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//SubtypeGroup/disjoint"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference classdiagrams.ecore#//SubtypeGroup/subtypes"/>

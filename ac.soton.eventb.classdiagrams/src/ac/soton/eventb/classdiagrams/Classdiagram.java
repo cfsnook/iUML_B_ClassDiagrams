@@ -26,7 +26,6 @@ import ac.soton.eventb.emf.diagrams.Diagram;
  *   <li>{@link ac.soton.eventb.classdiagrams.Classdiagram#getClasses <em>Classes</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.Classdiagram#getAssociations <em>Associations</em>}</li>
  *   <li>{@link ac.soton.eventb.classdiagrams.Classdiagram#getRefines <em>Refines</em>}</li>
- *   <li>{@link ac.soton.eventb.classdiagrams.Classdiagram#getSubtypeGroups <em>Subtype Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,31 +91,5 @@ public interface Classdiagram extends EventBNamedCommentedElement, AbstractExten
 	 * @generated
 	 */
 	void setRefines(Classdiagram value);
-
-	/**
-	 * Returns the value of the '<em><b>Subtype Groups</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Subtype Groups</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Subtype Groups</em>' containment reference.
-	 * @see #setSubtypeGroups(SubtypeGroup)
-	 * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getClassdiagram_SubtypeGroups()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	SubtypeGroup getSubtypeGroups();
-
-	/**
-	 * Sets the value of the '{@link ac.soton.eventb.classdiagrams.Classdiagram#getSubtypeGroups <em>Subtype Groups</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Subtype Groups</em>' containment reference.
-	 * @see #getSubtypeGroups()
-	 * @generated
-	 */
-	void setSubtypeGroups(SubtypeGroup value);
 
 } // Classdiagram

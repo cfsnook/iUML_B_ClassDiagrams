@@ -230,22 +230,13 @@ public interface ClassdiagramsPackage extends EPackage {
 	int CLASSDIAGRAM__REFINES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Subtype Groups</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSDIAGRAM__SUBTYPE_GROUPS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Classdiagram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSDIAGRAM_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 5;
+	int CLASSDIAGRAM_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link ac.soton.eventb.classdiagrams.impl.AssociationImpl <em>Association</em>}' class.
@@ -712,20 +703,20 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Classdiagrams</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
-	 * @since 2.0
 	 */
 	int CLASS__CLASSDIAGRAMS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Statemachines</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
-	 * @since 2.0
 	 */
 	int CLASS__STATEMACHINES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 1;
 
@@ -811,13 +802,22 @@ public interface ClassdiagramsPackage extends EPackage {
 	int CLASS__INSTANCES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Subtype Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__SUBTYPE_GROUPS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FEATURE_COUNT = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 11;
+	int CLASS_FEATURE_COUNT = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 12;
 
 
 	/**
@@ -1250,22 +1250,13 @@ public interface ClassdiagramsPackage extends EPackage {
 	int SUBTYPE_GROUP__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Class</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTYPE_GROUP__CLASS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Cover</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBTYPE_GROUP__COVER = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int SUBTYPE_GROUP__COVER = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Disjoint</b></em>' attribute.
@@ -1274,7 +1265,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUBTYPE_GROUP__DISJOINT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int SUBTYPE_GROUP__DISJOINT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Subtypes</b></em>' reference list.
@@ -1283,7 +1274,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUBTYPE_GROUP__SUBTYPES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int SUBTYPE_GROUP__SUBTYPES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Subtype Group</em>' class.
@@ -1292,7 +1283,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUBTYPE_GROUP_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int SUBTYPE_GROUP_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Event BSuper Type</em>' class.
@@ -1377,17 +1368,6 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getClassdiagram_Refines();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link ac.soton.eventb.classdiagrams.Classdiagram#getSubtypeGroups <em>Subtype Groups</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Subtype Groups</em>'.
-	 * @see ac.soton.eventb.classdiagrams.Classdiagram#getSubtypeGroups()
-	 * @see #getClassdiagram()
-	 * @generated
-	 */
-	EReference getClassdiagram_SubtypeGroups();
 
 	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.Association <em>Association</em>}'.
@@ -1552,6 +1532,17 @@ public interface ClassdiagramsPackage extends EPackage {
 	EAttribute getClass_Instances();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ac.soton.eventb.classdiagrams.Class#getSubtypeGroups <em>Subtype Groups</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Subtype Groups</em>'.
+	 * @see ac.soton.eventb.classdiagrams.Class#getSubtypeGroups()
+	 * @see #getClass_()
+	 * @generated
+	 */
+	EReference getClass_SubtypeGroups();
+
+	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.ClassMethod <em>Class Method</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1623,17 +1614,6 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSubtypeGroup();
-
-	/**
-	 * Returns the meta object for the reference '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#getClass_ <em>Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Class</em>'.
-	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#getClass_()
-	 * @see #getSubtypeGroup()
-	 * @generated
-	 */
-	EReference getSubtypeGroup_Class();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isCover <em>Cover</em>}'.
@@ -1763,14 +1743,6 @@ public interface ClassdiagramsPackage extends EPackage {
 		EReference CLASSDIAGRAM__REFINES = eINSTANCE.getClassdiagram_Refines();
 
 		/**
-		 * The meta object literal for the '<em><b>Subtype Groups</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CLASSDIAGRAM__SUBTYPE_GROUPS = eINSTANCE.getClassdiagram_SubtypeGroups();
-
-		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.AssociationImpl <em>Association</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1897,6 +1869,14 @@ public interface ClassdiagramsPackage extends EPackage {
 		EAttribute CLASS__INSTANCES = eINSTANCE.getClass_Instances();
 
 		/**
+		 * The meta object literal for the '<em><b>Subtype Groups</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__SUBTYPE_GROUPS = eINSTANCE.getClass_SubtypeGroups();
+
+		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.ClassMethodImpl <em>Class Method</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1959,14 +1939,6 @@ public interface ClassdiagramsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SUBTYPE_GROUP = eINSTANCE.getSubtypeGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>Class</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SUBTYPE_GROUP__CLASS = eINSTANCE.getSubtypeGroup_Class();
 
 		/**
 		 * The meta object literal for the '<em><b>Cover</b></em>' attribute feature.
