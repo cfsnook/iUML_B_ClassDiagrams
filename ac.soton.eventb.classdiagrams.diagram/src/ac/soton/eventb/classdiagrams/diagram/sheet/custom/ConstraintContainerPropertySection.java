@@ -74,7 +74,8 @@ public class ConstraintContainerPropertySection extends AbstractEnumerationPrope
 	
 	@Override
 	protected String getFeatureAsText() {
-		return ((ClassConstraint)eObject).getComponent().getName();
+		EventBNamedCommentedComponentElement cp = ((ClassConstraint)eObject).getComponent();
+		return cp==null? "<not set>" : cp.getName();
 	}
 
 //	@Override
