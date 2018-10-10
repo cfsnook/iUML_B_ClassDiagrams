@@ -27,7 +27,6 @@ import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
 import ac.soton.eventb.classdiagrams.Association;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
-import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.emf.diagrams.Diagram;
 
 /**
