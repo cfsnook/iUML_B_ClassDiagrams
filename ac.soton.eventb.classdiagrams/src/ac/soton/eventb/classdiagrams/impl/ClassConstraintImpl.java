@@ -12,6 +12,7 @@ package ac.soton.eventb.classdiagrams.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.impl.EventBNamedCommentedDerivedPredicateElementImpl;
 
@@ -64,10 +65,14 @@ public class ClassConstraintImpl extends EventBNamedCommentedDerivedPredicateEle
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * If the component has not been set, default to the component that contains this Class Constraint
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EventBNamedCommentedComponentElement getComponent() {
+		if (component == null && getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT) instanceof EventBNamedCommentedComponentElement) {
+			return (EventBNamedCommentedComponentElement) getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
+		}
 		if (component != null && component.eIsProxy()) {
 			InternalEObject oldComponent = (InternalEObject)component;
 			component = (EventBNamedCommentedComponentElement)eResolveProxy(oldComponent);
