@@ -25,10 +25,12 @@ public interface EventBSuperType extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Return the actual UML-B Class that this super type represents.
 	 * <!-- end-user-doc -->
 	 * @model
-	 * @generated NOT
+	 * @generated
 	 */
-	public ac.soton.eventb.classdiagrams.Class toSuperClass();
+	ac.soton.eventb.classdiagrams.Class toSuperClass();
+
 	
 } // EventBSuperType

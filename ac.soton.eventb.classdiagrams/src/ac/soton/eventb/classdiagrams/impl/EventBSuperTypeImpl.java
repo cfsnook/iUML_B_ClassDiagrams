@@ -44,12 +44,5 @@ public abstract class EventBSuperTypeImpl extends EObjectImpl implements EventBS
 		return ClassdiagramsPackage.Literals.EVENT_BSUPER_TYPE;
 	}
 	
-	/**
-	 * 
-	 * Return the actual iUML-B Class that this EventBSuperType represents
-	 * 
-	 * @custom
-	 */
-	public abstract ac.soton.eventb.classdiagrams.Class toSuperClass();
 
 } //EventBSuperTypeImpl
