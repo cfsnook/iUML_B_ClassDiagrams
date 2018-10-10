@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -28,10 +29,15 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -43,6 +49,7 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 import org.eclipse.swt.graphics.Color;
 import org.eventb.emf.core.EventBElement;
 
+import ac.soton.eventb.classdiagrams.diagram.edit.policies.ClassCanonicalEditPolicy;
 import ac.soton.eventb.classdiagrams.diagram.edit.policies.ClassItemSemanticEditPolicy;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
@@ -52,7 +59,7 @@ import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 /**
  * @generated
  */
-public class ClassEditPart extends ShapeNodeEditPart {
+public class ClassEditPart extends AbstractBorderedShapeEditPart {
 
 	/**
 	 * @generated
@@ -84,6 +91,8 @@ public class ClassEditPart extends ShapeNodeEditPart {
 				new CreationEditPolicyWithCustomReparent(ClassdiagramsVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ClassItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new ClassCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -96,6 +105,11 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
+				View childView = (View) child.getModel();
+				switch (ClassdiagramsVisualIDRegistry.getVisualID(childView)) {
+				case SubtypeGroupEditPart.VISUAL_ID:
+					return new BorderItemSelectionEditPolicy();
+				}
 				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
@@ -160,6 +174,12 @@ public class ClassEditPart extends ShapeNodeEditPart {
 			pane.add(((ClassConstraintsCompartmentEditPart) childEditPart).getFigure());
 			return true;
 		}
+		if (childEditPart instanceof SubtypeGroupEditPart) {
+			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.NONE);
+			getBorderedFigure().getBorderItemContainer().add(((SubtypeGroupEditPart) childEditPart).getFigure(),
+					locator);
+			return true;
+		}
 		return false;
 	}
 
@@ -188,6 +208,10 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof ClassConstraintsCompartmentEditPart) {
 			IFigure pane = getPrimaryShape().getFigureClassContraintsCompartmentFigure();
 			pane.remove(((ClassConstraintsCompartmentEditPart) childEditPart).getFigure());
+			return true;
+		}
+		if (childEditPart instanceof SubtypeGroupEditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(((SubtypeGroupEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -229,6 +253,9 @@ public class ClassEditPart extends ShapeNodeEditPart {
 		if (editPart instanceof ClassConstraintsCompartmentEditPart) {
 			return getPrimaryShape().getFigureClassContraintsCompartmentFigure();
 		}
+		if (editPart instanceof IBorderItemEditPart) {
+			return getBorderedFigure().getBorderItemContainer();
+		}
 		return getContentPane();
 	}
 
@@ -241,14 +268,14 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
-	protected NodeFigure createNodeFigure() {
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated
+	*/
+	protected NodeFigure createMainFigure() {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

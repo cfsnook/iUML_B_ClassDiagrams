@@ -25,6 +25,7 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
 import ac.soton.eventb.classdiagrams.Classdiagram;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationNameEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributeEditPart;
@@ -35,6 +36,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassNameEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorPlugin;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
@@ -120,6 +122,9 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 		case StatemachineEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/statemachines/2014?Statemachine", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Statemachine_3025);
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2015?SubtypeGroup", //$NON-NLS-1$
+					ClassdiagramsElementTypes.SubtypeGroup_3026);
 		case AssociationEditPart.VISUAL_ID:
 			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2015?Association", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Association_4005);
@@ -196,6 +201,8 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 			return getClassConstraint_3024Text(view);
 		case StatemachineEditPart.VISUAL_ID:
 			return getStatemachine_3025Text(view);
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return getSubtypeGroup_3026Text(view);
 		case AssociationEditPart.VISUAL_ID:
 			return getAssociation_4005Text(view);
 		case ClassSupertypesEditPart.VISUAL_ID:
@@ -269,6 +276,20 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 					ParserOptions.NONE.intValue());
 		} else {
 			ClassdiagramsDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 3025); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getSubtypeGroup_3026Text(View view) {
+		SubtypeGroup domainModelElement = (SubtypeGroup) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
+		} else {
+			ClassdiagramsDiagramEditorPlugin.getInstance()
+					.logError("No domain element for view with visualID = " + 3026); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

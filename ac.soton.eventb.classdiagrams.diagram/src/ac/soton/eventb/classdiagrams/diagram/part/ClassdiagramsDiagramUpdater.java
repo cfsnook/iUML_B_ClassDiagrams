@@ -28,6 +28,7 @@ import ac.soton.eventb.classdiagrams.ClassMethod;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.EventBSuperType;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributeEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributesCompartmentEditPart;
@@ -40,6 +41,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
 import ac.soton.eventb.statemachines.Statemachine;
 
@@ -62,6 +64,8 @@ public class ClassdiagramsDiagramUpdater {
 		switch (ClassdiagramsVisualIDRegistry.getVisualID(view)) {
 		case ClassdiagramEditPart.VISUAL_ID:
 			return getClassdiagram_1000SemanticChildren(view);
+		case ClassEditPart.VISUAL_ID:
+			return getClass_2003SemanticChildren(view);
 		case ClassAttributesCompartmentEditPart.VISUAL_ID:
 			return getClassAttributesCompartment_7006SemanticChildren(view);
 		case StatemachinesCompartmentEditPart.VISUAL_ID:
@@ -87,6 +91,26 @@ public class ClassdiagramsDiagramUpdater {
 			Class childElement = (Class) it.next();
 			int visualID = ClassdiagramsVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == ClassEditPart.VISUAL_ID) {
+				result.add(new ClassdiagramsNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<ClassdiagramsNodeDescriptor> getClass_2003SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Class modelElement = (Class) view.getElement();
+		LinkedList<ClassdiagramsNodeDescriptor> result = new LinkedList<ClassdiagramsNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getSubtypeGroups().iterator(); it.hasNext();) {
+			SubtypeGroup childElement = (SubtypeGroup) it.next();
+			int visualID = ClassdiagramsVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == SubtypeGroupEditPart.VISUAL_ID) {
 				result.add(new ClassdiagramsNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -208,6 +232,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClassMethod_3023ContainedLinks(view);
 		case ClassConstraintEditPart.VISUAL_ID:
 			return getClassConstraint_3024ContainedLinks(view);
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return getSubtypeGroup_3026ContainedLinks(view);
 		case AssociationEditPart.VISUAL_ID:
 			return getAssociation_4005ContainedLinks(view);
 		}
@@ -229,6 +255,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClassMethod_3023IncomingLinks(view);
 		case ClassConstraintEditPart.VISUAL_ID:
 			return getClassConstraint_3024IncomingLinks(view);
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return getSubtypeGroup_3026IncomingLinks(view);
 		case AssociationEditPart.VISUAL_ID:
 			return getAssociation_4005IncomingLinks(view);
 		}
@@ -250,6 +278,8 @@ public class ClassdiagramsDiagramUpdater {
 			return getClassMethod_3023OutgoingLinks(view);
 		case ClassConstraintEditPart.VISUAL_ID:
 			return getClassConstraint_3024OutgoingLinks(view);
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return getSubtypeGroup_3026OutgoingLinks(view);
 		case AssociationEditPart.VISUAL_ID:
 			return getAssociation_4005OutgoingLinks(view);
 		}
@@ -306,6 +336,13 @@ public class ClassdiagramsDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<ClassdiagramsLinkDescriptor> getSubtypeGroup_3026ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<ClassdiagramsLinkDescriptor> getAssociation_4005ContainedLinks(View view) {
@@ -355,6 +392,18 @@ public class ClassdiagramsDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<ClassdiagramsLinkDescriptor> getSubtypeGroup_3026IncomingLinks(View view) {
+		SubtypeGroup modelElement = (SubtypeGroup) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<ClassdiagramsLinkDescriptor> result = new LinkedList<ClassdiagramsLinkDescriptor>();
+		result.addAll(getIncomingFeatureModelFacetLinks_Class_Supertypes_4006(modelElement, crossReferences));
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<ClassdiagramsLinkDescriptor> getAssociation_4005IncomingLinks(View view) {
@@ -398,6 +447,13 @@ public class ClassdiagramsDiagramUpdater {
 	 * @generated
 	 */
 	public static List<ClassdiagramsLinkDescriptor> getClassConstraint_3024OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<ClassdiagramsLinkDescriptor> getSubtypeGroup_3026OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

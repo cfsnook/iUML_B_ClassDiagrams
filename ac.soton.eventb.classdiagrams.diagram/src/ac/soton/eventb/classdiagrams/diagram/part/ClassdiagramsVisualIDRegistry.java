@@ -31,6 +31,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassNameEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 /**
@@ -141,6 +142,11 @@ public class ClassdiagramsVisualIDRegistry {
 				return ClassEditPart.VISUAL_ID;
 			}
 			break;
+		case ClassEditPart.VISUAL_ID:
+			if (ClassdiagramsPackage.eINSTANCE.getSubtypeGroup().isSuperTypeOf(domainElement.eClass())) {
+				return SubtypeGroupEditPart.VISUAL_ID;
+			}
+			break;
 		case ClassAttributesCompartmentEditPart.VISUAL_ID:
 			if (ClassdiagramsPackage.eINSTANCE.getClassAttribute().isSuperTypeOf(domainElement.eClass())) {
 				return ClassAttributeEditPart.VISUAL_ID;
@@ -205,6 +211,9 @@ public class ClassdiagramsVisualIDRegistry {
 				return true;
 			}
 			if (ClassConstraintsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (SubtypeGroupEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -308,6 +317,7 @@ public class ClassdiagramsVisualIDRegistry {
 		case ClassMethodEditPart.VISUAL_ID:
 		case ClassConstraintEditPart.VISUAL_ID:
 		case StatemachineEditPart.VISUAL_ID:
+		case SubtypeGroupEditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

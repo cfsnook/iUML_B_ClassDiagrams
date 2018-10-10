@@ -401,6 +401,11 @@ public class Messages extends NLS {
 	public static String NavigatorGroupName_Class_2003_outgoinglinks;
 
 	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_SubtypeGroup_3026_incominglinks;
+
+	/**
 	 * @generated
 	 */
 	public static String NavigatorActionProvider_OpenDiagramActionName;

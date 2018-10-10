@@ -198,11 +198,44 @@
             href="../../org.eventb.emf.core/model/eventbcore.genmodel#//core/EventBPredicate/predicate"/>
       </labelModelFacet>
     </childNodes>
+    <childNodes
+        xsi:type="gmfgen:GenChildSideAffixedNode"
+        visualID="3026"
+        editPartClassName="SubtypeGroupEditPart"
+        itemSemanticEditPolicyClassName="SubtypeGroupItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="SubtypeGroupCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="SubtypeGroupGraphicalNodeEditPolicy"
+        createCommandClassName="SubtypeGroupCreateCommand"
+        containers="//@diagram/@topLevelNodes.0">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="SubtypeGroupEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="SubtypeGroupFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SubtypeGroupFigure extends org.eclipse.draw2d.Ellipse {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SubtypeGroupFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:DefaultSizeAttributes"
+            width="12"
+            height="12"/>
+      </viewmap>
+      <modelFacet>
+        <metaClass
+            href="classdiagrams.genmodel#//classdiagrams/SubtypeGroup"/>
+        <containmentMetaFeature
+            href="classdiagrams.genmodel#//classdiagrams/Class/subtypeGroups"/>
+        <childMetaFeature
+            href="classdiagrams.genmodel#//classdiagrams/Class/subtypeGroups"/>
+      </modelFacet>
+    </childNodes>
     <topLevelNodes
         visualID="2003"
         editPartClassName="ClassEditPart"
         itemSemanticEditPolicyClassName="ClassItemSemanticEditPolicy"
         canonicalEditPolicyClassName="ClassCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.4"
         compartments="//@diagram/@compartments.0 //@diagram/@compartments.1 //@diagram/@compartments.2 //@diagram/@compartments.3"
         graphicalNodeEditPolicyClassName="ClassGraphicalNodeEditPolicy"
         createCommandClassName="ClassCreateCommand">
@@ -562,6 +595,9 @@
         parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.3"/>
     <childReferences
+        parent="//@diagram/@topLevelNodes.0"
+        child="//@diagram/@childNodes.4"/>
+    <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.0"/>
     <childReferences
@@ -612,6 +648,18 @@
         groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.1"
+        child="//@diagram/@childNodes.4"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.4"
+        child="//@diagram/@links.1"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.1"
         child="//@diagram/@topLevelNodes.0"
         referenceType="in_source"
         groupName="source"
@@ -650,7 +698,7 @@
         xsi:type="gmfgen:GenExpressionInterpreter">
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self &lt;> oppositeEnd and not self->closure(self.toSuperClass().supertypes)->includes(oppositeEnd)"/>
+          body="self.toSuperClass() &lt;> oppositeEnd and not self->closure(toSuperClass().supertypes->collect(toSuperClass()))->includes(oppositeEnd)"/>
     </providers>
   </expressionProviders>
   <labelParsers
