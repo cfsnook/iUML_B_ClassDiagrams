@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eventb.emf.core.util.NameUtils;
 
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
@@ -56,7 +57,8 @@ public class SubtypeGroupCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	* @generated
+	 * 
+	* @generated NOT 
 	*/
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		SubtypeGroup newElement = ClassdiagramsFactory.eINSTANCE.createSubtypeGroup();
@@ -64,6 +66,13 @@ public class SubtypeGroupCreateCommand extends EditElementCommand {
 		Class owner = (Class) getElementToEdit();
 		owner.getSubtypeGroups().add(newElement);
 
+		//+++ auto-naming
+		String name = NameUtils.getName(owner) + "_"
+				+ newElement.eClass().getName().toLowerCase();
+		name = NameUtils.getSafeName(newElement, name, owner, null);
+		newElement.setName(name);
+		//---  auto-naming
+		
 		doConfigure(newElement, monitor, info);
 
 		((CreateElementRequest) getRequest()).setNewElement(newElement);
