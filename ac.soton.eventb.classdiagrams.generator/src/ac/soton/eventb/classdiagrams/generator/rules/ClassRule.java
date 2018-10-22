@@ -9,6 +9,7 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
+import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
@@ -74,7 +75,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		if (instances!=null) instances = instances.trim();
 		targetContainer = getTargetContainer(element, null);
 		//for constant instance classes, initialise the instances set
-		if (elaborated instanceof Constant && instances!=null && instances.length()>0){
+		if ((elaborated instanceof Constant || elaborated instanceof CarrierSet) && instances!=null && instances.length()>0){
 			if (instances.startsWith("{") && instances.endsWith("}")) {
 				//instances = instances.substring(1, instances.length()-1);
 				instances = instances.replaceAll(" ", "");
