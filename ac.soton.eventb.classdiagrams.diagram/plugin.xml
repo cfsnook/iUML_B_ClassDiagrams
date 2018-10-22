@@ -921,7 +921,7 @@ http://www.eclipse.org/legal/epl-v10.html
          </propertySection>
          
          <propertySection
-               afterSection="property.section.name"
+               afterSection="property.section.comment"
                class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.DisjointSection"
                enablesFor="1"
                filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.DisjointSection$Filter"
