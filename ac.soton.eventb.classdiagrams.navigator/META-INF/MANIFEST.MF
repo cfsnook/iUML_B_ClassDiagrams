@@ -21,3 +21,4 @@ Require-Bundle: org.eclipse.emf.workspace;bundle-version="[1.5.1,2.0.0)",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %Bundle-Vendor
+Automatic-Module-Name: ac.soton.eventb.classdiagrams.navigator
