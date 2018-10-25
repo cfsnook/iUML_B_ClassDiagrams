@@ -355,6 +355,7 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public Node createSubtypeGroup_3026(EObject domainElement, View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {

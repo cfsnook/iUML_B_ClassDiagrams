@@ -795,6 +795,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Instances</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -804,6 +805,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Subtype Groups</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -968,6 +970,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Refines</b></em>' reference.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1104,6 +1107,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1151,6 +1155,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The meta object id for the '{@link ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl <em>Event BSuper Type</em>}' class.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl
 	 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getEventBSuperType()
@@ -1161,6 +1166,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The meta object id for the '{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl <em>Subtype Group</em>}' class.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl
 	 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getSubtypeGroup()
@@ -1171,6 +1177,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1180,6 +1187,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1189,6 +1197,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' map.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1198,6 +1207,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1207,6 +1217,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1216,6 +1227,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1225,6 +1237,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1234,6 +1247,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1243,6 +1257,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1252,6 +1267,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Cover</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1261,6 +1277,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Disjoint</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1270,6 +1287,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Subtypes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1279,6 +1297,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Subtype Group</em>' class.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1288,6 +1307,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Event BSuper Type</em>' class.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1523,6 +1543,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.Class#getInstances <em>Instances</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Instances</em>'.
 	 * @see ac.soton.eventb.classdiagrams.Class#getInstances()
@@ -1534,6 +1555,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for the containment reference list '{@link ac.soton.eventb.classdiagrams.Class#getSubtypeGroups <em>Subtype Groups</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Subtype Groups</em>'.
 	 * @see ac.soton.eventb.classdiagrams.Class#getSubtypeGroups()
@@ -1576,6 +1598,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for the reference '{@link ac.soton.eventb.classdiagrams.ClassConstraint#getComponent <em>Component</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Component</em>'.
 	 * @see ac.soton.eventb.classdiagrams.ClassConstraint#getComponent()
@@ -1608,6 +1631,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.SubtypeGroup <em>Subtype Group</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Subtype Group</em>'.
 	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup
@@ -1618,6 +1642,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isCover <em>Cover</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Cover</em>'.
 	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#isCover()
@@ -1629,6 +1654,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isDisjoint <em>Disjoint</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Disjoint</em>'.
 	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#isDisjoint()
@@ -1640,6 +1666,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for the reference list '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#getSubtypes <em>Subtypes</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Subtypes</em>'.
 	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#getSubtypes()
@@ -1651,6 +1678,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.EventBSuperType <em>Event BSuper Type</em>}'.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Event BSuper Type</em>'.
 	 * @see ac.soton.eventb.classdiagrams.EventBSuperType
@@ -1863,6 +1891,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Instances</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
@@ -1870,7 +1899,8 @@ public interface ClassdiagramsPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '<em><b>Subtype Groups</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc --> 
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
@@ -1907,6 +1937,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Component</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
@@ -1933,6 +1964,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl <em>Subtype Group</em>}' class.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @see ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl
 		 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getSubtypeGroup()
@@ -1943,6 +1975,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Cover</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
@@ -1951,6 +1984,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Disjoint</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
@@ -1959,6 +1993,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Subtypes</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
@@ -1967,6 +2002,7 @@ public interface ClassdiagramsPackage extends EPackage {
 		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl <em>Event BSuper Type</em>}' class.
 		 * <!-- begin-user-doc -->
+		 *  @since 2.0
 		 * <!-- end-user-doc -->
 		 * @see ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl
 		 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getEventBSuperType()

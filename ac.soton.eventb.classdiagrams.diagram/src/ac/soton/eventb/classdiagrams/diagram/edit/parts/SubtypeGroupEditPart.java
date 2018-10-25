@@ -36,6 +36,7 @@ import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 
 /**
  * @generated
+ * @since 2.0
  */
 public class SubtypeGroupEditPart extends AbstractBorderItemEditPart {
 

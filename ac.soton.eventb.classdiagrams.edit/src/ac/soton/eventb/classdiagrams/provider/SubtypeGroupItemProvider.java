@@ -41,6 +41,7 @@ import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
 /**
  * This is the item provider adapter for a {@link ac.soton.eventb.classdiagrams.SubtypeGroup} object.
  * <!-- begin-user-doc -->
+ * @since 2.0
  * <!-- end-user-doc -->
  * @generated
  */

@@ -100,6 +100,7 @@ public class ClassdiagramsDiagramUpdater {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static List<ClassdiagramsNodeDescriptor> getClass_2003SemanticChildren(View view) {
 		if (!view.isSetElement()) {
@@ -337,6 +338,7 @@ public class ClassdiagramsDiagramUpdater {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static List<ClassdiagramsLinkDescriptor> getSubtypeGroup_3026ContainedLinks(View view) {
 		return Collections.emptyList();
@@ -393,6 +395,7 @@ public class ClassdiagramsDiagramUpdater {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static List<ClassdiagramsLinkDescriptor> getSubtypeGroup_3026IncomingLinks(View view) {
 		SubtypeGroup modelElement = (SubtypeGroup) view.getElement();
@@ -452,6 +455,7 @@ public class ClassdiagramsDiagramUpdater {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static List<ClassdiagramsLinkDescriptor> getSubtypeGroup_3026OutgoingLinks(View view) {
 		return Collections.emptyList();

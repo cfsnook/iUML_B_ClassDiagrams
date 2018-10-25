@@ -105,6 +105,7 @@ public class ClassdiagramsElementTypes {
 			"ac.soton.eventb.classdiagrams.diagram.ClassConstraint_3024"); //$NON-NLS-1$
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static final IElementType SubtypeGroup_3026 = getElementType(
 			"ac.soton.eventb.classdiagrams.diagram.SubtypeGroup_3026"); //$NON-NLS-1$

@@ -191,6 +191,7 @@ public class ClassItemProvider
 	/**
 	 * This adds a property descriptor for the Instances feature.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

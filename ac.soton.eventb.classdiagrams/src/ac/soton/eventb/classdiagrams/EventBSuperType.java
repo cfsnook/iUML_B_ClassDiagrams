@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Event BSuper Type</b></em>'.
+ * @since 2.0
  * <!-- end-user-doc -->
  *
  *

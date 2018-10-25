@@ -199,6 +199,7 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Event
 	 * If the meaning of the '<em>Instances</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Instances</em>' attribute.
 	 * @see #setInstances(String)
@@ -211,6 +212,7 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Event
 	/**
 	 * Sets the value of the '{@link ac.soton.eventb.classdiagrams.Class#getInstances <em>Instances</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Instances</em>' attribute.
 	 * @see #getInstances()
@@ -225,6 +227,7 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Event
 	 * <p>
 	 * If the meaning of the '<em>Subtype Groups</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
+	 * @since 2.0
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subtype Groups</em>' containment reference list.

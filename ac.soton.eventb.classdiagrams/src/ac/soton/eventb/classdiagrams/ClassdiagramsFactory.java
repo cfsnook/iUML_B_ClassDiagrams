@@ -85,6 +85,7 @@ public interface ClassdiagramsFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Subtype Group</em>'.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Subtype Group</em>'.
 	 * @generated

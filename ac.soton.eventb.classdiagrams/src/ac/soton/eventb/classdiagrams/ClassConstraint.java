@@ -37,6 +37,7 @@ public interface ClassConstraint extends EventBNamedCommentedDerivedPredicateEle
 	 * If the meaning of the '<em>Component</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component</em>' reference.
 	 * @see #setComponent(EventBNamedCommentedComponentElement)
@@ -49,6 +50,7 @@ public interface ClassConstraint extends EventBNamedCommentedDerivedPredicateEle
 	/**
 	 * Sets the value of the '{@link ac.soton.eventb.classdiagrams.ClassConstraint#getComponent <em>Component</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Component</em>' reference.
 	 * @see #getComponent()

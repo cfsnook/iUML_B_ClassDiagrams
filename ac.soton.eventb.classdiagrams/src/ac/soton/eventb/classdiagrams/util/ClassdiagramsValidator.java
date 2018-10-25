@@ -240,6 +240,7 @@ public class ClassdiagramsValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -249,6 +250,7 @@ public class ClassdiagramsValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

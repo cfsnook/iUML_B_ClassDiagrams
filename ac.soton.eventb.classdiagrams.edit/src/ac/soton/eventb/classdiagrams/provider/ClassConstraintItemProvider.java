@@ -84,6 +84,7 @@ public class ClassConstraintItemProvider
 	/**
 	 * This adds a property descriptor for the Component feature.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

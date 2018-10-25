@@ -66,6 +66,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	/**
 	 * The cached value of the '{@link #getClassdiagrams() <em>Classdiagrams</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see #getClassdiagrams()
 	 * @generated
@@ -76,6 +77,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	/**
 	 * The cached value of the '{@link #getStatemachines() <em>Statemachines</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see #getStatemachines()
 	 * @generated
@@ -176,6 +178,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	/**
 	 * The default value of the '{@link #getInstances() <em>Instances</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see #getInstances()
 	 * @generated
@@ -186,6 +189,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	/**
 	 * The cached value of the '{@link #getInstances() <em>Instances</em>}' attribute.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see #getInstances()
 	 * @generated
@@ -196,6 +200,7 @@ public class ClassImpl extends EventBNamedCommentedDataElaborationElementImpl im
 	/**
 	 * The cached value of the '{@link #getSubtypeGroups() <em>Subtype Groups</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see #getSubtypeGroups()
 	 * @generated

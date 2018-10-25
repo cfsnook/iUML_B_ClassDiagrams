@@ -15,6 +15,7 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Subtype Group</b></em>'.
+ *  @since 2.0
  * <!-- end-user-doc -->
  *
  * <p>

@@ -249,6 +249,7 @@ public class ClassdiagramsItemProviderAdapterFactory extends ClassdiagramsAdapte
 	/**
 	 * This keeps track of the one adapter used for all {@link ac.soton.eventb.classdiagrams.SubtypeGroup} instances.
 	 * <!-- begin-user-doc -->
+	 *  @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

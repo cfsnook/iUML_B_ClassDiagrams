@@ -402,6 +402,7 @@ public class Messages extends NLS {
 
 	/**
 	* @generated
+	 * @since 2.0
 	*/
 	public static String NavigatorGroupName_SubtypeGroup_3026_incominglinks;
 

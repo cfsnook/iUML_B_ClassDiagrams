@@ -37,6 +37,7 @@ public class ClassConstraintImpl extends EventBNamedCommentedDerivedPredicateEle
 	/**
 	 * The cached value of the '{@link #getComponent() <em>Component</em>}' reference.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @see #getComponent()
 	 * @generated
@@ -86,6 +87,7 @@ public class ClassConstraintImpl extends EventBNamedCommentedDerivedPredicateEle
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

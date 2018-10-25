@@ -18,6 +18,7 @@ import ac.soton.eventb.classdiagrams.EventBSuperType;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Event BSuper Type</b></em>'.
+ * @since 2.0
  * <!-- end-user-doc -->
  * <p>
  * </p>

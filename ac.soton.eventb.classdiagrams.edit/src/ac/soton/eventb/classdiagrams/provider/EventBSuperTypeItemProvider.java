@@ -33,6 +33,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 /**
  * This is the item provider adapter for a {@link ac.soton.eventb.classdiagrams.EventBSuperType} object.
  * <!-- begin-user-doc -->
+ * @since 2.0
  * <!-- end-user-doc -->
  * @generated
  */

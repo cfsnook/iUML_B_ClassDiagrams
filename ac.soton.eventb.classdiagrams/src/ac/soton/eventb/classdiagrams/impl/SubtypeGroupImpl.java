@@ -28,6 +28,7 @@ import ac.soton.eventb.classdiagrams.SubtypeGroup;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Subtype Group</b></em>'.
+ *  @since 2.0
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
