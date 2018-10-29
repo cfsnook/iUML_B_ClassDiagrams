@@ -42,6 +42,7 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Routing;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
@@ -66,6 +67,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 
 /**
@@ -156,6 +158,7 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 				case StatemachineEditPart.VISUAL_ID:
 				case ClassMethodEditPart.VISUAL_ID:
 				case ClassConstraintEditPart.VISUAL_ID:
+				case SubtypeGroupEditPart.VISUAL_ID:
 					if (domainElement == null || visualID != ClassdiagramsVisualIDRegistry
 							.getNodeVisualID(op.getContainerView(), domainElement)) {
 						return false; // visual id in semantic hint should match visual id for domain element
@@ -168,7 +171,7 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 		}
 		return ClassEditPart.VISUAL_ID == visualID || ClassAttributeEditPart.VISUAL_ID == visualID
 				|| StatemachineEditPart.VISUAL_ID == visualID || ClassMethodEditPart.VISUAL_ID == visualID
-				|| ClassConstraintEditPart.VISUAL_ID == visualID;
+				|| ClassConstraintEditPart.VISUAL_ID == visualID || SubtypeGroupEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -228,6 +231,8 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 			return createClassMethod_3023(domainElement, containerView, index, persisted, preferencesHint);
 		case ClassConstraintEditPart.VISUAL_ID:
 			return createClassConstraint_3024(domainElement, containerView, index, persisted, preferencesHint);
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return createSubtypeGroup_3026(domainElement, containerView, index, persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;
@@ -316,11 +321,6 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 			PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
-		{
-			HintedDiagramLinkStyle diagramFacet = NotationFactory.eINSTANCE.createHintedDiagramLinkStyle();
-			diagramFacet.setHint("Statemachines"); //$NON-NLS-1$
-			node.getStyles().add(diagramFacet);
-		}
 		node.setType(ClassdiagramsVisualIDRegistry.getType(StatemachineEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
@@ -350,6 +350,42 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 		node.setType(ClassdiagramsVisualIDRegistry.getType(ClassConstraintEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
+		return node;
+	}
+
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public Node createSubtypeGroup_3026(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(ClassdiagramsVisualIDRegistry.getType(SubtypeGroupEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
 		return node;
 	}
 

@@ -100,8 +100,8 @@ public class ClassdiagramsDomainNavigatorItem extends PlatformObject {
 	public boolean equals(Object obj) {
 		if (obj instanceof ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsDomainNavigatorItem) {
 			return EcoreUtil.getURI(getEObject())
-					.equals(EcoreUtil
-							.getURI(((ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsDomainNavigatorItem) obj)
+					.equals(EcoreUtil.getURI(
+							((ac.soton.eventb.classdiagrams.diagram.navigator.ClassdiagramsDomainNavigatorItem) obj)
 									.getEObject()));
 		}
 		return super.equals(obj);

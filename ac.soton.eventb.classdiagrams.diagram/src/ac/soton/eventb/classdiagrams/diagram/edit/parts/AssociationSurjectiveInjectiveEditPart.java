@@ -96,9 +96,8 @@ public class AssociationSurjectiveInjectiveEditPart extends LabelEditPart implem
 	 * @generated
 	 */
 	static {
-		registerSnapBackPosition(
-				ClassdiagramsVisualIDRegistry.getType(
-						ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationSurjectiveInjectiveEditPart.VISUAL_ID),
+		registerSnapBackPosition(ClassdiagramsVisualIDRegistry.getType(
+				ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationSurjectiveInjectiveEditPart.VISUAL_ID),
 				new Point(5, 5));
 	}
 

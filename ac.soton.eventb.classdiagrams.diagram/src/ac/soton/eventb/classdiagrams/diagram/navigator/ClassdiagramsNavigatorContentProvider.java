@@ -44,6 +44,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.part.Messages;
 
@@ -292,6 +293,9 @@ public class ClassdiagramsNavigatorContentProvider implements ICommonContentProv
 			connectedViews = getChildrenByType(connectedViews,
 					ClassdiagramsVisualIDRegistry.getType(ClassConstraintEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					ClassdiagramsVisualIDRegistry.getType(SubtypeGroupEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					ClassdiagramsVisualIDRegistry.getType(AssociationEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
@@ -309,6 +313,22 @@ public class ClassdiagramsNavigatorContentProvider implements ICommonContentProv
 			}
 			if (!outgoinglinks.isEmpty()) {
 				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case SubtypeGroupEditPart.VISUAL_ID: {
+			LinkedList<ClassdiagramsAbstractNavigatorItem> result = new LinkedList<ClassdiagramsAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			ClassdiagramsNavigatorGroup incominglinks = new ClassdiagramsNavigatorGroup(
+					Messages.NavigatorGroupName_SubtypeGroup_3026_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					ClassdiagramsVisualIDRegistry.getType(ClassSupertypesEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
 			return result.toArray();
 		}
@@ -350,6 +370,9 @@ public class ClassdiagramsNavigatorContentProvider implements ICommonContentProv
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					ClassdiagramsVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					ClassdiagramsVisualIDRegistry.getType(SubtypeGroupEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target, true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					ClassdiagramsVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));

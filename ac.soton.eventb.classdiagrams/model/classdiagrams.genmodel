@@ -40,13 +40,25 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Class/constraints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Class/methods"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//Class/selfName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//Class/instances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//Class/subtypeGroups"/>
     </genClasses>
     <genClasses ecoreClass="classdiagrams.ecore#//ClassMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//ClassMethod/kind"/>
     </genClasses>
-    <genClasses ecoreClass="classdiagrams.ecore#//ClassConstraint"/>
+    <genClasses ecoreClass="classdiagrams.ecore#//ClassConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference classdiagrams.ecore#//ClassConstraint/component"/>
+    </genClasses>
     <genClasses ecoreClass="classdiagrams.ecore#//EventBInitialisable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//EventBInitialisable/initialValue"/>
+    </genClasses>
+    <genClasses ecoreClass="classdiagrams.ecore#//SubtypeGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//SubtypeGroup/cover"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute classdiagrams.ecore#//SubtypeGroup/disjoint"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference classdiagrams.ecore#//SubtypeGroup/subtypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="classdiagrams.ecore#//EventBSuperType">
+      <genOperations ecoreOperation="classdiagrams.ecore#//EventBSuperType/toSuperClass"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

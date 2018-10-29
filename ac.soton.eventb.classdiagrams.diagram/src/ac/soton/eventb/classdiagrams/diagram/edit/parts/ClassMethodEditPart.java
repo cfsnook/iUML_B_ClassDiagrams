@@ -702,21 +702,21 @@ public class ClassMethodEditPart extends CompartmentEditPart implements ITextAwa
 			text = text + "\nWitnesses: \n";
 			for (Witness w : method.getWitnesses()) {
 				text = text + "\t" + w.getName() + " : " + w.getPredicate()
-						+ (w.getComment().length() > 0 ? " //" + w.getComment() : "") + "\n";
+						+ (w.getComment() != null && w.getComment().length() > 0 ? " //" + w.getComment() : "") + "\n";
 			}
 		}
 		if (method.getGuards().size() > 0) {
 			text = text + "\nGuards: \n";
 			for (Guard w : method.getGuards()) {
 				text = text + "\t" + w.getName() + " : " + w.getPredicate()
-						+ (w.getComment().length() > 0 ? " //" + w.getComment() : "") + "\n";
+						+ (w.getComment() != null && w.getComment().length() > 0 ? " //" + w.getComment() : "") + "\n";
 			}
 		}
 		if (method.getActions().size() > 0) {
 			text = text + "\nActions: \n";
 			for (Action w : method.getActions()) {
 				text = text + "\t" + w.getName() + " : " + w.getAction()
-						+ (w.getComment().length() > 0 ? " //" + w.getComment() : "") + "\n";
+						+ (w.getComment() != null && w.getComment().length() > 0 ? " //" + w.getComment() : "") + "\n";
 			}
 		}
 

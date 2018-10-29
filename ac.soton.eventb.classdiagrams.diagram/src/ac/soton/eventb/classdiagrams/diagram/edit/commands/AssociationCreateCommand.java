@@ -93,8 +93,10 @@ public class AssociationCreateCommand extends EditElementCommand {
 
 		Association newElement = ClassdiagramsFactory.eINSTANCE.createAssociation();
 		//+++
-		if ((getContainer() instanceof EventBObject ? ((EventBObject) getContainer()).getContaining(
-				CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT) : null) instanceof Context) {
+		if ((getContainer() instanceof EventBObject
+				? ((EventBObject) getContainer())
+						.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
+				: null) instanceof Context) {
 			newElement.setDataKind(DataKind.CONSTANT);
 		} else {
 			newElement.setDataKind(DataKind.VARIABLE);

@@ -176,6 +176,16 @@
           accessor="getFigureSupertypeLabelFigure"
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
     </descriptors>
+    <descriptors
+        name="SubtypeGroupFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Ellipse"
+          name="SubtypeGroupFigure">
+        <preferredSize
+            dx="12"
+            dy="12"/>
+      </actualFigure>
+    </descriptors>
   </figures>
   <nodes
       name="Class"
@@ -192,6 +202,10 @@
   <nodes
       name="ConstraintNode"
       figure="ConstraintFigure"/>
+  <nodes
+      name="SubtypeGroup"
+      figure="SubtypeGroupFigure"
+      affixedParentSide="NSEW"/>
   <connections
       name="Supertype"
       figure="SupertypeFigure"/>

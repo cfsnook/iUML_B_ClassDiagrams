@@ -58,6 +58,9 @@ public class ClassdiagramsEditPartFactory implements EditPartFactory {
 			case ClassConstraintEditPart.VISUAL_ID:
 				return new ClassConstraintEditPart(view);
 
+			case SubtypeGroupEditPart.VISUAL_ID:
+				return new SubtypeGroupEditPart(view);
+
 			case ClassAttributesCompartmentEditPart.VISUAL_ID:
 				return new ClassAttributesCompartmentEditPart(view);
 

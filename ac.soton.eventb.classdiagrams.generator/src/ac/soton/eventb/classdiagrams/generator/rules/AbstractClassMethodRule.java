@@ -59,6 +59,12 @@ public abstract class AbstractClassMethodRule extends AbstractEventBGeneratorRul
 				}
 				
 				//generate users parameters 
+				for (TypedParameter p : method.getExtendedParameters()){
+					//parameter
+					ret.add(Make.descriptor(elaboratedEvent,parameters,Make.parameter(p.getName(),p.getComment()),10));
+					//guard for type of parameter
+					ret.add(Make.descriptor(elaboratedEvent,guards,Make.guard(Strings.USER_PARAMETER_TYPE_GUARD_NAME(p), Strings.USER_PARAMETER_TYPE_GUARD_PRED(p)),2));
+				}
 				for (TypedParameter p : method.getParameters()){
 					//parameter
 					ret.add(Make.descriptor(elaboratedEvent,parameters,Make.parameter(p.getName(),p.getComment()),10));
@@ -72,11 +78,18 @@ public abstract class AbstractClassMethodRule extends AbstractEventBGeneratorRul
 				}
 				
 				//generate users guards 
+				for (Guard g : method.getExtendedGuards()){
+					ret.add(Make.descriptor(elaboratedEvent,guards,Make.guard(g.getName(), g.isTheorem(), g.getPredicate(), g.getComment()),10));				
+				}
 				for (Guard g : method.getGuards()){
 					ret.add(Make.descriptor(elaboratedEvent,guards,Make.guard(g.getName(), g.isTheorem(), g.getPredicate(), g.getComment()),10));				
 				}
+				
 			}		
 			//generate users actions
+			for (Action g : method.getExtendedActions()){
+				ret.add(Make.descriptor(elaboratedEvent,guards,Make.action(g.getName(), g.getAction(), g.getComment()),10));				
+			}
 			for (Action a : method.getActions()){
 				ret.add(Make.descriptor(elaboratedEvent,actions,Make.action(a.getName(), a.getAction(), a.getComment()),10));				
 			}

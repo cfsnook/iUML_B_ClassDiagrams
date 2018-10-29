@@ -25,7 +25,9 @@ import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramOwner;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.EventBInitialisable;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.MethodKind;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,6 +117,10 @@ public class ClassdiagramsValidator extends EObjectValidator {
 				return validateClassConstraint((ClassConstraint)value, diagnostics, context);
 			case ClassdiagramsPackage.EVENT_BINITIALISABLE:
 				return validateEventBInitialisable((EventBInitialisable)value, diagnostics, context);
+			case ClassdiagramsPackage.SUBTYPE_GROUP:
+				return validateSubtypeGroup((SubtypeGroup)value, diagnostics, context);
+			case ClassdiagramsPackage.EVENT_BSUPER_TYPE:
+				return validateEventBSuperType((EventBSuperType)value, diagnostics, context);
 			case ClassdiagramsPackage.METHOD_KIND:
 				return validateMethodKind((MethodKind)value, diagnostics, context);
 			default:
@@ -230,6 +236,26 @@ public class ClassdiagramsValidator extends EObjectValidator {
 	 */
 	public boolean validateEventBInitialisable(EventBInitialisable eventBInitialisable, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(eventBInitialisable, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSubtypeGroup(SubtypeGroup subtypeGroup, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(subtypeGroup, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEventBSuperType(EventBSuperType eventBSuperType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(eventBSuperType, diagnostics, context);
 	}
 
 	/**

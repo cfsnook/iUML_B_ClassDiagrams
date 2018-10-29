@@ -73,6 +73,7 @@ public class ClassItemProvider
 			addOutgoingPropertyDescriptor(object);
 			addRefinesPropertyDescriptor(object);
 			addSelfNamePropertyDescriptor(object);
+			addInstancesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -188,6 +189,29 @@ public class ClassItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Instances feature.
+	 * <!-- begin-user-doc -->
+	 * @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInstancesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Class_instances_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Class_instances_feature", "_UI_Class_type"),
+				 ClassdiagramsPackage.Literals.CLASS__INSTANCES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -204,6 +228,7 @@ public class ClassItemProvider
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__CLASS_ATTRIBUTES);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__CONSTRAINTS);
 			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__METHODS);
+			childrenFeatures.add(ClassdiagramsPackage.Literals.CLASS__SUBTYPE_GROUPS);
 		}
 		return childrenFeatures;
 	}
@@ -259,6 +284,7 @@ public class ClassItemProvider
 
 		switch (notification.getFeatureID(ac.soton.eventb.classdiagrams.Class.class)) {
 			case ClassdiagramsPackage.CLASS__SELF_NAME:
+			case ClassdiagramsPackage.CLASS__INSTANCES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClassdiagramsPackage.CLASS__CLASSDIAGRAMS:
@@ -266,6 +292,7 @@ public class ClassItemProvider
 			case ClassdiagramsPackage.CLASS__CLASS_ATTRIBUTES:
 			case ClassdiagramsPackage.CLASS__CONSTRAINTS:
 			case ClassdiagramsPackage.CLASS__METHODS:
+			case ClassdiagramsPackage.CLASS__SUBTYPE_GROUPS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -327,6 +354,11 @@ public class ClassItemProvider
 				(createChildParameter
 					(ClassdiagramsPackage.Literals.CLASS__METHODS,
 				 	ClassdiagramsFactory.eINSTANCE.createClassMethod()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ClassdiagramsPackage.Literals.CLASS__SUBTYPE_GROUPS,
+				 	ClassdiagramsFactory.eINSTANCE.createSubtypeGroup()));
 	}
 
 	/**

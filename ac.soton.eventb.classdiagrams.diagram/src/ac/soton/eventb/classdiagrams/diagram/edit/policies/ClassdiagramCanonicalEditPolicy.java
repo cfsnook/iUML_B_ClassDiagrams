@@ -41,6 +41,7 @@ import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramUpdater;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsLinkDescriptor;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsNodeDescriptor;
@@ -259,6 +260,13 @@ public class ClassdiagramCanonicalEditPolicy extends CanonicalEditPolicy {
 		case ClassEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(ClassdiagramsDiagramUpdater.getClass_2003ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case SubtypeGroupEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(ClassdiagramsDiagramUpdater.getSubtypeGroup_3026ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

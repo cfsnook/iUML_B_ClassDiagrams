@@ -7,12 +7,16 @@
  */
 package ac.soton.eventb.classdiagrams.diagram.sheet.custom;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.IFilter;
 import org.eventb.emf.core.CorePackage;
 
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.diagrams.sheet.AbstractEditTablePropertySection;
 import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
@@ -75,5 +79,35 @@ public class SupertypesPropertySection extends AbstractEditTablePropertySection 
 		default : return -1;	//unknown
 		}
 	}
-		
+	
+	/*
+	 * Overidden to convert EventBSuperType to actual super Class
+	 * 
+	 * (non-Javadoc)
+	 * @see ac.soton.eventb.emf.diagrams.sheet.AbstractEditTablePropertySection#getElements()
+	 */
+	@Override
+	protected List<? extends Object> getElements() {
+		ArrayList<Object> ret= new ArrayList<Object>();
+		Object featureValue = owner.eGet(getFeature());
+		if (featureValue instanceof List)
+			for (Object element : (List<?>)featureValue) {
+				if (element instanceof EventBSuperType) {
+					ret.add(((EventBSuperType)element).toSuperClass());
+				}
+			}
+		return ret;
+	}
+
+	/*
+	 * Read only because adding supertypes involves subgroups
+	 * (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.AbstractModelerPropertySection#isReadOnly()
+	 */
+	@Override
+	protected boolean isReadOnly() {
+		return true;
+	}
+	
+	
 }

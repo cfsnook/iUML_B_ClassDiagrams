@@ -17,6 +17,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelations
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 
 import ac.soton.eventb.classdiagrams.Class;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.diagram.edit.policies.ClassdiagramsBaseItemSemanticEditPolicy;
 
 /**
@@ -75,7 +76,7 @@ public class ClassSupertypesReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected boolean canReorientSource() {
-		if (!(oldEnd instanceof Class && newEnd instanceof Class)) {
+		if (!(oldEnd instanceof EventBSuperType && newEnd instanceof Class)) {
 			return false;
 		}
 		return ClassdiagramsBaseItemSemanticEditPolicy.getLinkConstraints().canExistClassSupertypes_4006(getNewSource(),
@@ -86,7 +87,7 @@ public class ClassSupertypesReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected boolean canReorientTarget() {
-		if (!(oldEnd instanceof Class && newEnd instanceof Class)) {
+		if (!(oldEnd instanceof EventBSuperType && newEnd instanceof EventBSuperType)) {
 			return false;
 		}
 		return ClassdiagramsBaseItemSemanticEditPolicy.getLinkConstraints().canExistClassSupertypes_4006(getOldSource(),
@@ -144,14 +145,14 @@ public class ClassSupertypesReorientCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected Class getOldTarget() {
-		return (Class) oldEnd;
+	protected EventBSuperType getOldTarget() {
+		return (EventBSuperType) oldEnd;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Class getNewTarget() {
-		return (Class) newEnd;
+	protected EventBSuperType getNewTarget() {
+		return (EventBSuperType) newEnd;
 	}
 }

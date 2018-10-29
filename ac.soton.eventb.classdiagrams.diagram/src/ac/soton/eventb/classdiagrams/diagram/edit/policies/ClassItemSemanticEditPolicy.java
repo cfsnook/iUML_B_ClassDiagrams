@@ -16,6 +16,7 @@ import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyReferenceCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyReferenceRequest;
@@ -29,6 +30,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.commands.AssociationCreateComm
 import ac.soton.eventb.classdiagrams.diagram.edit.commands.AssociationReorientCommand;
 import ac.soton.eventb.classdiagrams.diagram.edit.commands.ClassSupertypesCreateCommand;
 import ac.soton.eventb.classdiagrams.diagram.edit.commands.ClassSupertypesReorientCommand;
+import ac.soton.eventb.classdiagrams.diagram.edit.commands.SubtypeGroupCreateCommand;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.AssociationEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributeEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassAttributesCompartmentEditPart;
@@ -39,6 +41,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodsCompartmentE
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachinesCompartmentEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsVisualIDRegistry;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
 
@@ -52,6 +55,16 @@ public class ClassItemSemanticEditPolicy extends ClassdiagramsBaseItemSemanticEd
 	 */
 	public ClassItemSemanticEditPolicy() {
 		super(ClassdiagramsElementTypes.Class_2003);
+	}
+
+	/**
+	* @generated
+	*/
+	protected Command getCreateCommand(CreateElementRequest req) {
+		if (ClassdiagramsElementTypes.SubtypeGroup_3026 == req.getElementType()) {
+			return getGEFWrapper(new SubtypeGroupCreateCommand(req));
+		}
+		return super.getCreateCommand(req);
 	}
 
 	/**
@@ -114,6 +127,22 @@ public class ClassItemSemanticEditPolicy extends ClassdiagramsBaseItemSemanticEd
 		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
 			Node node = (Node) nit.next();
 			switch (ClassdiagramsVisualIDRegistry.getVisualID(node)) {
+			case SubtypeGroupEditPart.VISUAL_ID:
+				for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
+					Edge incomingLink = (Edge) it.next();
+					if (ClassdiagramsVisualIDRegistry.getVisualID(incomingLink) == ClassSupertypesEditPart.VISUAL_ID) {
+						DestroyReferenceRequest r = new DestroyReferenceRequest(incomingLink.getSource().getElement(),
+								null, incomingLink.getTarget().getElement(), false);
+						cmd.add(new DestroyReferenceCommand(r));
+						cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+						continue;
+					}
+				}
+				cmd.add(new DestroyElementCommand(
+						new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+				break;
 			case ClassAttributesCompartmentEditPart.VISUAL_ID:
 				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
 					Node cnode = (Node) cit.next();

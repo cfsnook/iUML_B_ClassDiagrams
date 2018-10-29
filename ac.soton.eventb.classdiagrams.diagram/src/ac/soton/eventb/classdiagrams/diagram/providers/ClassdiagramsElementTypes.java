@@ -40,6 +40,7 @@ import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassMethodEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassSupertypesEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassdiagramEditPart;
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.StatemachineEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditorPlugin;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBDataElaboration;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
@@ -102,6 +103,13 @@ public class ClassdiagramsElementTypes {
 	 */
 	public static final IElementType ClassConstraint_3024 = getElementType(
 			"ac.soton.eventb.classdiagrams.diagram.ClassConstraint_3024"); //$NON-NLS-1$
+	/**
+	* @generated
+	 * @since 2.0
+	*/
+	public static final IElementType SubtypeGroup_3026 = getElementType(
+			"ac.soton.eventb.classdiagrams.diagram.SubtypeGroup_3026"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -171,7 +179,8 @@ public class ClassdiagramsElementTypes {
 				return IMAGE_THEOREM;
 			}
 			elementType = ((ClassConstraint) element).getContaining(ContextPackage.Literals.CONTEXT) == null
-					? MachinePackage.Literals.INVARIANT : ContextPackage.Literals.AXIOM;
+					? MachinePackage.Literals.INVARIANT
+					: ContextPackage.Literals.AXIOM;
 		}
 		return getImage(elementType);
 	}
@@ -200,6 +209,8 @@ public class ClassdiagramsElementTypes {
 
 			elements.put(ClassConstraint_3024, ClassdiagramsPackage.eINSTANCE.getClassConstraint());
 
+			elements.put(SubtypeGroup_3026, ClassdiagramsPackage.eINSTANCE.getSubtypeGroup());
+
 			elements.put(Association_4005, ClassdiagramsPackage.eINSTANCE.getAssociation());
 
 			elements.put(ClassSupertypes_4006, ClassdiagramsPackage.eINSTANCE.getClass_Supertypes());
@@ -226,6 +237,7 @@ public class ClassdiagramsElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Statemachine_3025);
 			KNOWN_ELEMENT_TYPES.add(ClassMethod_3023);
 			KNOWN_ELEMENT_TYPES.add(ClassConstraint_3024);
+			KNOWN_ELEMENT_TYPES.add(SubtypeGroup_3026);
 			KNOWN_ELEMENT_TYPES.add(Association_4005);
 			KNOWN_ELEMENT_TYPES.add(ClassSupertypes_4006);
 		}
@@ -249,6 +261,8 @@ public class ClassdiagramsElementTypes {
 			return ClassMethod_3023;
 		case ClassConstraintEditPart.VISUAL_ID:
 			return ClassConstraint_3024;
+		case SubtypeGroupEditPart.VISUAL_ID:
+			return SubtypeGroup_3026;
 		case AssociationEditPart.VISUAL_ID:
 			return Association_4005;
 		case ClassSupertypesEditPart.VISUAL_ID:

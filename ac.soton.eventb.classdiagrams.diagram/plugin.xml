@@ -268,7 +268,7 @@ http://www.eclipse.org/legal/epl-v10.html
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Classdiagrams"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2003,3022,3025,3023,3024"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2003,3022,3025,3023,3024,3026"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4005,4006"/>
       </viewProvider>
    </extension>
@@ -281,7 +281,7 @@ http://www.eclipse.org/legal/epl-v10.html
             <method name="getType()" value="Classdiagrams"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2003,3022,3025,3023,3024"/>
+            <method name="getType()" value="2003,3022,3025,3023,3024,3026"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4005,4006"/>
@@ -327,6 +327,11 @@ http://www.eclipse.org/legal/epl-v10.html
          <Priority name="Lowest"/>
          <object class="ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassConstraintEditPart" id="ClassConstraint_3024"/>
          <context elements="ClassConstraint_3024"/>
+      </modelingAssistantProvider>
+      <modelingAssistantProvider class="ac.soton.eventb.classdiagrams.diagram.providers.assistants.ClassdiagramsModelingAssistantProviderOfSubtypeGroupEditPart">
+         <Priority name="Lowest"/>
+         <object class="ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart" id="SubtypeGroup_3026"/>
+         <context elements="SubtypeGroup_3026"/>
       </modelingAssistantProvider>
       
    </extension>
@@ -420,6 +425,16 @@ http://www.eclipse.org/legal/epl-v10.html
       </metamodel>
       <metamodel nsURI="http://soton.ac.uk/models/eventb/classdiagrams/2015">
          <metamodelType
+               id="ac.soton.eventb.classdiagrams.diagram.SubtypeGroup_3026"
+               name="%metatype.name.SubtypeGroup_3026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SubtypeGroup"
+               edithelper="ac.soton.eventb.classdiagrams.diagram.edit.helpers.SubtypeGroupEditHelper">
+            <param name="semanticHint" value="3026"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://soton.ac.uk/models/eventb/classdiagrams/2015">
+         <metamodelType
                id="ac.soton.eventb.classdiagrams.diagram.Association_4005"
                name="%metatype.name.Association_4005"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -455,6 +470,7 @@ http://www.eclipse.org/legal/epl-v10.html
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.Statemachine_3025"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.ClassMethod_3023"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.ClassConstraint_3024"/>
+         <elementType ref="ac.soton.eventb.classdiagrams.diagram.SubtypeGroup_3026"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.Association_4005"/>
          <elementType ref="ac.soton.eventb.classdiagrams.diagram.ClassSupertypes_4006"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
@@ -856,6 +872,14 @@ http://www.eclipse.org/legal/epl-v10.html
          </propertySection>
          <propertySection
                afterSection="property.section.selfname"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.InstancesPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.InstancesPropertySection$Filter"
+               id="property.section.instances"
+               tab="property.tab.overview">
+         </propertySection>  
+         <propertySection
+               afterSection="property.section.instances"
                class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ClassAttributeTargetSection"
                enablesFor="1"
                filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ClassdiagramsSheetPropertyFilter$ClassAttributeFilter"
@@ -895,7 +919,24 @@ http://www.eclipse.org/legal/epl-v10.html
                id="property.section.supertypes"
                tab="property.tab.supertypes">
          </propertySection>
-
+         
+         <propertySection
+               afterSection="property.section.comment"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.DisjointSection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.DisjointSection$Filter"
+               id="property.section.disjointSection"
+               tab="property.tab.overview">
+         </propertySection> 
+         <propertySection
+               afterSection="property.section.disjoint"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.CoverSection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.CoverSection$Filter"
+               id="property.section.coverSection"
+               tab="property.tab.overview">
+         </propertySection> 
+         
          <propertySection
                afterSection="property.section.supertypes"
                class="ac.soton.eventb.emf.diagrams.sheet.EventBRelationKindSurjectiveSection"
@@ -936,8 +977,17 @@ http://www.eclipse.org/legal/epl-v10.html
                id="property.section.refinesClassSection"
                tab="property.tab.overview">
          </propertySection> 
+         
          <propertySection
-               afterSection="property.section.refinesClassPropertySection"
+               afterSection="property.section.name"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ConstraintContainerPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.ConstraintContainerPropertySection$Filter"
+               id="property.section.component"
+               tab="property.tab.overview">
+         </propertySection>
+         <propertySection
+               afterSection="property.section.component"
                class="ac.soton.eventb.emf.diagrams.sheet.PredicatePropertySection"
                enablesFor="1"
                filter="ac.soton.eventb.emf.diagrams.sheet.PredicatePropertySection$Filter"
@@ -952,9 +1002,25 @@ http://www.eclipse.org/legal/epl-v10.html
                id="property.section.theorem"
                tab="property.tab.overview">
          </propertySection>
-         
+
+         <propertySection
+               afterSection="property.section.label"
+               class="ac.soton.eventb.classdiagrams.diagram.sheet.custom.RefinesMethodPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.classdiagrams.diagram.sheet.custom.RefinesMethodPropertySection$Filter"
+               id="property.section.refinesMethod"
+               tab="property.tab.overview">
+         </propertySection>
+         <propertySection
+               afterSection="property.section.refinesMethod"
+               class="ac.soton.eventb.emf.diagrams.sheet.ExtendedPropertySection"
+               enablesFor="1"
+               filter="ac.soton.eventb.emf.diagrams.sheet.ExtendedPropertySection$Filter"
+               id="property.section.methodExtended"
+               tab="property.tab.overview">
+         </propertySection>
           <propertySection
-               afterSection="property.section.theorem"
+               afterSection="property.section.methodExtended"
                class="ac.soton.eventb.emf.diagrams.sheet.ElaboratesPropertySection"
                enablesFor="1"
                filter="ac.soton.eventb.emf.diagrams.sheet.ElaboratesPropertySection$Filter"

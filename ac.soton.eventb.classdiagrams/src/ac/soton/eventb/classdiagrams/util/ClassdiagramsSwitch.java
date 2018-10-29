@@ -33,6 +33,8 @@ import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramOwner;
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
 import ac.soton.eventb.classdiagrams.EventBInitialisable;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
+import ac.soton.eventb.classdiagrams.SubtypeGroup;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBCommentedLabeledElement;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBCommentedLabeledEventGroupElement;
 import ac.soton.eventb.emf.core.extension.coreextension.EventBDataElaboration;
@@ -176,6 +178,7 @@ public class ClassdiagramsSwitch<T> {
 				ac.soton.eventb.classdiagrams.Class class_ = (ac.soton.eventb.classdiagrams.Class)theEObject;
 				T result = caseClass(class_);
 				if (result == null) result = caseEventBNamedCommentedDataElaborationElement(class_);
+				if (result == null) result = caseEventBSuperType(class_);
 				if (result == null) result = caseClassdiagramOwner(class_);
 				if (result == null) result = caseStatemachineOwner(class_);
 				if (result == null) result = caseEventBNamedCommentedElement(class_);
@@ -221,6 +224,25 @@ public class ClassdiagramsSwitch<T> {
 			case ClassdiagramsPackage.EVENT_BINITIALISABLE: {
 				EventBInitialisable eventBInitialisable = (EventBInitialisable)theEObject;
 				T result = caseEventBInitialisable(eventBInitialisable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ClassdiagramsPackage.SUBTYPE_GROUP: {
+				SubtypeGroup subtypeGroup = (SubtypeGroup)theEObject;
+				T result = caseSubtypeGroup(subtypeGroup);
+				if (result == null) result = caseEventBNamedCommentedElement(subtypeGroup);
+				if (result == null) result = caseEventBSuperType(subtypeGroup);
+				if (result == null) result = caseEventBCommentedElement(subtypeGroup);
+				if (result == null) result = caseEventBNamed(subtypeGroup);
+				if (result == null) result = caseEventBElement(subtypeGroup);
+				if (result == null) result = caseEventBCommented(subtypeGroup);
+				if (result == null) result = caseEventBObject(subtypeGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ClassdiagramsPackage.EVENT_BSUPER_TYPE: {
+				EventBSuperType eventBSuperType = (EventBSuperType)theEObject;
+				T result = caseEventBSuperType(eventBSuperType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -345,6 +367,38 @@ public class ClassdiagramsSwitch<T> {
 	 * @generated
 	 */
 	public T caseEventBInitialisable(EventBInitialisable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Subtype Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Subtype Group</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubtypeGroup(SubtypeGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event BSuper Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event BSuper Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEventBSuperType(EventBSuperType object) {
 		return null;
 	}
 
@@ -533,12 +587,12 @@ public class ClassdiagramsSwitch<T> {
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Statemachine Owner</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
-	 * @since 2.0
 	 */
 	public T caseStatemachineOwner(StatemachineOwner object) {
 		return null;

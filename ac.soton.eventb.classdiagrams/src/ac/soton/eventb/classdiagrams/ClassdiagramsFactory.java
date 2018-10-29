@@ -83,6 +83,16 @@ public interface ClassdiagramsFactory extends EFactory {
 	ClassConstraint createClassConstraint();
 
 	/**
+	 * Returns a new object of class '<em>Subtype Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Subtype Group</em>'.
+	 * @generated
+	 */
+	SubtypeGroup createSubtypeGroup();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -9,6 +9,7 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
+import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
@@ -22,10 +23,16 @@ import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
 import ac.soton.emf.translator.eventb.utils.Find;
 import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.classdiagrams.Class;
+import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
 
+/**
+ * Generator rule for iUML-B Class
+ * 
+ * 
+ */
 public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	
 	protected static final EReference elaborates = CoreextensionPackage.Literals.EVENT_BDATA_ELABORATION__ELABORATES;
@@ -39,23 +46,19 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	@Override
 	public List<TranslationDescriptor> fire(EObject sourceElement, List<TranslationDescriptor> generatedElements) throws Exception {
 		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
-	
+		EventBNamedCommentedComponentElement targetContainer;
+		
 		// generate supertype invariants/axioms
 		Class element = (Class)sourceElement;
 		EventBElement elaborated = (EventBElement) element.getElaborates();
 		if (element.getSupertypes() != null && element.getSupertypes().size() > 0){
-			EventBNamedCommentedComponentElement sourceContainer = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
-			EventBNamedCommentedComponentElement targetContainer;
-			for (Class superClass : element.getSupertypes()){
+						
+			for (EventBSuperType superType : element.getSupertypes()){
+				//note: other constraints such as disjoint and partitioned sub classes, must be handled by other rules. Here we just handle simple subsets.
+				Class superClass = 	superType.toSuperClass();
 				int pri = subsetPriority(superClass);
-				targetContainer = sourceContainer ;				
-				if (sourceContainer instanceof Machine && elaborated instanceof Constant && !(superClass.getElaborates() instanceof Variable)){
-					for (Context ctx : ((Machine)sourceContainer).getSees()){
-						if (sees(ctx,elaborated) && sees(ctx,(EventBElement) superClass.getElaborates())) {
-							targetContainer = ctx;
-						};
-					}
-				}
+				
+				targetContainer = getTargetContainer(element, superClass);				
 				if (targetContainer instanceof Machine){
 					ret.add(Make.descriptor(targetContainer, invariants, Make.invariant(
 							Strings.CLASS_SUPERTYPE_NAME(element, superClass), 
@@ -67,6 +70,30 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 				}
 			}	
 		}
+		
+		String instances = element.getInstances();
+		if (instances!=null) instances = instances.trim();
+		targetContainer = getTargetContainer(element, null);
+		//for constant instance classes, initialise the instances set
+		if ((elaborated instanceof Constant || elaborated instanceof CarrierSet) && instances!=null && instances.length()>0){
+			if (instances.startsWith("{") && instances.endsWith("}")) {
+				//instances = instances.substring(1, instances.length()-1);
+				instances = instances.replaceAll(" ", "");
+				String[] instanceNames = instances.split("[,{}]");
+				instances = instances.replaceAll(",", "},{");
+				for (String iname : instanceNames) {
+					if (iname.length()>0) {
+					//create a constant
+					ret.add(Make.descriptor(targetContainer, constants, Make.constant(iname, "instance of class "+element.getName()), 10));	
+					}
+				}
+				// create the partition axiom
+				ret.add(Make.descriptor(targetContainer, axioms, Make.axiom(
+						Strings.ENUMERATION_NAME(element), 
+						Strings.ENUMERATION_PRED(element, instances), element.getComment()), 10));	
+			}
+		}
+		
 		//for variable instance classes, initialise the instances set to empty
 		if (elaborated instanceof Variable){
 			Event initialisationEvent = (Event) Find.named(
@@ -81,23 +108,35 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 							Strings.EMPTY_INITIALISATION_ACTION_EXPR((EventBNamed)sourceElement))
 					, 5));
 		}
+		
 		return ret;
-	}
-	
-	private boolean sees(Context ctx, EventBElement el) {
-		if (ctx.getConstants().contains(el) || ctx.getSets().contains(el)){
-			return true;
-		}else{
-			for (Context ectx : ctx.getExtends()){
-				if (sees(ectx, el)) return true;
-			}
-		}
-		return false;
 	}
 
 	/**
+	 * Returns a suitable component to put the constraint predicate for this supertype in.
+	 * 
+	 * starting from the source container, 
+	 * searches down the hierarchy of in-scope components (sees and extends)
+	 * until a component is found that contains one of the elaborated data elements.
+	 * If all other components are in scope of this component, it is return.
+	 * 
+	 * If no such component can be found, the source container is returned.
+	 * 
+	 * 
+	 * @param 
+	 * @return
+	 */
+	private EventBNamedCommentedComponentElement getTargetContainer(Class class_, Class superClass) {
+		//get the components that contain the elaborated data elements
+		List<EventBElement> elements = new ArrayList<EventBElement>();
+		elements.add((EventBElement) class_.getElaborates());
+		if (superClass!= null) elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
+		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) class_.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+	}
+	
+	/**
 	 * calculates the priority of this subset constraint (1 high, 10 low)
-	 * the priority must ensure that the superclass has got as type constraint with higher priority
+	 * the priority must ensure that the superclass has got a type constraint with higher priority
 	 * therefore we add one to the min distance (in supertype relations) of the supertype 
 	 * from a carrier set (or class with no supertypes). If a class with no supertypes was found we
 	 *  have to assume that the top class is defined in a context elsewhere.
@@ -105,16 +144,15 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	 * @param element
 	 * @return
 	 */
-	private int subsetPriority(Class element) {
-		Class c = element;
+	private int subsetPriority(Class c) {
 		if (c.getDataKind().equals(DataKind.SET)){
 			return 1;
 		}else if (c.getSupertypes().isEmpty()){
 			return 1;
 		}else{
 			Integer p = 10; //FIXME: There is a limit to the number of priorities we can use.
-			for (Class s : c.getSupertypes()){
-					int d = subsetPriority(s);
+			for (EventBSuperType st : c.getSupertypes()){
+					int d = subsetPriority(st.toSuperClass());
 					if (d<p) p = d;
 			}
 			return p+1;

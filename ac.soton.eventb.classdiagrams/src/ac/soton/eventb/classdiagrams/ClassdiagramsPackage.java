@@ -703,20 +703,20 @@ public interface ClassdiagramsPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Classdiagrams</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
-	 * @since 2.0
 	 */
 	int CLASS__CLASSDIAGRAMS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Statemachines</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 2.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
-	 * @since 2.0
 	 */
 	int CLASS__STATEMACHINES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 1;
 
@@ -793,13 +793,33 @@ public interface ClassdiagramsPackage extends EPackage {
 	int CLASS__SELF_NAME = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Instances</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__INSTANCES = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Subtype Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__SUBTYPE_GROUPS = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FEATURE_COUNT = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 10;
+	int CLASS_FEATURE_COUNT = CoreextensionPackage.EVENT_BNAMED_COMMENTED_DATA_ELABORATION_ELEMENT_FEATURE_COUNT + 12;
 
 
 	/**
@@ -948,6 +968,16 @@ public interface ClassdiagramsPackage extends EPackage {
 	int CLASS_METHOD__WITNESSES = CoreextensionPackage.EVENT_BCOMMENTED_LABELED_EVENT_GROUP_ELEMENT__WITNESSES;
 
 	/**
+	 * The feature id for the '<em><b>Refines</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_METHOD__REFINES = CoreextensionPackage.EVENT_BCOMMENTED_LABELED_EVENT_GROUP_ELEMENT__REFINES;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1075,13 +1105,23 @@ public interface ClassdiagramsPackage extends EPackage {
 	int CLASS_CONSTRAINT__THEOREM = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__THEOREM;
 
 	/**
+	 * The feature id for the '<em><b>Component</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_CONSTRAINT__COMPONENT = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Class Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_CONSTRAINT_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT_FEATURE_COUNT + 0;
+	int CLASS_CONSTRAINT_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT_FEATURE_COUNT + 1;
 
 
 	/**
@@ -1113,6 +1153,168 @@ public interface ClassdiagramsPackage extends EPackage {
 	int EVENT_BINITIALISABLE_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl <em>Event BSuper Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @see ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl
+	 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getEventBSuperType()
+	 * @generated
+	 */
+	int EVENT_BSUPER_TYPE = 9;
+
+	/**
+	 * The meta object id for the '{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl <em>Subtype Group</em>}' class.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @see ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl
+	 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getSubtypeGroup()
+	 * @generated
+	 */
+	int SUBTYPE_GROUP = 8;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Cover</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__COVER = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Disjoint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__DISJOINT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Subtypes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP__SUBTYPES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Subtype Group</em>' class.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_GROUP_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Event BSuper Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BSUPER_TYPE_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link ac.soton.eventb.classdiagrams.MethodKind <em>Method Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1120,7 +1322,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getMethodKind()
 	 * @generated
 	 */
-	int METHOD_KIND = 8;
+	int METHOD_KIND = 10;
 
 
 	/**
@@ -1339,6 +1541,30 @@ public interface ClassdiagramsPackage extends EPackage {
 	EAttribute getClass_SelfName();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.Class#getInstances <em>Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instances</em>'.
+	 * @see ac.soton.eventb.classdiagrams.Class#getInstances()
+	 * @see #getClass_()
+	 * @generated
+	 */
+	EAttribute getClass_Instances();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ac.soton.eventb.classdiagrams.Class#getSubtypeGroups <em>Subtype Groups</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Subtype Groups</em>'.
+	 * @see ac.soton.eventb.classdiagrams.Class#getSubtypeGroups()
+	 * @see #getClass_()
+	 * @generated
+	 */
+	EReference getClass_SubtypeGroups();
+
+	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.ClassMethod <em>Class Method</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1370,6 +1596,18 @@ public interface ClassdiagramsPackage extends EPackage {
 	EClass getClassConstraint();
 
 	/**
+	 * Returns the meta object for the reference '{@link ac.soton.eventb.classdiagrams.ClassConstraint#getComponent <em>Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Component</em>'.
+	 * @see ac.soton.eventb.classdiagrams.ClassConstraint#getComponent()
+	 * @see #getClassConstraint()
+	 * @generated
+	 */
+	EReference getClassConstraint_Component();
+
+	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.EventBInitialisable <em>Event BInitialisable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,6 +1627,64 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEventBInitialisable_InitialValue();
+
+	/**
+	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.SubtypeGroup <em>Subtype Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Subtype Group</em>'.
+	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup
+	 * @generated
+	 */
+	EClass getSubtypeGroup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isCover <em>Cover</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cover</em>'.
+	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#isCover()
+	 * @see #getSubtypeGroup()
+	 * @generated
+	 */
+	EAttribute getSubtypeGroup_Cover();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#isDisjoint <em>Disjoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Disjoint</em>'.
+	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#isDisjoint()
+	 * @see #getSubtypeGroup()
+	 * @generated
+	 */
+	EAttribute getSubtypeGroup_Disjoint();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ac.soton.eventb.classdiagrams.SubtypeGroup#getSubtypes <em>Subtypes</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Subtypes</em>'.
+	 * @see ac.soton.eventb.classdiagrams.SubtypeGroup#getSubtypes()
+	 * @see #getSubtypeGroup()
+	 * @generated
+	 */
+	EReference getSubtypeGroup_Subtypes();
+
+	/**
+	 * Returns the meta object for class '{@link ac.soton.eventb.classdiagrams.EventBSuperType <em>Event BSuper Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 *  @since 2.0
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Event BSuper Type</em>'.
+	 * @see ac.soton.eventb.classdiagrams.EventBSuperType
+	 * @generated
+	 */
+	EClass getEventBSuperType();
 
 	/**
 	 * Returns the meta object for enum '{@link ac.soton.eventb.classdiagrams.MethodKind <em>Method Kind</em>}'.
@@ -1593,6 +1889,24 @@ public interface ClassdiagramsPackage extends EPackage {
 		EAttribute CLASS__SELF_NAME = eINSTANCE.getClass_SelfName();
 
 		/**
+		 * The meta object literal for the '<em><b>Instances</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS__INSTANCES = eINSTANCE.getClass_Instances();
+
+		/**
+		 * The meta object literal for the '<em><b>Subtype Groups</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc --> 
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__SUBTYPE_GROUPS = eINSTANCE.getClass_SubtypeGroups();
+
+		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.ClassMethodImpl <em>Class Method</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1621,6 +1935,15 @@ public interface ClassdiagramsPackage extends EPackage {
 		EClass CLASS_CONSTRAINT = eINSTANCE.getClassConstraint();
 
 		/**
+		 * The meta object literal for the '<em><b>Component</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_CONSTRAINT__COMPONENT = eINSTANCE.getClassConstraint_Component();
+
+		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.EventBInitialisableImpl <em>Event BInitialisable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1637,6 +1960,55 @@ public interface ClassdiagramsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT_BINITIALISABLE__INITIAL_VALUE = eINSTANCE.getEventBInitialisable_InitialValue();
+
+		/**
+		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl <em>Subtype Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @see ac.soton.eventb.classdiagrams.impl.SubtypeGroupImpl
+		 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getSubtypeGroup()
+		 * @generated
+		 */
+		EClass SUBTYPE_GROUP = eINSTANCE.getSubtypeGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Cover</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBTYPE_GROUP__COVER = eINSTANCE.getSubtypeGroup_Cover();
+
+		/**
+		 * The meta object literal for the '<em><b>Disjoint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBTYPE_GROUP__DISJOINT = eINSTANCE.getSubtypeGroup_Disjoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Subtypes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUBTYPE_GROUP__SUBTYPES = eINSTANCE.getSubtypeGroup_Subtypes();
+
+		/**
+		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl <em>Event BSuper Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 *  @since 2.0
+		 * <!-- end-user-doc -->
+		 * @see ac.soton.eventb.classdiagrams.impl.EventBSuperTypeImpl
+		 * @see ac.soton.eventb.classdiagrams.impl.ClassdiagramsPackageImpl#getEventBSuperType()
+		 * @generated
+		 */
+		EClass EVENT_BSUPER_TYPE = eINSTANCE.getEventBSuperType();
 
 		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.classdiagrams.MethodKind <em>Method Kind</em>}' enum.

@@ -16,6 +16,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 
 import ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassEditPart;
+import ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsElementTypes;
 import ac.soton.eventb.classdiagrams.diagram.providers.ClassdiagramsModelingAssistantProvider;
 
@@ -30,7 +31,8 @@ public class ClassdiagramsModelingAssistantProviderOfClassEditPart extends Class
 	@Override
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
+		List<IElementType> types = new ArrayList<IElementType>(5);
+		types.add(ClassdiagramsElementTypes.SubtypeGroup_3026);
 		types.add(ClassdiagramsElementTypes.ClassAttribute_3022);
 		types.add(ClassdiagramsElementTypes.Statemachine_3025);
 		types.add(ClassdiagramsElementTypes.ClassMethod_3023);
@@ -80,6 +82,9 @@ public class ClassdiagramsModelingAssistantProviderOfClassEditPart extends Class
 		if (targetEditPart instanceof ClassEditPart) {
 			types.add(ClassdiagramsElementTypes.ClassSupertypes_4006);
 		}
+		if (targetEditPart instanceof SubtypeGroupEditPart) {
+			types.add(ClassdiagramsElementTypes.ClassSupertypes_4006);
+		}
 		return types;
 	}
 
@@ -102,6 +107,7 @@ public class ClassdiagramsModelingAssistantProviderOfClassEditPart extends Class
 			types.add(ClassdiagramsElementTypes.Class_2003);
 		} else if (relationshipType == ClassdiagramsElementTypes.ClassSupertypes_4006) {
 			types.add(ClassdiagramsElementTypes.Class_2003);
+			types.add(ClassdiagramsElementTypes.SubtypeGroup_3026);
 		}
 		return types;
 	}
