@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
 
@@ -149,7 +149,7 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated  NOT
 	 */
-	public EList<ac.soton.eventb.classdiagrams.Class> getSubtypes() {
+	public EList<Class> getSubtypes() {
 		List<ac.soton.eventb.classdiagrams.Class> subtypes = new  ArrayList<Class>();
 		EventBObject cd = this.getContaining(ClassdiagramsPackage.Literals.CLASSDIAGRAM);
 		for (EObject c : cd.getAllContained(ClassdiagramsPackage.Literals.CLASS, true)){
@@ -157,7 +157,7 @@ public class SubtypeGroupImpl extends EventBNamedCommentedElementImpl implements
 				subtypes.add((Class)c);
 			}
 		}
-		return new BasicEList.UnmodifiableEList<Class>(subtypes.size(),subtypes.toArray()) ;
+		return	new EcoreEList.UnmodifiableEList<Class>(this, ClassdiagramsPackage.Literals.SUBTYPE_GROUP__SUBTYPES, subtypes.size(), subtypes.toArray()) ;
 	}
 
 	/**
