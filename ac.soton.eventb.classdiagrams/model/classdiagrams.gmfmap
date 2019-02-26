@@ -132,6 +132,9 @@
         <ownedChild>
           <domainMetaElement
               href="classdiagrams.ecore#//SubtypeGroup"/>
+          <tool
+              xsi:type="gmftool:CreationTool"
+              href="classdiagrams.gmftool#//@palette/@tools.2/@tools.2"/>
           <diagramNode
               href="classdiagrams.gmfgraph#SubtypeGroup"/>
         </ownedChild>

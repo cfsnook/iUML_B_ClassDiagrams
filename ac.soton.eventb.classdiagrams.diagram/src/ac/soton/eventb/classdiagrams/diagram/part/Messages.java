@@ -339,6 +339,18 @@ public class Messages extends NLS {
 	public static String Supertype2CreationTool_desc;
 
 	/**
+	* @generated
+	 * @since 2.1
+	*/
+	public static String SubtypeGroup3CreationTool_title;
+
+	/**
+	* @generated
+	 * @since 2.1
+	*/
+	public static String SubtypeGroup3CreationTool_desc;
+
+	/**
 	 * @generated
 	 * @since 2.0
 	 */

@@ -542,6 +542,11 @@
             largeIconPath="/ac.soton.eventb.classdiagrams.edit/icons/full/obj16/Supertype.gif"
             smallIconPath="/ac.soton.eventb.classdiagrams.edit/icons/full/obj16/Supertype.gif"
             genLinks="//@diagram/@links.1"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Subtype Group"
+            description="Add a new subtype grouping node to a class edge"
+            genNodes="//@diagram/@childNodes.4"/>
       </groups>
     </palette>
     <preferencePages
@@ -572,7 +577,7 @@
   </diagram>
   <plugin
       provider="University of Southampton"
-      version="2.0.1.qualifier"
+      version="2.1.0.qualifier"
       printingEnabled="true">
     <requiredPlugins>org.eclipse.gmf.tooling.runtime</requiredPlugins>
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
