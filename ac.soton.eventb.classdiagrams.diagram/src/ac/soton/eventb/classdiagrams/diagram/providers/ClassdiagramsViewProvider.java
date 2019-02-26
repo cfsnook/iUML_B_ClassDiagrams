@@ -321,6 +321,11 @@ public class ClassdiagramsViewProvider extends AbstractProvider implements IView
 			PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
+		{
+			HintedDiagramLinkStyle diagramFacet = NotationFactory.eINSTANCE.createHintedDiagramLinkStyle();
+			diagramFacet.setHint("Statemachines"); //$NON-NLS-1$
+			node.getStyles().add(diagramFacet);
+		}
 		node.setType(ClassdiagramsVisualIDRegistry.getType(StatemachineEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
