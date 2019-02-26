@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eventb.emf.core.EventBObject;
 
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
-import ac.soton.eventb.emf.core.extension.navigator.refiner.CoreextensionElementRefiner;
+import ac.soton.eventb.statemachines.navigator.refiner.StatemachineElementRefiner;
 
 /**
  * Class diagram Element Refiner 
@@ -18,7 +18,7 @@ import ac.soton.eventb.emf.core.extension.navigator.refiner.CoreextensionElement
  *
  */
 
-public class ClassdiagramElementRefiner extends CoreextensionElementRefiner {
+public class ClassdiagramElementRefiner extends StatemachineElementRefiner {
 
 	/**
 	 * populate the given list with the meta-classes that the refiner needs to filter out
