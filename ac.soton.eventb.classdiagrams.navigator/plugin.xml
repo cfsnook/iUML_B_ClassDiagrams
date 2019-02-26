@@ -79,7 +79,7 @@
             second-participant-id="ac.soton.eventb.classdiagrams.navigator.classdiagramContextRefiner">
       </Order>
    </extension>
-      <extension
+   <extension
          point="ac.soton.eventb.emf.core.extension.navigator.elementRefinement">
       <refinementDefinition
             refiner_class="ac.soton.eventb.classdiagrams.navigator.refiner.ClassdiagramElementRefiner"
@@ -87,4 +87,10 @@
       </refinementDefinition>
    </extension>
 
+  <extension
+        point="ac.soton.eventb.emf.core.extension.navigator.emfFileExtensions">
+     <model
+           extension="cls">
+     </model>
+  </extension>
 </plugin>
