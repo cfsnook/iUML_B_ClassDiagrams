@@ -328,7 +328,7 @@ http://www.eclipse.org/legal/epl-v10.html
          <object class="ac.soton.eventb.classdiagrams.diagram.edit.parts.ClassConstraintEditPart" id="ClassConstraint_3024"/>
          <context elements="ClassConstraint_3024"/>
       </modelingAssistantProvider>
-      <modelingAssistantProvider class="ac.soton.eventb.classdiagrams.diagram.providers.assistants.ClassdiagramsModelingAssistantProviderOfSubtypeGroupEditPart">
+            <modelingAssistantProvider class="ac.soton.eventb.classdiagrams.diagram.providers.assistants.ClassdiagramsModelingAssistantProviderOfSubtypeGroupEditPart">
          <Priority name="Lowest"/>
          <object class="ac.soton.eventb.classdiagrams.diagram.edit.parts.SubtypeGroupEditPart" id="SubtypeGroup_3026"/>
          <context elements="SubtypeGroup_3026"/>
