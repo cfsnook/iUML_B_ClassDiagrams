@@ -41,7 +41,7 @@ public class ClassdiagramsFactoryImpl extends EFactoryImpl implements Classdiagr
 	 */
 	public static ClassdiagramsFactory init() {
 		try {
-			ClassdiagramsFactory theClassdiagramsFactory = (ClassdiagramsFactory)EPackage.Registry.INSTANCE.getEFactory("http://soton.ac.uk/models/eventb/classdiagrams/2015"); 
+			ClassdiagramsFactory theClassdiagramsFactory = (ClassdiagramsFactory)EPackage.Registry.INSTANCE.getEFactory("http://soton.ac.uk/models/eventb/classdiagrams/2019"); 
 			if (theClassdiagramsFactory != null) {
 				return theClassdiagramsFactory;
 			}

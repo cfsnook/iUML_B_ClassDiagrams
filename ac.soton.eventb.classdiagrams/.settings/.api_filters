@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="ac.soton.eventb.classdiagrams" version="2">
+    <resource path="src/ac/soton/eventb/classdiagrams/ClassdiagramsPackage.java" type="ac.soton.eventb.classdiagrams.ClassdiagramsPackage">
+        <filter comment="This is a correction to the current major release and should not affect API" id="388194388">
+            <message_arguments>
+                <message_argument value="ac.soton.eventb.classdiagrams.ClassdiagramsPackage"/>
+                <message_argument value="eNS_URI"/>
+                <message_argument value="http://soton.ac.uk/models/eventb/classdiagrams/2015"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

@@ -56,7 +56,7 @@ public interface ClassdiagramsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://soton.ac.uk/models/eventb/classdiagrams/2015";
+	String eNS_URI = "http://soton.ac.uk/models/eventb/classdiagrams/2019";
 
 	/**
 	 * The package namespace name.
