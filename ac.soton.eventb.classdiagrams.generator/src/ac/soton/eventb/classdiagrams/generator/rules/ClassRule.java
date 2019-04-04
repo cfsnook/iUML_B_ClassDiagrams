@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
@@ -131,7 +130,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		List<EventBElement> elements = new ArrayList<EventBElement>();
 		elements.add((EventBElement) class_.getElaborates());
 		if (superClass!= null) elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
-		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) class_.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+		return CDRuleUtils.getTargetContainer(elements);
 	}
 	
 	/**

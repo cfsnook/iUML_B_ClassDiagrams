@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.context.Context;
@@ -108,7 +107,7 @@ public class SubtypeGroupRule  extends AbstractEventBGeneratorRule  implements I
 			elements.add((EventBElement) c.getElaborates());
 		}
 		elements.add((EventBElement) subtypeGroup.toSuperClass().getElaborates()); //the supertype must also be in scope 
-		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) subtypeGroup.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+		return CDRuleUtils.getTargetContainer(elements);
 	}
 	
 	/**

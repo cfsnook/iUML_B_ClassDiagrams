@@ -9,6 +9,8 @@ import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Machine;
 
+import ac.soton.emf.translator.eventb.utils.Utils;
+
 /**
  * Some utility methods to help with the Class Diagram Rules
  * 
@@ -16,52 +18,32 @@ import org.eventb.emf.core.machine.Machine;
  */
 
 public class CDRuleUtils {
-
-	/**
-	 *  
-	 *  starting from the given root component, finds the best container component for something that refers to the given element
-	 *  if no sub-component has the element in scope, returns the root itself.
-	 *  
-	 * @param root
-	 * @param elements
-	 * @return
-	 */
-	public static EventBNamedCommentedComponentElement getTargetContainer(EventBNamedCommentedComponentElement root, EventBElement element) {
-		List<EventBNamedCommentedComponentElement> components = new ArrayList<EventBNamedCommentedComponentElement>();
-		components.add((EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT));
-		EventBNamedCommentedComponentElement target = findTopContainer(components, root);
-		if (target==null) target = root;
-		return target;
-	}
 	
 	/**
 	 * 
-	 *  starting from the given root component, finds the best container component for something that refers to the given set of elements
-	 *  if no sub-component has all elements in scope, returns the root itself.
+	 *  starting from the translation target, finds the best container component for something that refers to the given set of elements
+	 *  if no sub-component has all elements in scope, returns the translation target itself.
 	 *  
-	 * @param root
-	 * @param elements
+	 * @param elements (that are expected to be in scope of the translation target)
 	 * @return
 	 */
-	public static EventBNamedCommentedComponentElement getTargetContainer(EventBNamedCommentedComponentElement root, List<EventBElement> elements) {
+	public static EventBNamedCommentedComponentElement getTargetContainer(List<EventBElement> elements) {
 		List<EventBNamedCommentedComponentElement> components = new ArrayList<EventBNamedCommentedComponentElement>();
 		for (EventBElement element : elements) {
 			components.add((EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT));
 		}
-		EventBNamedCommentedComponentElement target = findTopContainer(components, root);
-		if (target==null) target = root;
-		
-		return target;
+		EventBNamedCommentedComponentElement target = findTopContainer(components, Utils.getTranslationTarget());
+		return target!=null ? target : Utils.getTranslationTarget();
 	}
 
 	/**
-	 * search the in-scope components from 'root' to find one that is contained in the given list of containers
+	 * search the in-scope components from 'root' to find one that is in the given list of containers
 	 * 
 	 * @param components
 	 * @param root
 	 * @return
 	 */
-	public static EventBNamedCommentedComponentElement findTopContainer(List<EventBNamedCommentedComponentElement> components, EventBNamedCommentedComponentElement root) {
+	private static EventBNamedCommentedComponentElement findTopContainer(List<EventBNamedCommentedComponentElement> components, EventBNamedCommentedComponentElement root) {
 		
 		if  (components.contains(root)) {
 			//check all others are in scope
@@ -96,7 +78,7 @@ public class CDRuleUtils {
 	 * @param candidate
 	 * @return
 	 */
-	public static boolean inScope(EventBNamedCommentedComponentElement c, EventBNamedCommentedComponentElement root) {
+	private static boolean inScope(EventBNamedCommentedComponentElement c, EventBNamedCommentedComponentElement root) {
 		if (c==root) return true;
 
 		if (root instanceof Machine) {
