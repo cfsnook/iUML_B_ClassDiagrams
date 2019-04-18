@@ -62,6 +62,10 @@
             path="/icons/full/obj16/Supertype.gif"
             bundle="ac.soton.eventb.classdiagrams.edit"/>
       </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Subtype Group"
+          description="Add a new subtype grouping node to a class edge"/>
     </tools>
   </palette>
 </gmftool:ToolRegistry>

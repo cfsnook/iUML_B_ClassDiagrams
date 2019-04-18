@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="ac.soton.eventb.classdiagrams.diagram" version="2">
+    <resource path="src/ac/soton/eventb/classdiagrams/diagram/part/Messages.java" type="ac.soton.eventb.classdiagrams.diagram.part.Messages">
+        <filter comment="should have been in major version 2, and these messages are only used locally" id="336658481">
+            <message_arguments>
+                <message_argument value="ac.soton.eventb.classdiagrams.diagram.part.Messages"/>
+                <message_argument value="SubtypeGroup3CreationTool_desc"/>
+            </message_arguments>
+        </filter>
+        <filter comment="should have been in major version 2, and these messages are only used locally" id="336658481">
+            <message_arguments>
+                <message_argument value="ac.soton.eventb.classdiagrams.diagram.part.Messages"/>
+                <message_argument value="SubtypeGroup3CreationTool_title"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

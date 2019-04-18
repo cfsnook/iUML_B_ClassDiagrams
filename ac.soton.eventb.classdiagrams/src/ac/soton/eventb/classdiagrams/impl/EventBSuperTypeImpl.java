@@ -44,6 +44,16 @@ public abstract class EventBSuperTypeImpl extends EObjectImpl implements EventBS
 	protected EClass eStaticClass() {
 		return ClassdiagramsPackage.Literals.EVENT_BSUPER_TYPE;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ac.soton.eventb.classdiagrams.Class toSuperClass() {
+		//this must be overridden
+		throw new UnsupportedOperationException();
+	}
 	
 
 } //EventBSuperTypeImpl

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ *  Copyright (c) 2011-2019 University of Southampton.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *   
+ *  Contributors:
+ *  University of Southampton - Initial implementation
+ *******************************************************************************/
 package ac.soton.eventb.classdiagrams.generator.rules;
 
 import java.util.ArrayList;
@@ -5,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
@@ -131,7 +140,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		List<EventBElement> elements = new ArrayList<EventBElement>();
 		elements.add((EventBElement) class_.getElaborates());
 		if (superClass!= null) elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
-		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) class_.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+		return CDRuleUtils.getTargetContainer(elements);
 	}
 	
 	/**
