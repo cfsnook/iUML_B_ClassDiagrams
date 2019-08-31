@@ -602,7 +602,8 @@ public class ClassNameEditPart extends CompartmentEditPart implements ITextAware
 	 */
 	protected Image getLabelIcon() {
 		EObject parserElement = getParserElement();
-		return (parserElement instanceof EventBElement)
+		return  parserElement==null? null 
+				: parserElement instanceof EventBElement
 				? ClassdiagramsElementTypes.getImage((EventBElement) parserElement)
 				: ClassdiagramsElementTypes.getImage(parserElement.eClass());
 	}
