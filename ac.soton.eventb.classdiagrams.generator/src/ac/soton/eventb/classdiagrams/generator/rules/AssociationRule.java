@@ -35,7 +35,9 @@ protected static final EReference elaborates = CoreextensionPackage.Literals.EVE
 	@Override
 	public boolean enabled(EObject sourceElement) throws Exception{
 		assert(sourceElement instanceof Association);
-		return ((Association)sourceElement).getElaborates() != null  && !((Association)sourceElement).isRefinedElement();
+		return ((Association)sourceElement).getElaborates() != null  
+				//&& !((Association)sourceElement).isRefinedElement()
+				;
 	}
 
 	@Override
