@@ -98,7 +98,7 @@ public abstract class AbstractClassMethodRule extends AbstractEventBGeneratorRul
 			}		
 			//generate users actions
 			for (Action g : method.getExtendedActions()){
-				ret.add(Make.descriptor(elaboratedEvent,guards,Make.action(g.getName(), g.getAction(), g.getComment()),10));				
+				ret.add(Make.descriptor(elaboratedEvent,actions,Make.action(g.getName(), g.getAction(), g.getComment()),10));				
 			}
 			for (Action a : method.getActions()){
 				ret.add(Make.descriptor(elaboratedEvent,actions,Make.action(a.getName(), a.getAction(), a.getComment()),10));				
