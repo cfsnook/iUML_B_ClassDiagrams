@@ -23,7 +23,7 @@ public class ClassdiagramElementRefiner extends StatemachineElementRefiner {
 	/**
 	 * populate the given list with the meta-classes that the refiner needs to filter out
 	 *  from the copy for class diagram refinement.
-	 * (e.g. state invariants)
+	 * 
 	 */
 	@Override
 	protected void populateFilterByTypeList(final List<EClass> filterList){
@@ -44,7 +44,7 @@ public class ClassdiagramElementRefiner extends StatemachineElementRefiner {
 		referencemap.put(ClassdiagramsPackage.Literals.ASSOCIATION__TARGET, RefHandling.EQUIV);
 		referencemap.put(ClassdiagramsPackage.Literals.CLASS__INCOMING, RefHandling.EQUIV);
 		referencemap.put(ClassdiagramsPackage.Literals.CLASS__OUTGOING, RefHandling.EQUIV);
-		referencemap.put(ClassdiagramsPackage.Literals.CLASS__SUPERTYPES, RefHandling.DROP);
+		referencemap.put(ClassdiagramsPackage.Literals.CLASS__SUPERTYPES, RefHandling.EQUIV);
 	}
 	
 	/**
