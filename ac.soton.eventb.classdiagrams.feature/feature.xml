@@ -78,6 +78,8 @@
       <import plugin="ac.soton.eventb.emf.core.extension.persistence" version="2.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.diagrams.navigator" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.statemachines.diagram" version="3.5.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.statemachines.navigator" version="2.3.0" match="compatible"/>
    </requires>
 
    <plugin
