@@ -239,8 +239,8 @@ public class Strings {
 	////guard for selecting an instance parameter
 	
 	public static String CLASS_PARAMETER_GUARD_NAME;
-	public static String CLASS_PARAMETER_GUARD_NAME(String name) {
-		return bind(CLASS_PARAMETER_GUARD_NAME, name);
+	public static String CLASS_PARAMETER_GUARD_NAME(String name, String className) {
+		return bind(CLASS_PARAMETER_GUARD_NAME, name, className);
 	}
 	
 	public static String CLASS_PARAMETER_CONSTRUCTOR_GUARD_PRED;
@@ -260,8 +260,8 @@ public class Strings {
 	///action for constructing/destructing instances
 	
 	public static String CLASS_PARAMETER_ACTION_NAME;
-	public static String CLASS_PARAMETER_ACTION_NAME(String name) {
-		return bind(CLASS_PARAMETER_ACTION_NAME, name);
+	public static String CLASS_PARAMETER_ACTION_NAME(String name, String className) {
+		return bind(CLASS_PARAMETER_ACTION_NAME, name, className);
 	}
 	
 	public static String CLASS_PARAMETER_CONSTRUCTOR_ACTION_EXPR;

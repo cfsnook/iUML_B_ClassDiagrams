@@ -37,6 +37,7 @@ public abstract class AbstractClassMethodRule extends AbstractEventBGeneratorRul
 	
 	protected String selfName;
 	protected String instancesName;
+	protected String className;
 	
 	protected abstract String getInstanceParameterGuardPredicate(ClassMethod method);
 	protected abstract String getInstanceParameterActionExpression(ClassMethod method);
@@ -54,15 +55,16 @@ public abstract class AbstractClassMethodRule extends AbstractEventBGeneratorRul
 		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
 		ClassMethod method = (ClassMethod)sourceElement;	
 		selfName = ((Class)method.eContainer()).getSelfName();
+		className = ((Class)method.eContainer()).getName();
 		instancesName = ((Class) method.getContaining(ClassdiagramsPackage.Literals.CLASS)).getElaborates().getName();
 		//make the descriptors
 		for (Event elaboratedEvent :  method.getElaborates()){
 			if (!"INITIALISATION".equals(elaboratedEvent.getName())){
 				ret.add(Make.descriptor(elaboratedEvent, parameters, Make.parameter(Strings.CLASS_PARAMETER_NAME(selfName), "generated class instance"), 1));
-				ret.add(Make.descriptor(elaboratedEvent, guards, Make.guard(Strings.CLASS_PARAMETER_GUARD_NAME(selfName), getInstanceParameterGuardPredicate(method)), 1));
+				ret.add(Make.descriptor(elaboratedEvent, guards, Make.guard(Strings.CLASS_PARAMETER_GUARD_NAME(selfName,className), getInstanceParameterGuardPredicate(method)), 1));
 				String actionExpression;
 				if ((actionExpression = getInstanceParameterActionExpression(method))!=null){
-					ret.add(Make.descriptor(elaboratedEvent, actions, Make.action(Strings.CLASS_PARAMETER_ACTION_NAME(selfName), actionExpression), 1));
+					ret.add(Make.descriptor(elaboratedEvent, actions, Make.action(Strings.CLASS_PARAMETER_ACTION_NAME(selfName,className), actionExpression), 1));
 				}
 				for (Object action : getInstanceActions(method)){
 					ret.add(Make.descriptor(elaboratedEvent, actions, action, 5));
