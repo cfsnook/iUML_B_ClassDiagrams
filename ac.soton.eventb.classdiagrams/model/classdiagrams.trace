@@ -5,7 +5,7 @@
     xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
   <nodeTraces
       visualID="2003"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Class') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Classdiagram') and _containmentMF_.name = 'classes')">
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Class') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Classdiagram') and _containmentMF_.name = 'classes')">
     <nodeLabelTraces
         visualID="5007"
         queryText="true"/>
@@ -24,22 +24,22 @@
   </nodeTraces>
   <childNodeTraces
       visualID="3022"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'ClassAttribute') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Class') and _containmentMF_.name = 'classAttributes')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'ClassAttribute') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Class') and _containmentMF_.name = 'classAttributes')"/>
   <childNodeTraces
       visualID="3023"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'ClassMethod') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Class') and _containmentMF_.name = 'methods')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'ClassMethod') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Class') and _containmentMF_.name = 'methods')"/>
   <childNodeTraces
       visualID="3024"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'ClassConstraint') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Class') and _containmentMF_.name = 'constraints')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'ClassConstraint') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Class') and _containmentMF_.name = 'constraints')"/>
   <childNodeTraces
       visualID="3025"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/statemachines/2014' and _eClass_.name = 'Statemachine') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/statemachines/2014' and _eClass_.name = 'StatemachineOwner') and _containmentMF_.name = 'statemachines')"/>
   <childNodeTraces
       visualID="3026"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'SubtypeGroup') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Class') and _containmentMF_.name = 'subtypeGroups')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'SubtypeGroup') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Class') and _containmentMF_.name = 'subtypeGroups')"/>
   <linkTraces
       visualID="4005"
-      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Association')">
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Association')">
     <linkLabelTraces
         visualID="6004"
         queryText="true"/>
@@ -52,5 +52,5 @@
   </linkTraces>
   <linkTraces
       visualID="4006"
-      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2015' and _eClass_.name = 'Class') and _feature_.name = 'supertypes')"/>
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://soton.ac.uk/models/eventb/classdiagrams/2019' and _eClass_.name = 'Class') and _feature_.name = 'supertypes')"/>
 </trace:TraceModel>

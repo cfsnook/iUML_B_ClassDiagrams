@@ -1,3 +1,13 @@
+/*******************************************************************************
+ *  Copyright (c) 2011-2019 University of Southampton.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *   
+ *  Contributors:
+ *  University of Southampton - Initial implementation
+ *******************************************************************************/
 package ac.soton.eventb.classdiagrams.generator.rules;
 
 import java.util.ArrayList;
@@ -73,10 +83,10 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		
 		String instances = element.getInstances();
 		if (instances!=null) instances = instances.trim();
-		targetContainer = getTargetContainer(element, null);
 		//for constant instance classes, initialise the instances set
 		if ((elaborated instanceof Constant || elaborated instanceof CarrierSet) && instances!=null && instances.length()>0){
 			if (instances.startsWith("{") && instances.endsWith("}")) {
+				targetContainer = getTargetContext(element);
 				//instances = instances.substring(1, instances.length()-1);
 				instances = instances.replaceAll(" ", "");
 				String[] instanceNames = instances.split("[,{}]");
@@ -113,6 +123,22 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	}
 
 	/**
+	 * returns the Context containing the element 
+	 * or a suitable target container if it is not a context
+	 * 
+	 * @param element
+	 * @return
+	 */
+	private EventBNamedCommentedComponentElement getTargetContext(Class element) {
+		EventBNamedCommentedComponentElement container = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
+		if (container instanceof Context) {
+			return (Context)container;
+		}else {
+			return getTargetContainer(element, null);
+		}
+	}
+
+	/**
 	 * Returns a suitable component to put the constraint predicate for this supertype in.
 	 * 
 	 * starting from the source container, 
@@ -131,7 +157,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		List<EventBElement> elements = new ArrayList<EventBElement>();
 		elements.add((EventBElement) class_.getElaborates());
 		if (superClass!= null) elements.add((EventBElement) superClass.getElaborates()); //the supertype must also be in scope 
-		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) class_.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+		return CDRuleUtils.getTargetContainer(elements);
 	}
 	
 	/**

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ *  Copyright (c) 2011-2019 University of Southampton.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *   
+ *  Contributors:
+ *  University of Southampton - Initial implementation
+ *******************************************************************************/
 package ac.soton.eventb.classdiagrams.generator.strings;
 
 import java.text.MessageFormat;
@@ -229,8 +239,8 @@ public class Strings {
 	////guard for selecting an instance parameter
 	
 	public static String CLASS_PARAMETER_GUARD_NAME;
-	public static String CLASS_PARAMETER_GUARD_NAME(String name) {
-		return bind(CLASS_PARAMETER_GUARD_NAME, name);
+	public static String CLASS_PARAMETER_GUARD_NAME(String name, String className) {
+		return bind(CLASS_PARAMETER_GUARD_NAME, name, className);
 	}
 	
 	public static String CLASS_PARAMETER_CONSTRUCTOR_GUARD_PRED;
@@ -250,8 +260,8 @@ public class Strings {
 	///action for constructing/destructing instances
 	
 	public static String CLASS_PARAMETER_ACTION_NAME;
-	public static String CLASS_PARAMETER_ACTION_NAME(String name) {
-		return bind(CLASS_PARAMETER_ACTION_NAME, name);
+	public static String CLASS_PARAMETER_ACTION_NAME(String name, String className) {
+		return bind(CLASS_PARAMETER_ACTION_NAME, name, className);
 	}
 	
 	public static String CLASS_PARAMETER_CONSTRUCTOR_ACTION_EXPR;

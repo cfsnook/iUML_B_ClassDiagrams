@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eventb.emf.core.machine.MachinePackage;
 
 import ac.soton.eventb.classdiagrams.ClassdiagramsPackage;
-import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractExtensionRefiner;
+import ac.soton.eventb.statemachines.navigator.refiner.StatemachineRefiner;
 
 /**
  * Class diagram Refiner 
@@ -24,8 +24,8 @@ import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractExtensionRef
  *
  *
  */
-//FIXME: this only works for machine class diagrams
-public class ClassdiagramRefiner extends AbstractExtensionRefiner {
+
+public class ClassdiagramRefiner extends StatemachineRefiner {
 
 	/**
 	 * populate the given list with the meta-classes that the refiner needs to filter out
@@ -47,7 +47,7 @@ public class ClassdiagramRefiner extends AbstractExtensionRefiner {
 	protected void populateReferenceMap(final Map<EReference,RefHandling> referencemap){
 		super.populateReferenceMap(referencemap);
 		referencemap.put(ClassdiagramsPackage.Literals.CLASS__REFINES, RefHandling.CHAIN);
-		referencemap.put(ClassdiagramsPackage.Literals.CLASSDIAGRAM__REFINES, RefHandling.CHAIN);	
+		referencemap.put(ClassdiagramsPackage.Literals.CLASSDIAGRAM__REFINES, RefHandling.CHAIN);
 		referencemap.put(ClassdiagramsPackage.Literals.ASSOCIATION__SOURCE, RefHandling.EQUIV);
 		referencemap.put(ClassdiagramsPackage.Literals.ASSOCIATION__TARGET, RefHandling.EQUIV);
 		referencemap.put(ClassdiagramsPackage.Literals.CLASS__INCOMING, RefHandling.EQUIV);

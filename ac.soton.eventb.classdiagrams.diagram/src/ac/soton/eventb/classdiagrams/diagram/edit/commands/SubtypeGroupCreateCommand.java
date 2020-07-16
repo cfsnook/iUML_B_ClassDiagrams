@@ -67,12 +67,11 @@ public class SubtypeGroupCreateCommand extends EditElementCommand {
 		owner.getSubtypeGroups().add(newElement);
 
 		//+++ auto-naming
-		String name = NameUtils.getName(owner) + "_"
-				+ newElement.eClass().getName().toLowerCase();
+		String name = NameUtils.getName(owner) + "_" + newElement.eClass().getName().toLowerCase();
 		name = NameUtils.getSafeName(newElement, name, owner, null);
 		newElement.setName(name);
 		//---  auto-naming
-		
+
 		doConfigure(newElement, monitor, info);
 
 		((CreateElementRequest) getRequest()).setNewElement(newElement);

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: ac.soton.eventb.classdiagrams;singleton:=true
-Bundle-Version: 2.0.1.release
+Bundle-Version: 2.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -13,7 +13,7 @@ Export-Package: ac.soton.eventb.classdiagrams,
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)",
  org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
  ac.soton.eventb.emf.core.extension;bundle-version="[5.0.0,6.0.0)",
- ac.soton.eventb.emf.diagrams;bundle-version="[4.0.1,5.0.0)",
+ ac.soton.eventb.emf.diagrams;bundle-version="[5.0.0,6.0.0)",
  ac.soton.eventb.statemachines;bundle-version="[4.0.0,5.0.0)"
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: ac.soton.eventb.classdiagrams

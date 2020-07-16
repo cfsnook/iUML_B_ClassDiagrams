@@ -1,3 +1,13 @@
+/*******************************************************************************
+ *  Copyright (c) 2011-2019 University of Southampton.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *   
+ *  Contributors:
+ *  University of Southampton - Initial implementation
+ *******************************************************************************/
 package ac.soton.eventb.classdiagrams.generator.rules;
 
 import java.util.ArrayList;
@@ -5,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.context.Context;
@@ -108,7 +117,7 @@ public class SubtypeGroupRule  extends AbstractEventBGeneratorRule  implements I
 			elements.add((EventBElement) c.getElaborates());
 		}
 		elements.add((EventBElement) subtypeGroup.toSuperClass().getElaborates()); //the supertype must also be in scope 
-		return CDRuleUtils.getTargetContainer((EventBNamedCommentedComponentElement) subtypeGroup.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT), elements);
+		return CDRuleUtils.getTargetContainer(elements);
 	}
 	
 	/**

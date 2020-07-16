@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014-2018 University of Southampton and others.
+ * Copyright (c) 2014-2019 University of Southampton and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,16 +8,12 @@
 
 package ac.soton.eventb.classdiagrams.diagram.sheet.custom;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.IFilter;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamedCommentedComponentElement;
-import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Machine;
 
 import ac.soton.eventb.classdiagrams.Class;
@@ -85,43 +81,22 @@ public class ConstraintsPropertySection extends AbstractEditTableWithDefaultNami
 
 	@Override
 	protected String getButtonLabelText() {
-		return owner.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT) instanceof Machine? 
+		return getTranslationTarget() instanceof Machine? 
 				"Invariant" : "Axiom";
 	}
 	
 	@Override
 	protected String getFeaturePrefix() {
-		return owner.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT) instanceof Machine? 
+		return getTranslationTarget() instanceof Machine? 
 				"inv" : "axm";
 	}
 	
 	@Override
 	protected List<?> getPossibleValues(final int col){
 		if (col==1) {
-			return getComponentList(
-					(EventBNamedCommentedComponentElement)
-					((EventBElement) eObject).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
-					);
+			return this.getComponentsInScope();
 		}else
 			return super.getPossibleValues(col);
 	}
 
-	private List<EventBNamedCommentedComponentElement> getComponentList(EventBNamedCommentedComponentElement component) {
-		List<EventBNamedCommentedComponentElement> list =  new ArrayList<EventBNamedCommentedComponentElement>() ;
-		if (component instanceof Machine){
-			Machine m = ((Machine)component);
-			list.add(m);
-			for (Context c : m.getSees()){
-				list.addAll(getComponentList(c));
-			}			
-		}else if (component instanceof Context){
-			Context c = ((Context)component);
-			list.add(c);
-			for (Context x : c.getExtends()){
-				list.addAll(getComponentList(x));
-			}
-		}
-		return list;
-	}
-	
 }

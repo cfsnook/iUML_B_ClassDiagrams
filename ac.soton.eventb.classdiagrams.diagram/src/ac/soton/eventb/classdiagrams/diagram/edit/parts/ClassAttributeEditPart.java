@@ -651,8 +651,9 @@ public class ClassAttributeEditPart extends CompartmentEditPart implements IText
 	 */
 	protected Image getLabelIcon() {
 		EObject parserElement = getParserElement();
-		return (parserElement instanceof EventBElement)
-				? ClassdiagramsElementTypes.getImage((EventBElement) parserElement)
+		return parserElement==null? null 
+				: parserElement instanceof EventBElement
+				? ClassdiagramsElementTypes.getImage((EventBElement) parserElement) 
 				: ClassdiagramsElementTypes.getImage(parserElement.eClass());
 	}
 

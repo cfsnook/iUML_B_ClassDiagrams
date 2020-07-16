@@ -1,17 +1,16 @@
-/*
- * Copyright (c) 2011 University of Southampton.
+/*******************************************************************************
+ * Copyright (c) 2011-2019 University of Southampton and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- */
+ *******************************************************************************/
 
 package ac.soton.eventb.classdiagrams.diagram.sheet.custom;
 
 import java.util.List;
 
 import org.eclipse.jface.viewers.IFilter;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Machine;
@@ -44,7 +43,7 @@ public class FilteredDataKindPropertySection extends DataKindPropertySection {
 	
 	@Override
 	protected List<String> filterDataKinds(List<String> values) {
-		EventBObject container =owner.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
+		EventBObject container = getTranslationTarget();
 		if (container instanceof Context){
 			values.remove(DataKind.VARIABLE.getLiteral());
 		}else if (container instanceof Machine){

@@ -71,6 +71,7 @@ public class ClassdiagramsPaletteFactory {
 		paletteContainer.setId("createConnections3Group"); //$NON-NLS-1$
 		paletteContainer.add(createAssociation1CreationTool());
 		paletteContainer.add(createSupertype2CreationTool());
+		paletteContainer.add(createSubtypeGroup3CreationTool());
 		return paletteContainer;
 	}
 
@@ -165,6 +166,19 @@ public class ClassdiagramsPaletteFactory {
 				.findImageDescriptor("/ac.soton.eventb.classdiagrams.edit/icons/full/obj16/Supertype.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(ClassdiagramsDiagramEditorPlugin
 				.findImageDescriptor("/ac.soton.eventb.classdiagrams.edit/icons/full/obj16/Supertype.gif")); //$NON-NLS-1$
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createSubtypeGroup3CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.SubtypeGroup3CreationTool_title,
+				Messages.SubtypeGroup3CreationTool_desc,
+				Collections.singletonList(ClassdiagramsElementTypes.SubtypeGroup_3026));
+		entry.setId("createSubtypeGroup3CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(ClassdiagramsElementTypes.getImageDescriptor(ClassdiagramsElementTypes.SubtypeGroup_3026));
+		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 }

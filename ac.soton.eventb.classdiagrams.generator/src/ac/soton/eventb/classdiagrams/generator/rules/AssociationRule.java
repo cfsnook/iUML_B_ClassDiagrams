@@ -1,3 +1,13 @@
+/*******************************************************************************
+ *  Copyright (c) 2011-2019 University of Southampton.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *   
+ *  Contributors:
+ *  University of Southampton - Initial implementation
+ *******************************************************************************/
 package ac.soton.eventb.classdiagrams.generator.rules;
 
 import java.util.ArrayList;
@@ -25,7 +35,9 @@ protected static final EReference elaborates = CoreextensionPackage.Literals.EVE
 	@Override
 	public boolean enabled(EObject sourceElement) throws Exception{
 		assert(sourceElement instanceof Association);
-		return ((Association)sourceElement).getElaborates() != null  && !((Association)sourceElement).isRefinedElement();
+		return ((Association)sourceElement).getElaborates() != null  
+				//&& !((Association)sourceElement).isRefinedElement()
+				;
 	}
 
 	@Override
