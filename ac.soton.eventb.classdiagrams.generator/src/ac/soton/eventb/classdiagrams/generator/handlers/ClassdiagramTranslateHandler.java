@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 University of Southampton.
+ * Copyright (c) 2018-2020 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,10 +17,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.eventb.classdiagrams.Class;
+import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.generator.Activator;
 import ac.soton.eventb.emf.diagrams.generator.DiagramsGeneratorIdentifiers;
 import ac.soton.eventb.emf.diagrams.generator.handlers.IUMLBTranslateHandler;
@@ -33,17 +33,15 @@ import ac.soton.eventb.statemachines.StatemachinesPackage;
  * 
  * </p>
  * 
- * @author cfs
- * @version
- * @see
+ * @author cfsnook
  * @since 4.0
  */
 public class ClassdiagramTranslateHandler extends IUMLBTranslateHandler {	
 		
 	/**
-	 * For class diagrams we return the root translatable element irrespective of
-	 * type. This is because the diagram can contain statemachines. 
-	 * I.e. We run the classdiagram translation on the root component even if a statemachine
+	 * For class diagrams we return the outermost Classdiagram element.
+	 * This is because the diagram can contain statemachines. 
+	 * I.e. We run the classdiagram translation on the root classdiagram even if a statemachine
 	 * is selected in the diagram.
 	 * 
 	 * @see ac.soton.eventb.emf.diagrams.generator.handlers.IUMLBTranslateHandler#getEObject(java.lang.Object)
@@ -51,17 +49,18 @@ public class ClassdiagramTranslateHandler extends IUMLBTranslateHandler {
 	@Override
 	protected EObject getEObject (Object obj){
 		EObject eObject = super.getEObject(obj);
-		
-		while (eObject.eContainer() instanceof EventBElement && 
-				!(eObject.eContainer() instanceof EventBNamedCommentedComponentElement)){
+		Classdiagram cd = null;
+		do {
+			if (eObject instanceof Classdiagram) {
+				cd =  (Classdiagram) eObject;
+			}
 			eObject = eObject.eContainer();
-		}
-		
-		return eObject;
+		} while (eObject!=null);
+		return cd;
 	}
 	
 	/**
-	 * The pre-processing ensures that any ste-machines owned by classes have their instances and self-name set to 
+	 * The pre-processing ensures that any state-machines owned by classes have their instances and self-name set to 
 	 * match that of the class. This ensures that when they are translated they are lifted to the class instances.
 	 * 
 	 * @see ac.soton.emf.translator.handler.TranslateHandler#preProcessing(org.eclipse.emf.ecore.EObject, java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
