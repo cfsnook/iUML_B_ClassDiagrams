@@ -84,8 +84,6 @@ public class ClassAttributeImpl extends EventBNamedCommentedRelationDataElaborat
 	 */
 	protected ClassAttributeImpl() {
 		super();
-//		this.functional=true;		// DOES NOT WORK - DEFAULT IS STILL FALSE
-//		this.total=true;			// LOAD ONLY CHANGES VALUE IF NOT DEFAULT
 	}
 
 	/**
