@@ -30,7 +30,7 @@ import ac.soton.eventb.emf.diagrams.Diagram;
  * </p>
  *
  * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getClassdiagram()
- * @model
+ * @model annotation="org.eventb.emf.core.extendedMetaClasses"
  * @generated
  */
 public interface Classdiagram extends EventBNamedCommentedElement, AbstractExtension, Diagram {

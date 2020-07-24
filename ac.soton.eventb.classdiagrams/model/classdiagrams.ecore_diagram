@@ -402,17 +402,6 @@
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3wD0gKEfEeisnu7GKHAAgQ" id="(0.0,0.37333333333333335)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3wD0gaEfEeisnu7GKHAAgQ" id="(0.979381443298969,0.5961538461538461)"/>
   </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_IVGHgKH5Eeisnu7GKHAAgQ" type="4002" source="_3txVgKEfEeisnu7GKHAAgQ" target="_uRHhWpjKEeSDXLakP4j2Sw">
-    <children xmi:type="notation:DecorationNode" xmi:id="_IVGukKH5Eeisnu7GKHAAgQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_IVGukaH5Eeisnu7GKHAAgQ" x="-3" y="21"/>
-    </children>
-    <children xmi:type="notation:DecorationNode" xmi:id="_IVGukqH5Eeisnu7GKHAAgQ" type="6003">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_IVGuk6H5Eeisnu7GKHAAgQ" y="60"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="_IVGHgaH5Eeisnu7GKHAAgQ" fontName=".AppleSystemUIFont"/>
-    <element xmi:type="ecore:EReference" href="classdiagrams.ecore#//SubtypeGroup/class"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_IVGHgqH5Eeisnu7GKHAAgQ" points="[-7, -37, 144, 252]$[-20, -121, 131, 168]$[-122, -251, 29, 38]"/>
-  </edges>
   <edges xmi:type="notation:Connector" xmi:id="_948GIKICEeisnu7GKHAAgQ" type="4002" source="_3txVgKEfEeisnu7GKHAAgQ" target="_uRHhWpjKEeSDXLakP4j2Sw">
     <children xmi:type="notation:DecorationNode" xmi:id="_948GI6ICEeisnu7GKHAAgQ" type="6001">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_948GJKICEeisnu7GKHAAgQ" x="-6" y="17"/>
@@ -425,18 +414,5 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_948GIqICEeisnu7GKHAAgQ" points="[-4, -9, 99, 247]$[-98, -243, 5, 13]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_94-iYKICEeisnu7GKHAAgQ" id="(0.16071428571428573,0.12)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_94-iYaICEeisnu7GKHAAgQ" id="(0.5909090909090909,0.8266666666666667)"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="__q2d8KIpEeisnu7GKHAAgQ" type="4003" source="_uRFsKZjKEeSDXLakP4j2Sw" target="_3txVgKEfEeisnu7GKHAAgQ">
-    <children xmi:type="notation:DecorationNode" xmi:id="__q2d86IpEeisnu7GKHAAgQ" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="__q2d9KIpEeisnu7GKHAAgQ" y="40"/>
-    </children>
-    <children xmi:type="notation:DecorationNode" xmi:id="__q2d9aIpEeisnu7GKHAAgQ" type="6004">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="__q2d9qIpEeisnu7GKHAAgQ" y="60"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="__q2d8aIpEeisnu7GKHAAgQ" fontName=".AppleSystemUIFont"/>
-    <element xmi:type="ecore:EReference" href="classdiagrams.ecore#//Classdiagram/subtypeGroups"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__q2d8qIpEeisnu7GKHAAgQ" points="[40, 28, -401, -281]$[417, 308, -24, -1]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__q46MKIpEeisnu7GKHAAgQ" id="(0.813953488372093,0.13559322033898305)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__q46MaIpEeisnu7GKHAAgQ" id="(0.21621621621621623,0.49333333333333335)"/>
   </edges>
 </notation:Diagram>
