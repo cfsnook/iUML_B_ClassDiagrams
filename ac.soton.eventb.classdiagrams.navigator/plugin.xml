@@ -19,8 +19,10 @@
             viewerId="fr.systerel.explorer.navigator.view">
       </viewerContentBinding>
    </extension>
+   
    <extension
          point="org.eclipse.ui.menus">
+         
       <menuContribution
             locationURI="popup:fr.systerel.explorer.navigator.view">
          <command
@@ -28,27 +30,35 @@
                icon="icons/NewClassdiagram.gif"
                label="Add Classdiagram"
                style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <with
-                     variable="selection">
-                  <iterate
-                        ifEmpty="false">
-                     <or>
-                        <instanceof
-                              value="org.eventb.core.IMachineRoot">
-                        </instanceof>
-                        <instanceof
-                              value="org.eventb.core.IContextRoot">
-                        </instanceof>
-                     </or>
-
-                  </iterate>
+            <visibleWhen checkEnabled="false">
+               <with variable="selection">
+		            <reference definitionId = "ac.soton.eventb.classdiagrams.navigator.isClassdiagramContainer"/>
                </with>
             </visibleWhen>
          </command>
       </menuContribution>
+      
    </extension>
+   
+      
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="ac.soton.eventb.classdiagrams.navigator.isClassdiagramContainer">
+            <iterate
+                 ifEmpty="false">
+	            <or>
+	               <adapt type="org.eclipse.emf.ecore.EObject">
+	                  <instanceof value="ac.soton.eventb.emf.diagrams.UMLB"/>
+	               </adapt>
+	               <instanceof value="org.eventb.core.IMachineRoot"/>
+	               <instanceof value="org.eventb.core.IContextRoot"/>
+	            </or>
+            </iterate>
+      </definition>
+   </extension>
+   
+   
    <extension
          point="org.eclipse.ui.commands">
       <command
@@ -57,12 +67,16 @@
             name="Add Classdiagram">
       </command>
    </extension>
+   
+   
    <extension
          point="ac.soton.eventb.emf.core.extension.navigator.adapterFactories">
       <factory
             class="ac.soton.eventb.classdiagrams.provider.ClassdiagramsItemProviderAdapterFactory">
       </factory>
    </extension>
+   
+   
    <extension
          point="ac.soton.eventb.emf.diagrams.navigator.diagramProviders">
       <provider
@@ -70,6 +84,8 @@
             type="Classdiagram">
       </provider>
    </extension>
+   
+   
    <extension
          point="org.rodinp.core.refinements">
       <Participant
@@ -91,6 +107,7 @@
             second-participant-id="ac.soton.eventb.classdiagrams.navigator.classdiagramContextRefiner">
       </Order>
    </extension>
+   
    <extension
          point="ac.soton.eventb.emf.core.extension.navigator.elementRefinement">
       <refinementDefinition
@@ -105,4 +122,5 @@
            extension="cls">
      </model>
   </extension>
+  
 </plugin>

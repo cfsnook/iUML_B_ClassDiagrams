@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * Copyright (c) 2014-2020 University of Southampton.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+
 package ac.soton.eventb.classdiagrams.navigator.refiner;
 
 import java.util.List;
@@ -51,6 +59,7 @@ public class ClassdiagramElementRefiner extends StatemachineElementRefiner {
 	 * Change this to specialise the meaning of 'equivalent' 
 	 * (used when finding reference targets in the refined model)
 	 * 
+	 * 	@Override
 	 */
 	public EventBObject getEquivalentObject(EObject concreteParent, EObject abstractObject) {
 		return super.getEquivalentObject(concreteParent, abstractObject);
