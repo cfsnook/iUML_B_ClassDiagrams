@@ -59,8 +59,10 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * This has been customised to automatically default the DataKind to be a constant if the translation target is a Context
+	 * This has been customised to default the attribute multiplicity to be a total function and
+	 * automatically default the DataKind to be a constant if the translation target is a Context
 	 * or a variable if the translation target is a Machine
+	 * 
 	 * 
 	 * @generated NOT
 	 */
