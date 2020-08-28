@@ -1,10 +1,11 @@
-/*
- * Copyright (c) 2012 University of Southampton.
+/**
+ * Copyright (c) 2012-2020 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- */
+ * 
+ **/
 package ac.soton.eventb.classdiagrams.diagram.edit.commands;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -18,14 +19,13 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
+import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 
 /**
  * @generated
@@ -60,6 +60,9 @@ public class ClassCreateCommand extends EditElementCommand {
 	}
 
 	/**
+	 * This has been customised to automatically default the DataKind to be a set if the translation target is a Context
+	 * or a variable if the translation target is a Machine
+	 * 
 	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
@@ -67,15 +70,16 @@ public class ClassCreateCommand extends EditElementCommand {
 
 		Classdiagram owner = (Classdiagram) getElementToEdit();
 
-		//+++
-		if ((owner instanceof EventBObject
-				? ((EventBObject) owner).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
-				: null) instanceof Context) {
-			newElement.setDataKind(DataKind.CONSTANT);
+		//+++ changes to generated code start here
+		
+		//default dataKind depends on target for translation 
+		if (DiagramUtils.getTranslationTarget(owner) instanceof Context) {
+			newElement.setDataKind(DataKind.SET);
 		} else {
 			newElement.setDataKind(DataKind.VARIABLE);
 		}
-		//+++
+		
+		//+++ and end here
 
 		owner.getClasses().add(newElement);
 

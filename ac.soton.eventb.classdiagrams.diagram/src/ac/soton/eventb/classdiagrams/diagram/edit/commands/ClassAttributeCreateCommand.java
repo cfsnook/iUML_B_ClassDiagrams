@@ -18,14 +18,13 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassAttribute;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
+import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 
 /**
  * @generated
@@ -60,6 +59,9 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 	}
 
 	/**
+	 * This has been customised to automatically default the DataKind to be a constant if the translation target is a Context
+	 * or a variable if the translation target is a Machine
+	 * 
 	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
@@ -74,13 +76,12 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 		newElement.setTotal(true);
 		
 		//default dataKind depends on target for translation 
-		if ((owner instanceof EventBObject
-				? ((EventBObject) owner).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
-				: null) instanceof Context) {
+		if (DiagramUtils.getTranslationTarget(owner) instanceof Context) {
 			newElement.setDataKind(DataKind.CONSTANT);
 		} else {
 			newElement.setDataKind(DataKind.VARIABLE);
 		}
+		
 		//+++ and end here
 
 		owner.getClassAttributes().add(newElement);
