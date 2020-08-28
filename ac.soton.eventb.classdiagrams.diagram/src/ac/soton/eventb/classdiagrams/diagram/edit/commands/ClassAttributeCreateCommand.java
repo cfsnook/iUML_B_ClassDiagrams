@@ -67,7 +67,13 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 
 		Class owner = (Class) getElementToEdit();
 
-		//+++
+		//+++ changes to generated code start here
+		
+		//attributes default to total functions
+		newElement.setFunctional(true);		
+		newElement.setTotal(true);
+		
+		//default dataKind depends on target for translation 
 		if ((owner instanceof EventBObject
 				? ((EventBObject) owner).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
 				: null) instanceof Context) {
@@ -75,7 +81,7 @@ public class ClassAttributeCreateCommand extends EditElementCommand {
 		} else {
 			newElement.setDataKind(DataKind.VARIABLE);
 		}
-		//+++
+		//+++ and end here
 
 		owner.getClassAttributes().add(newElement);
 
