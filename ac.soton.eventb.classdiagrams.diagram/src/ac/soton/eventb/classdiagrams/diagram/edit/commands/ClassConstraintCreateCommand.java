@@ -18,10 +18,12 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.ClassConstraint;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
+import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 
 /**
  * @generated
@@ -56,7 +58,10 @@ public class ClassConstraintCreateCommand extends EditElementCommand {
 	}
 
 	/**
-	 * @generated
+	 * This has been customised to automatically default the target component for the constraint to be 
+	 * the main translation target
+	 * 
+	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		ClassConstraint newElement = ClassdiagramsFactory.eINSTANCE.createClassConstraint();
@@ -64,6 +69,14 @@ public class ClassConstraintCreateCommand extends EditElementCommand {
 		Class owner = (Class) getElementToEdit();
 		owner.getConstraints().add(newElement);
 
+		//+++ changes to generated code start here
+		
+		if (DiagramUtils.getTranslationTarget(owner) instanceof EventBNamedCommentedComponentElement){
+			newElement.setComponent((EventBNamedCommentedComponentElement) DiagramUtils.getTranslationTarget(owner));
+		}
+		
+		//+++ and end here
+		
 		doConfigure(newElement, monitor, info);
 
 		((CreateElementRequest) getRequest()).setNewElement(newElement);
