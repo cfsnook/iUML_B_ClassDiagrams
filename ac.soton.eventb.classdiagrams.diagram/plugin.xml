@@ -1079,7 +1079,8 @@ http://www.eclipse.org/legal/epl-v10.html
 
       </propertySections>
    </extension>
-<extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+   
+<!--extension point="org.eclipse.ui.newWizards" id="creation-wizard">
       <?gmfgen generated="true"?>
   	  <wizard
   	     name="%newWizardName"
@@ -1105,7 +1106,7 @@ http://www.eclipse.org/legal/epl-v10.html
                id="ac.soton.eventb.classdiagrams.diagram.InitDiagramAction">
          </action>
       </objectContribution>
-   </extension>
+   </extension-->
 
       
 </plugin>
