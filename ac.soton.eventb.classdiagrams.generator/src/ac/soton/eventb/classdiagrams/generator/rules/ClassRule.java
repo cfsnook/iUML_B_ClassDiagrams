@@ -32,6 +32,7 @@ import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
 import ac.soton.emf.translator.eventb.utils.Find;
 import ac.soton.emf.translator.eventb.utils.Make;
+import ac.soton.emf.translator.eventb.utils.Utils;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
@@ -130,7 +131,7 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 	 * @return
 	 */
 	private EventBNamedCommentedComponentElement getTargetContext(Class element) {
-		EventBNamedCommentedComponentElement container = (EventBNamedCommentedComponentElement) element.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
+		EventBNamedCommentedComponentElement container = Utils.getTranslationTarget(); 
 		if (container instanceof Context) {
 			return (Context)container;
 		}else {
