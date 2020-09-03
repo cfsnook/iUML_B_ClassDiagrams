@@ -612,7 +612,6 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		DiagramsPackage theDiagramsPackage = (DiagramsPackage)EPackage.Registry.INSTANCE.getEPackage(DiagramsPackage.eNS_URI);
 		CoreextensionPackage theCoreextensionPackage = (CoreextensionPackage)EPackage.Registry.INSTANCE.getEPackage(CoreextensionPackage.eNS_URI);
 		StatemachinesPackage theStatemachinesPackage = (StatemachinesPackage)EPackage.Registry.INSTANCE.getEPackage(StatemachinesPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -673,8 +672,8 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 		initEAttribute(getEventBInitialisable_InitialValue(), ecorePackage.getEString(), "initialValue", null, 0, 1, EventBInitialisable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subtypeGroupEClass, SubtypeGroup.class, "SubtypeGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSubtypeGroup_Cover(), theEcorePackage.getEBoolean(), "cover", "true", 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSubtypeGroup_Disjoint(), theEcorePackage.getEBoolean(), "disjoint", "true", 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubtypeGroup_Cover(), ecorePackage.getEBoolean(), "cover", "true", 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubtypeGroup_Disjoint(), ecorePackage.getEBoolean(), "disjoint", "true", 0, 1, SubtypeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubtypeGroup_Subtypes(), this.getClass_(), null, "subtypes", null, 0, -1, SubtypeGroup.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventBSuperTypeEClass, EventBSuperType.class, "EventBSuperType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -731,10 +730,10 @@ public class ClassdiagramsPackageImpl extends EPackageImpl implements Classdiagr
 			 "constraints", "isAssociationTypeRight"
 		   });		
 		addAnnotation
-		  (getClass_Refines(), 
+		  (classEClass, 
 		   source, 
 		   new String[] {
-			 "constraints", "parentIsNotConstant"
+			 "constraints", "refinesForVariableClassesOnly"
 		   });
 	}
 
