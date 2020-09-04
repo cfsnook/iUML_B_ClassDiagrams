@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.classdiagrams.sdk"
       label="%featureName"
-      version="2.1.0.qualifier"
+      version="3.0.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.classdiagrams.branding"
       license-feature="org.rodinp.licence"
@@ -24,7 +24,7 @@
          id="ac.soton.eventb.classdiagrams.feature"
          version="0.0.0"/>
 
-  <plugin
+   <plugin
          id="ac.soton.eventb.classdiagrams.source"
          download-size="0"
          install-size="0"
@@ -58,7 +58,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="ac.soton.eventb.classdiagrams.generator.source"
          download-size="0"
@@ -72,7 +72,5 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-
 
 </feature>

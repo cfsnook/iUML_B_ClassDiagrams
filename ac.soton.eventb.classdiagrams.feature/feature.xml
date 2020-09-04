@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.classdiagrams.feature"
       label="%featureName"
-      version="2.1.0.qualifier"
+      version="3.0.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.classdiagrams.branding"
       license-feature="org.rodinp.licence"
