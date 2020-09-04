@@ -1,9 +1,9 @@
-package ac.soton.eventb.classdiagrams.persistance;
+package ac.soton.eventb.classdiagrams.persistence;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class ClassdiagramsPersistancePlugin implements BundleActivator {
+public class ClassdiagramsPersistencePlugin implements BundleActivator {
 
 	public static final String PLUGIN_ID = "ac.soton.eventb.classdiagrams.persistence";
 	private static BundleContext context;
@@ -17,7 +17,7 @@ public class ClassdiagramsPersistancePlugin implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
-		ClassdiagramsPersistancePlugin.context = bundleContext;
+		ClassdiagramsPersistencePlugin.context = bundleContext;
 	}
 
 	/*
@@ -25,7 +25,7 @@ public class ClassdiagramsPersistancePlugin implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
-		ClassdiagramsPersistancePlugin.context = null;
+		ClassdiagramsPersistencePlugin.context = null;
 	}
 
 }
