@@ -24,7 +24,7 @@ import ac.soton.eventb.statemachines.navigator.refiner.StatemachineRefiner;
  *
  *
  */
-//FIXME: this only works for machine class diagrams
+
 public class ClassdiagramRefiner extends StatemachineRefiner {
 
 	/**
@@ -47,7 +47,7 @@ public class ClassdiagramRefiner extends StatemachineRefiner {
 	protected void populateReferenceMap(final Map<EReference,RefHandling> referencemap){
 		super.populateReferenceMap(referencemap);
 		referencemap.put(ClassdiagramsPackage.Literals.CLASS__REFINES, RefHandling.CHAIN);
-		referencemap.put(ClassdiagramsPackage.Literals.CLASSDIAGRAM__REFINES, RefHandling.CHAIN);	
+		referencemap.put(ClassdiagramsPackage.Literals.CLASSDIAGRAM__REFINES, RefHandling.CHAIN);
 		referencemap.put(ClassdiagramsPackage.Literals.ASSOCIATION__SOURCE, RefHandling.EQUIV);
 		referencemap.put(ClassdiagramsPackage.Literals.ASSOCIATION__TARGET, RefHandling.EQUIV);
 		referencemap.put(ClassdiagramsPackage.Literals.CLASS__INCOMING, RefHandling.EQUIV);

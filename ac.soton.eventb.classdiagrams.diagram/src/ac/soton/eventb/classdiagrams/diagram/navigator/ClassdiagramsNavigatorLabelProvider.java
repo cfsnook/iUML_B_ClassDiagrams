@@ -105,31 +105,31 @@ public class ClassdiagramsNavigatorLabelProvider extends LabelProvider
 	public Image getImage(View view) {
 		switch (ClassdiagramsVisualIDRegistry.getVisualID(view)) {
 		case ClassdiagramEditPart.VISUAL_ID:
-			return getImage("Navigator?Diagram?http://soton.ac.uk/models/eventb/classdiagrams/2019?Classdiagram", //$NON-NLS-1$
+			return getImage("Navigator?Diagram?http://soton.ac.uk/models/eventb/classdiagrams/2020?Classdiagram", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Classdiagram_1000);
 		case ClassEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://soton.ac.uk/models/eventb/classdiagrams/2019?Class", //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http://soton.ac.uk/models/eventb/classdiagrams/2020?Class", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Class_2003);
 		case ClassAttributeEditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2019?ClassAttribute", //$NON-NLS-1$
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2020?ClassAttribute", //$NON-NLS-1$
 					ClassdiagramsElementTypes.ClassAttribute_3022);
 		case ClassMethodEditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2019?ClassMethod", //$NON-NLS-1$
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2020?ClassMethod", //$NON-NLS-1$
 					ClassdiagramsElementTypes.ClassMethod_3023);
 		case ClassConstraintEditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2019?ClassConstraint", //$NON-NLS-1$
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2020?ClassConstraint", //$NON-NLS-1$
 					ClassdiagramsElementTypes.ClassConstraint_3024);
 		case StatemachineEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/statemachines/2014?Statemachine", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Statemachine_3025);
 		case SubtypeGroupEditPart.VISUAL_ID:
-			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2019?SubtypeGroup", //$NON-NLS-1$
+			return getImage("Navigator?Node?http://soton.ac.uk/models/eventb/classdiagrams/2020?SubtypeGroup", //$NON-NLS-1$
 					ClassdiagramsElementTypes.SubtypeGroup_3026);
 		case AssociationEditPart.VISUAL_ID:
-			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2019?Association", //$NON-NLS-1$
+			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2020?Association", //$NON-NLS-1$
 					ClassdiagramsElementTypes.Association_4005);
 		case ClassSupertypesEditPart.VISUAL_ID:
-			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2019?Class?supertypes", //$NON-NLS-1$
+			return getImage("Navigator?Link?http://soton.ac.uk/models/eventb/classdiagrams/2020?Class?supertypes", //$NON-NLS-1$
 					ClassdiagramsElementTypes.ClassSupertypes_4006);
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$

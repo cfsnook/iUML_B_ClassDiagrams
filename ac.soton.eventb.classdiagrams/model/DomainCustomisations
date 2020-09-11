@@ -53,7 +53,7 @@
 
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <extender
-            uri="http://soton.ac.uk/models/eventb/diagrams"
+            uri="http://soton.ac.uk/models/eventb/diagrams/2020"
             class="ac.soton.eventb.classdiagrams.provider.ClassdiagramsItemProviderAdapterFactory$DiagramsChildCreationExtender"/>
       <extender
             uri="http://emf.eventb.org/models/core/machine/2014"

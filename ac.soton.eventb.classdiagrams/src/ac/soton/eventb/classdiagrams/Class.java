@@ -36,7 +36,7 @@ import ac.soton.eventb.statemachines.StatemachineOwner;
  * </p>
  *
  * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getClass_()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='refinesForVariableClassesOnly'"
  * @generated
  */
 public interface Class extends EventBNamedCommentedDataElaborationElement, EventBSuperType, ClassdiagramOwner, StatemachineOwner {
@@ -119,7 +119,7 @@ public interface Class extends EventBNamedCommentedDataElaborationElement, Event
 	 * @return the value of the '<em>Refines</em>' reference.
 	 * @see #setRefines(Class)
 	 * @see ac.soton.eventb.classdiagrams.ClassdiagramsPackage#getClass_Refines()
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='parentIsNotConstant'"
+	 * @model
 	 * @generated
 	 */
 	Class getRefines();

@@ -1,0 +1,38 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.eventb.classdiagrams</groupId>
+  <!-- Name of this artifact -->
+  <artifactId>root</artifactId>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>UML-B Classdiagrams Diagrams Root POM</name>
+  <description>Root artifact for UML-B Classdiagrams Diagrams</description>
+  <!-- REQUIRED: Version number (using semantic versioning) -->
+  <version>3.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>ac.soton.eventb.classdiagrams</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>3.0.0-SNAPSHOT</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>./ac.soton.eventb.classdiagrams.releng</relativePath>
+  </parent>
+
+  <modules>
+    <!-- LATER: List of modules in this build -->
+    <module>ac.soton.eventb.classdiagrams</module>
+    <module>ac.soton.eventb.classdiagrams.branding</module>
+    <module>ac.soton.eventb.classdiagrams.diagram</module>
+    <module>ac.soton.eventb.classdiagrams.edit</module>
+    <module>ac.soton.eventb.classdiagrams.generator</module>
+    <!-- <module>ac.soton.eventb.classdiagrams.generator.tests</module> -->
+    <module>ac.soton.eventb.classdiagrams.navigator</module>
+    <module>ac.soton.eventb.classdiagrams.persistence</module>
+    <!-- <module>ac.soton.eventb.classdiagrams.persistence.tests</module> -->
+    <module>ac.soton.eventb.classdiagrams.feature</module>
+    <module>ac.soton.eventb.classdiagrams.sdk</module>
+  </modules>
+</project>

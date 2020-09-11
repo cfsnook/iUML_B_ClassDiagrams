@@ -31,6 +31,7 @@ import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
 import ac.soton.emf.translator.eventb.utils.Find;
 import ac.soton.emf.translator.eventb.utils.Make;
+import ac.soton.emf.translator.eventb.utils.Utils;
 import ac.soton.eventb.classdiagrams.Class;
 import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.generator.strings.Strings;
@@ -82,10 +83,10 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		
 		String instances = element.getInstances();
 		if (instances!=null) instances = instances.trim();
-		targetContainer = getTargetContainer(element, null);
 		//for constant instance classes, initialise the instances set
 		if ((elaborated instanceof Constant || elaborated instanceof CarrierSet) && instances!=null && instances.length()>0){
 			if (instances.startsWith("{") && instances.endsWith("}")) {
+				targetContainer = getTargetContext(element);
 				//instances = instances.substring(1, instances.length()-1);
 				instances = instances.replaceAll(" ", "");
 				String[] instanceNames = instances.split("[,{}]");
@@ -119,6 +120,22 @@ public class ClassRule  extends AbstractEventBGeneratorRule  implements IRule {
 		}
 		
 		return ret;
+	}
+
+	/**
+	 * returns the Context containing the element 
+	 * or a suitable target container if it is not a context
+	 * 
+	 * @param element
+	 * @return
+	 */
+	private EventBNamedCommentedComponentElement getTargetContext(Class element) {
+		EventBNamedCommentedComponentElement container = Utils.getTranslationTarget(); 
+		if (container instanceof Context) {
+			return (Context)container;
+		}else {
+			return getTargetContainer(element, null);
+		}
 	}
 
 	/**

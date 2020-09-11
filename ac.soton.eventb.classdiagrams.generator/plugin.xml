@@ -57,7 +57,7 @@
             command_id="ac.soton.eventb.emf.diagrams.generator.translateToEventB"
             name="Class Diagram Generator"
             root_source_class="Classdiagram"
-            source_package="http://soton.ac.uk/models/eventb/classdiagrams/2019"
+            source_package="http://soton.ac.uk/models/eventb/classdiagrams/2020"
             translator_id="ac.soton.eventb.classdiagram.generator">
       </translator>
    </extension>

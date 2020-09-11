@@ -80,12 +80,10 @@ public class ClassAttributeImpl extends EventBNamedCommentedRelationDataElaborat
 	 * Therefore the default false values of the relation properties are overridden  with
 	 * total = true, functional = true
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected ClassAttributeImpl() {
 		super();
-		this.functional=true;
-		this.total=true;
 	}
 
 	/**

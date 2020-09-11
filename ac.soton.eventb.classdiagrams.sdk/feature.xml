@@ -2,10 +2,10 @@
 <feature
       id="ac.soton.eventb.classdiagrams.sdk"
       label="%featureName"
-      version="2.1.0.release"
+      version="3.0.0.release"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.classdiagrams.branding"
-      license-feature="org.rodinp.license"
+      license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
 
    <description>
@@ -17,15 +17,60 @@
    </copyright>
 
    <url>
-      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
+      <update label="%updateSiteName" url="https://eventB-soton.github.io/updateSite"/>
    </url>
 
    <includes
          id="ac.soton.eventb.classdiagrams.feature"
          version="0.0.0"/>
 
-   <includes
-         id="ac.soton.eventb.classdiagrams.source.feature"
-         version="0.0.0"/>
+   <plugin
+         id="ac.soton.eventb.classdiagrams.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.classdiagrams.branding.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.classdiagrams.diagram.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.classdiagrams.edit.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.classdiagrams.persistence.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.classdiagrams.generator.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.classdiagrams.navigator.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

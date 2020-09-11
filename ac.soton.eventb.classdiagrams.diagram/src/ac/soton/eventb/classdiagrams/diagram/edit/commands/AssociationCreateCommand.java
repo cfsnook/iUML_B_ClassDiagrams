@@ -18,8 +18,6 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
-import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 
 import ac.soton.eventb.classdiagrams.Association;
@@ -28,6 +26,7 @@ import ac.soton.eventb.classdiagrams.Classdiagram;
 import ac.soton.eventb.classdiagrams.ClassdiagramsFactory;
 import ac.soton.eventb.classdiagrams.diagram.edit.policies.ClassdiagramsBaseItemSemanticEditPolicy;
 import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
+import ac.soton.eventb.emf.diagrams.util.custom.DiagramUtils;
 
 /**
  * @generated
@@ -84,6 +83,9 @@ public class AssociationCreateCommand extends EditElementCommand {
 	}
 
 	/**
+	 * This has been customised to automatically default the DataKind to be a constant if the translation target is a Context
+	 * or a variable if the translation target is a Machine
+	 * 
 	 * @generated NOT
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
@@ -92,16 +94,18 @@ public class AssociationCreateCommand extends EditElementCommand {
 		}
 
 		Association newElement = ClassdiagramsFactory.eINSTANCE.createAssociation();
-		//+++
-		if ((getContainer() instanceof EventBObject
-				? ((EventBObject) getContainer())
-						.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT)
-				: null) instanceof Context) {
+		
+		//+++ changes to generated code start here
+
+		//default dataKind depends on target for translation 
+		if (DiagramUtils.getTranslationTarget(getContainer()) instanceof Context) {
 			newElement.setDataKind(DataKind.CONSTANT);
 		} else {
 			newElement.setDataKind(DataKind.VARIABLE);
 		}
-		//+++
+
+		//+++ and end here
+
 		getContainer().getAssociations().add(newElement);
 		newElement.setSource(getSource());
 		newElement.setTarget(getTarget());

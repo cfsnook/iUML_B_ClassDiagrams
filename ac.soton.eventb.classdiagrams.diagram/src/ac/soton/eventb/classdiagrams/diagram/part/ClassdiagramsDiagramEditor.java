@@ -469,7 +469,7 @@ public class ClassdiagramsDiagramEditor extends DiagramDocumentEditor implements
 		}
 
 		///////////////////changeRecording///////////////////
-		//FIXME: probably, this should be made into a different listener that only listens to the Statemachines Diagram Editor Part
+		//FIXME: probably, this should be made into a different listener that only listens to the Class Diagram Editor Part
 		//instead of all parts on the page.
 		@Override
 		public void partClosed(IWorkbenchPart part) {

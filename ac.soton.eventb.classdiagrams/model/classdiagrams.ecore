@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="classdiagrams" nsURI="http://soton.ac.uk/models/eventb/classdiagrams/2019"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="classdiagrams" nsURI="http://soton.ac.uk/models/eventb/classdiagrams/2020"
     nsPrefix="classdiagrams">
   <eClassifiers xsi:type="ecore:EClass" name="ClassdiagramOwner" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="classdiagrams" upperBound="-1"
@@ -28,6 +28,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="../../ac.soton.eventb.emf.core.extension/model/eventbcoreextension.ecore#//EventBNamedCommentedDataElaborationElement #//EventBSuperType #//ClassdiagramOwner ../../ac.soton.eventb.statemachines/model/statemachines.ecore#//StatemachineOwner">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="refinesForVariableClassesOnly"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="supertypes" upperBound="-1"
         eType="#//EventBSuperType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classAttributes" upperBound="-1"
@@ -36,17 +39,13 @@
         eType="#//Association" eOpposite="#//Association/target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//Association" eOpposite="#//Association/source"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="refines" eType="#//Class">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="parentIsNotConstant"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refines" eType="#//Class"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
         eType="#//ClassConstraint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//ClassMethod" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selfName" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instances" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selfName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instances" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subtypeGroups" upperBound="-1"
         eType="#//SubtypeGroup" containment="true"/>
   </eClassifiers>
@@ -63,12 +62,12 @@
     <eLiterals name="destructor" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventBInitialisable" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubtypeGroup" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamedCommentedElement #//EventBSuperType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cover" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cover" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disjoint" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disjoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subtypes" upperBound="-1"
         eType="#//Class" changeable="false" volatile="true" transient="true" derived="true"/>

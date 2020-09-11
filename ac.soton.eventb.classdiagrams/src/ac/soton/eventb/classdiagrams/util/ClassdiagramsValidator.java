@@ -28,6 +28,7 @@ import ac.soton.eventb.classdiagrams.EventBInitialisable;
 import ac.soton.eventb.classdiagrams.EventBSuperType;
 import ac.soton.eventb.classdiagrams.MethodKind;
 import ac.soton.eventb.classdiagrams.SubtypeGroup;
+import ac.soton.eventb.emf.core.extension.coreextension.DataKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -169,14 +170,19 @@ public class ClassdiagramsValidator extends EObjectValidator {
 	 * Validates the isAssociationTypeRight constraint of '<em>Association</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateAssociation_isAssociationTypeRight(Association association, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean valid = true;
+		if (association.getDataKind().equals(DataKind.SET)) valid = false;
+		if (association.getDataKind().equals(DataKind.CONSTANT) && 
+				(
+				association.getSource()!=null && association.getSource().getDataKind().equals(DataKind.VARIABLE) 
+				||
+				association.getTarget()!=null && association.getTarget().getDataKind().equals(DataKind.VARIABLE) 
+				)
+			) valid = false;
+		if (!valid) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -208,7 +214,44 @@ public class ClassdiagramsValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateClass(ac.soton.eventb.classdiagrams.Class class_, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(class_, diagnostics, context);
+		boolean result = validate_NoCircularContainment(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMultiplicityConforms(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(class_, diagnostics, context);
+		if (result || diagnostics != null) result &= validateClass_refinesForVariableClassesOnly(class_, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the refinesForVariableClassesOnly constraint of '<em>Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @since 2.1
+	 */
+	public boolean validateClass_refinesForVariableClassesOnly(ac.soton.eventb.classdiagrams.Class class_, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		//TODO: for now this is disabled. It is not clear how we use class refinement. Is it extends? Or true data refinement.
+		boolean valid = true; //(class_.getRefines()==null) || class_.getDataKind().equals(DataKind.VARIABLE);
+		if (!valid) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "Refines_Is_For_Variable_Classes_Only", getObjectLabel(class_, context) },
+						 new Object[] { class_ },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
